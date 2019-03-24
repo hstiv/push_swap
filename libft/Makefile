@@ -75,16 +75,16 @@ AR = ar rc
 
 
 $(NAME):
-	gcc $(CFLAGS) -c $(SRC)
-	$(AR) $@ *.o
-	ranlib $@
+	@gcc $(CFLAGS) -c $(SRC)
+	@$(AR) $@ *.o
+	@ranlib $@
 
 all : $(NAME)
 
 clean :
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
