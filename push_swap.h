@@ -24,6 +24,10 @@ typedef struct		s_ps
 	size_t			a_len;
 	size_t			b_len;
 	size_t			len;
+	int				max_a;
+	int				min_a;
+	int				max_b;
+	int				min_b;
 }					t_ps;
 
 void				sa(t_ps *ps, char swap);
@@ -34,5 +38,8 @@ void				ra(t_ps *ps, char swap);
 void				rb(t_ps *ps, char swap);
 void				rra(t_ps *ps, char swap);
 void				rrb(t_ps *ps, char swap);
+void				rrr(t_ps *ps, char swap);
+void				rr(t_ps *ps, char swap);
+void				ss(t_ps *ps, char swap);
 
 #endif

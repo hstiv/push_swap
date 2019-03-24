@@ -53,3 +53,15 @@ void			rb(t_ps *ps, char swap)
 			ft_putstr("rb\n");
 	}
 }
+
+void			rr(t_ps *ps, char swap)
+{
+	ra(ps, 0);
+	rb(ps, 0);
+	if (swap)
+	{
+		ps->len++;
+		if (swap == 1)
+			ft_putstr("rr\n");
+	}
+}

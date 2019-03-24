@@ -1,47 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_strisdig.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/24 17:49:54 by hstiv             #+#    #+#             */
-/*   Updated: 2019/03/24 17:50:40 by hstiv            ###   ########.fr       */
+/*   Created: 2018/12/08 14:04:49 by hstiv             #+#    #+#             */
+/*   Updated: 2019/01/07 20:08:39 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int				(char **s)
+int			ft_strisdig(char *s)
 {
-	t_ps		*ps;
-	int			i;
+	int     i;
 
-	i = 1;
-	ps = ps_list();
-	while (s[i] != NULL)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if (ft_strisdig(s[i]) == 0)
-			return (-1);
-		ps->a[ps->a_len] = ft_atoi(s[i]);
-		ps->a_len++;
+		if (ft_isdigit(s[i]) == 0)
+			return (0);
 		i++;
 	}
-	find_mm_a(ap);
-
-}
-
-int				main(int c, char **s)
-{
-	int			i;
-
-	i = -1;
-	if (c > 1)
-		i = checker(s);
-	if (i == -1)
-		ft_putstr("Error\n");
-	else if (i == 0)
-		ft_putstr("KO\n");
-	else
-		ft_putstr("OK\n");	
+	return (1);
 }

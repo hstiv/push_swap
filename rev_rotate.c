@@ -59,3 +59,14 @@ void			rrb(t_ps *ps, char swap)
 			ft_putstr("rrb\n");
 	}
 }
+
+void			rrr(t_ps *ps, char swap)
+{
+	rra(ps, 0);
+	rrb(ps, 0);
+	if (swap)
+	{
+		ps->len++;
+		if (swap == 1)
+		ft_putstr("rrr\n");
+	}

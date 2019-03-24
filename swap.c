@@ -49,3 +49,15 @@ void		sb(t_ps *ps, char swap)
 			ft_putstr("sb\n");
 	}
 }
+
+void		ss(t_ps *ps, char swap)
+{
+	sa(ps, 0);
+	sb(ps, 0);
+	if (swap == 1)
+	{
+		ps->len++;
+		if (swap == 1)
+			ft_putstr("ss\n");
+	}
+}
