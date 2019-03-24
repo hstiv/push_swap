@@ -27,8 +27,8 @@ int				(char **s)
 		ps->a_len++;
 		i++;
 	}
-	find_mm_a(ap);
-
+	find_mm_a(ps);
+	where_close_to(ps);
 }
 
 int				main(int c, char **s)

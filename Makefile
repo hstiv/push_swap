@@ -2,7 +2,7 @@
 NAME2 = checker
 
 SRC = swap.c push.c rotate.c rev_rotate.c push_swap.c checker.c \
-		ps_list.c $(LFT)
+	ps_list.c tools1.c $(LFT)
 
 LFT = libft/libft.a
 

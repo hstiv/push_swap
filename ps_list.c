@@ -16,6 +16,8 @@ t_ps        ps_list(void)
 		ps->min_a = 0;
 		ps->max_b = 0;
 		ps->min_b = 0;
+		ps->flotx = 0;
+		ps->flotn = 0;
 	}
 	return (ps);
 }

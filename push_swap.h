@@ -28,6 +28,8 @@ typedef struct		s_ps
 	int				min_a;
 	int				max_b;
 	int				min_b;
+	float			flotx;
+	float			flotn;
 }					t_ps;
 
 void				sa(t_ps *ps, char swap);
@@ -41,5 +43,7 @@ void				rrb(t_ps *ps, char swap);
 void				rrr(t_ps *ps, char swap);
 void				rr(t_ps *ps, char swap);
 void				ss(t_ps *ps, char swap);
+void				find_mm_a(t_ps *ps);
+void				find_mm_b(t_ps *ps);
 
 #endif
