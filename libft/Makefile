@@ -5,6 +5,7 @@ NAMESRC = libsource
 PATH_SRC = ./
 
 SRC = $(PATH_SRC)ft_strlen.c \
+	$(PATH_SRC)ft_stacklen.c \
 	$(PATH_SRC)ft_strdup.c \
 	$(PATH_SRC)ft_strcpy.c \
 	$(PATH_SRC)ft_strncpy.c \

@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 16:09:25 by hstiv             #+#    #+#             */
-/*   Updated: 2019/03/01 14:55:48 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/03/24 16:26:17 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct		s_list
 {
@@ -25,6 +24,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+size_t				ft_stacklen(int *a);
 void				ft_arraydel(void **array);
 void				ft_dellst(void *lst, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
