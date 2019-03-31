@@ -14,12 +14,12 @@
 
 void			pa(t_ps *ps, char swap)
 {
-	if (ps->b_len > 0)
+	if (ps->b_l > 0)
 	{
-		ps->a[ps->a_len] = ps->b[ps->b_len - 1];
-		ps->b[ps->b_len - 1] = 0;
-		ps->a_len++;
-		ps->b_len--;
+		ps->a[ps->a_l] = ps->b[ps->b_l - 1];
+		ps->b[ps->b_l - 1] = 0;
+		ps->a_l++;
+		ps->b_l--;
 	}
 	if (swap)
 	{
@@ -31,12 +31,12 @@ void			pa(t_ps *ps, char swap)
 
 void			pb(t_ps *ps, char swap)
 {
-	if (ps->a_len > 0)
+	if (ps->a_l > 0)
 	{
-		ps->b[ps->b_len] = ps->a[ps->a_len - 1];
-		ps->a[ps->a_len - 1] = 0;
-		ps->b_len++;
-		ps->a_len--;
+		ps->b[ps->b_l] = ps->a[ps->a_l - 1];
+		ps->a[ps->a_l - 1] = 0;
+		ps->b_l++;
+		ps->a_l--;
 	}
 	if (swap)
 	{

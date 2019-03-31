@@ -7,11 +7,16 @@ t_ps        *ps_list(int c)
 	ps = malloc(sizeof(t_ps));
 	if (ps)
 	{
-    	int		ps->a[c];
-    	int		ps->b[c];
+    	int		a[c];
+    	int		b[c];
 
-    	ps->a_len = c;
-		ps->b_len = 0;
+		while (c)
+		{
+			a[c] = 0;
+			b[c] = 0;
+		}
+    	ps->a_l = c;
+		ps->b_l = 0;
 		ps->len = 0;
 		ps->max_a = 0;
 		ps->min_a = 0;

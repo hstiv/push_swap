@@ -16,12 +16,12 @@ void		sa(t_ps *ps, char swap)
 {
 	int		temp;
 
-	ps.a_len = ft_stacklen(ps->a);
-	if (ps.a_len> 1)
+	ps->a_l = ft_stacklen(ps->a);
+	if (ps->a_l> 1)
 	{
-		temp = ps->a[a_len - 1];
-		ps->a[ps->a_len - 1] = ps->a[ps->a_len - 2];
-		ps->a[ps->a_len - 2] = temp;
+		temp = ps->a[ps->a_l - 1];
+		ps->a[ps->a_l - 1] = ps->a[ps->a_l - 2];
+		ps->a[ps->a_l - 2] = temp;
 	}
 	if (swap)
 	{
@@ -31,16 +31,22 @@ void		sa(t_ps *ps, char swap)
 	}
 }
 
+void		ss(t_ps *ps, char swap)
+{
+	sa(ps, swap);
+	sb(ps, swap);
+}
+
 void		sb(t_ps *ps, char swap)
 {
 	int		temp;
 
-	ps->b_len = ft_stacklen(ps->b);
-	if (ps->b_len> 1)
+	ps->b_l = ft_stacklen(ps->b);
+	if (ps->b_l> 1)
 	{
-		temp = ps->b[b_len - 1];
-		ps->b[ps->b_len - 1] = ps->b[ps->b_len - 2];
-		ps->b[ps->b_len - 2] = temp;
+		temp = ps->b[ps->b_l - 1];
+		ps->b[ps->b_l - 1] = ps->b[ps->b_l - 2];
+		ps->b[ps->b_l - 2] = temp;
 	}
 	if (swap)
 	{

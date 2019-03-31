@@ -17,10 +17,10 @@ void			ra(t_ps *ps, char swap)
 	int			temp;
 	int			i;
 
-	if (ps->a_len <= 1)
+	if (ps->a_l <= 1)
 	{	
-		i = ps->a_len;
-		temp = ps->a[a_len - 1];
+		i = ps->a_l;
+		temp = ps->a[ps->a_l - 1];
 		while (--i && i > 0)
 			ps->a[i] = ps->a[i - 1];
 		ps->a[i] = temp;
@@ -33,15 +33,21 @@ void			ra(t_ps *ps, char swap)
 	}
 }
 
+void			rr(t_ps *ps, char swap)
+{
+	ra(ps, swap);
+	rb(ps, swap);
+}
+
 void			rb(t_ps *ps, char swap)
 {
 	int			temp;
 	int			i;
 
-	if (ps->b_len <= 1)
+	if (ps->b_l <= 1)
 	{	
-		i = ps->b_len;
-		temp = ps->b[b_len - 1];
+		i = ps->b_l;
+		temp = ps->b[ps->b_l - 1];
 		while (--i && i > 0)
 			ps->b[i] = ps->b[i - 1];
 		ps->b[i] = temp;

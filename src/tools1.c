@@ -17,21 +17,21 @@ void		find_mm_a(t_ps *ps)
 	int		i;
 
 	i = 0;
-	while (i < ps->a_len)
+	while (i < ps->a_l)
 	{
 		if (ps->min_a > ps->a[i])
 			ps->min_a = ps->a[i];
 		i++;
 	}
 	i = 0;
-	while (i < ps->a_len)
+	while (i < ps->a_l)
 	{
 		if (ps->max_a < ps->a[i])
 			ps->max_a = ps->a[i];
 		i++;
 	}
 	i = 0;
-	while (i < ps->a_len)
+	while (i < ps->a_l)
 	{
 		if (ps->min_a == ps->a[i])
 			ps->min_a = i;
@@ -46,21 +46,21 @@ void		find_mm_b(t_ps *ps)
 	int		i;
 
 	i = 0;
-	while (i < ps->b_len)
+	while (i < ps->b_l)
 	{
 		if (ps->min_b > ps->b[i])
 			ps->min_b = ps->b[i];
 		i++;
 	}
 	i = 0;
-	while (i < ps->b_len)
+	while (i < ps->b_l)
 	{
 		if (ps->max_b < ps->b[i])
 			ps->max_b = ps->b[i];
 		i++;
 	}
 	i = 0;
-	while (i < ps->b_len)
+	while (i < ps->b_l)
 	{
 		if (ps->min_b == ps->b[i])
 			ps->min_b = i;
@@ -74,9 +74,9 @@ void		where_close_to(t_ps *ps)
 {
 	int		i;
 
-	i = ps->a_len / 2;
-	ps->flotx = (ps->max_a * 10) / ps->a_len;
-	ps->flotn = (ps->min_a * 10) / ps->a_len;
+	i = ps->a_l / 2;
+	ps->flotx = (ps->max_a * 10) / ps->a_l;
+	ps->flotn = (ps->min_a * 10) / ps->a_l;
 	if ((ps->flotx >= 7 && ps->flotn <= 3) || (ps->flotx <= 3 && ps->flotn >= 7))
 	{
 		while(i--)

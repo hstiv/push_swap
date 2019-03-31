@@ -15,7 +15,6 @@
 
 # include "libft.h"
 # include <sys/stat.h>
-# include <fnctl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
 
@@ -25,9 +24,9 @@ typedef struct		s_ps
 {
 	int				*a;
 	int				*b;
-	size_t			a_len;
-	size_t			b_len;
-	size_t			len;
+	int				a_l;
+	int				b_l;
+	int				len;
 	int				max_a;
 	int				min_a;
 	int				max_b;
@@ -36,6 +35,7 @@ typedef struct		s_ps
 	float			flotn;
 }					t_ps;
 
+int					if_sort(int *a);
 int					get_next_line(const int fd, char **line);
 void				sa(t_ps *ps, char swap);
 void				sb(t_ps *ps, char swap);

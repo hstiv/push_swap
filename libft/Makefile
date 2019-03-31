@@ -2,6 +2,8 @@ NAME = libft.a
 
 NAMESRC = libsource
 
+HEAD = ../includes/
+
 PATH_SRC = ./
 
 SRC = $(PATH_SRC)ft_strlen.c \
@@ -76,7 +78,7 @@ AR = ar rc
 
 
 $(NAME):
-	@gcc $(CFLAGS) -c $(SRC)
+	@gcc $(CFLAGS) -c $(SRC) -I $(HEAD)
 	@$(AR) $@ *.o
 	@ranlib $@
 

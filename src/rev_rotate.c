@@ -12,21 +12,21 @@
 
 #include "push_swap.h"
 
-void			rra(t_ps *ps, char swap)
+void				rra(t_ps *ps, char swap)
 {
-	int			i;
-	int			temp;
+	int				i;
+	int				temp;
 
-	if (ps->a_len > 1)
+	if (ps->a_l > 1)
 	{
 		i = 0;
 		temp = ps->a[i];
-		while (i < (ps->a_len - 1))
+		while (i < (ps->a_l - 1))
 		{
 			ps->a[i] = ps->a[i + 1];
 			i++;
 		}
-		ps->a[ps->a_len - 1] = temp;
+		ps->a[ps->a_l - 1] = temp;
 	}
 	if (swap)
 	{
@@ -36,21 +36,27 @@ void			rra(t_ps *ps, char swap)
 	}
 }
 
-void			rrb(t_ps *ps, char swap)
+void				rrr(t_ps *ps, char swap)
 {
-	int			i;
-	int			temp;
+	rra(ps, swap);
+	rra(ps, swap);
+}
 
-	if (ps->b_len > 1)
+void				rrb(t_ps *ps, char swap)
+{
+	int				i;
+	int				temp;
+
+	if (ps->b_l > 1)
 	{
 		i = 0;
 		temp = ps->b[i];
-		while (i < (ps->b_len - 1))
+		while (i < (ps->b_l - 1))
 		{
 			ps->b[i] = ps->b[i + 1];
 			i++;
 		}
-		ps->b[ps->b_len - 1] = temp;
+		ps->b[ps->b_l - 1] = temp;
 	}
 	if (swap)
 	{
