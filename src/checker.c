@@ -39,7 +39,6 @@ static int			sorting_by_instruction(char	*line, t_ps *ps)
 	else
 		return (0);
 	return (1);
-
 }
 
 static int			not_number(char *s)
@@ -62,12 +61,14 @@ static int			not_number(char *s)
 int					main(int c, char **s)
 {
 	t_ps			*ps;
-	int				i;
+	int				o;
 	int				l;
+	int				i;
 	char			*line;
 
 	i = 1;
 	l = 0;
+	o = 0;
 	if (!(ps = ps_list(c - 1)))
 		return (0);
 	if (c < 3)
@@ -78,12 +79,18 @@ int					main(int c, char **s)
 			return (0);
 		ps->a[l++] = ft_atoi(s[i++]);
 	}
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
+	{
+		if (o == 0)
+			ft_beauty(ps);
 		if (sorting_by_instruction(line, ps) == 0)
 		{
 			ft_putstr("Error");
 			return (0);
 		}
+		ft_beauty(ps);
+		o++;
+	}
 	if (if_sort(ps->a) == 0)
 		ft_putstr("KO");
 	else

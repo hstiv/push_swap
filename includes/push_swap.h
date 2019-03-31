@@ -36,6 +36,7 @@ typedef struct		s_ps
 }					t_ps;
 
 int					if_sort(int *a);
+void				ft_beauty(t_ps *ps);
 int					get_next_line(const int fd, char **line);
 void				sa(t_ps *ps, char swap);
 void				sb(t_ps *ps, char swap);
