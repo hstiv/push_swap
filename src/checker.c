@@ -46,7 +46,7 @@ static int			not_number(char *s)
 	int				n;
 
 	n = 0;
-	while (s[n] != 0)
+	while (s[n] != '\0' && s[n] != '\n')
 	{
 		if (!ft_isdigit(s[n]))
 		{
@@ -64,20 +64,28 @@ int					main(int c, char **s)
 	int				o;
 	int				l;
 	int				i;
+	int				j;
+	char			num[99999];
 	char			*line;
 
 	i = 1;
 	l = 0;
 	o = 0;
+	j = 0;
 	if (!(ps = ps_list(c - 1)))
 		return (0);
-	if (c < 3)
+	if (c == 1)
 		return (0);
-	while (s[i] != NULL)
+	if (not_number(s[1]) == 0)
+		return (0);
+	while (s[1][i] != '\0')
 	{
-		if (not_number(s[i]) == 0)
-			return (0);
-		ps->a[l++] = ft_atoi(s[i++]);
+		ft_strclr(num);
+		while (s[1][i] != ' ' && s[1][i] != '\0')
+			num[j++] = s[1][i++];
+		num[j] = '\0';
+		ps->a[l++] = ft_atoi(num);
+		ft_putchar('6');
 	}
 	while (get_next_line(0, &line) > 0)
 	{
