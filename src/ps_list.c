@@ -1,15 +1,16 @@
 #include "push_swap.h"
 
-t_ps        ps_list(void)
+t_ps        *ps_list(int c)
 {
     t_ps	*ps;
 
 	ps = malloc(sizeof(t_ps));
 	if (ps)
 	{
-    	ps->a = 0;
-    	ps->b = 0;
-    	ps->a_len = 0;
+    	int		ps->a[c];
+    	int		ps->b[c];
+
+    	ps->a_len = c;
 		ps->b_len = 0;
 		ps->len = 0;
 		ps->max_a = 0;

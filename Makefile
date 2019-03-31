@@ -1,8 +1,8 @@
 #NAME1 = push_swap
 NAME2 = checker
 
-SRC = swap.c push.c rotate.c rev_rotate.c push_swap.c checker.c \
-	ps_list.c tools1.c $(LFT)
+SRC = src/swap.c src/push.c src/rotate.c src/rev_rotate.c src/push_swap.c src/checker.c \
+	src/ps_list.c src/tools1.c $(LFT) src/get_next_line.c
 
 LFT = libft/libft.a
 
