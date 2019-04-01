@@ -12,30 +12,30 @@
 
 #include <push_swap.h>
 
-static int			sorting_by_instruction(char	*line, t_ps *ps)
+static int			sort_by_in(char	*line, t_ps *ps, t_a *ta)
 {
 	if (ft_strcmp(line, "sa") == 0)
-		sa(ps, 0);
+		sa(ps, ta);
 	else if (ft_strcmp(line, "sb") == 0)
-		sb(ps, 0);
+		sb(ps, ta);
 	else if (ft_strcmp(line, "pa") == 0)
-		pa(ps, 0);
+		pa(ps, ta);
 	else if (ft_strcmp(line, "pb") == 0)
-		pb(ps, 0);
+		pb(ps, ta);
 	else if (ft_strcmp(line, "ra") == 0)
-		ra(ps, 0);
+		ra(ps, ta);
 	else if (ft_strcmp(line, "rb") == 0)
-		rb(ps, 0);
+		rb(ps, ta);
 	else if (ft_strcmp(line, "rra") == 0)
-		rra(ps, 0);
+		rra(ps, ta);
 	else if (ft_strcmp(line, "rrb") == 0)
-		rrb(ps, 0);
+		rrb(ps, ta);
 	else if (ft_strcmp(line, "rrr") == 0)
-		rrr(ps, 0);
+		rrr(ps, ta);
 	else if (ft_strcmp(line, "rr") == 0)
-		rr(ps, 0);
+		rr(ps, ta);
 	else if (ft_strcmp(line, "ss") == 0)
-		ss(ps, 0);
+		ss(ps, ta);
 	else
 		return (0);
 	return (1);
@@ -58,47 +58,61 @@ static int			not_number(char *s)
 	return (1);
 }
 
-int					main(int c, char **s)
+static t_a			*recorder(char *s, t_a *ta, t_ps *ps)
 {
-	t_ps			*ps;
-	int				l;
+	char			num[11];
 	int				i;
 	int				j;
-	char			num[99999];
-	char			*line;
+	int				l;
+	t_a				*tmp;
 
 	i = 0;
-	l = 0;
 	j = 0;
-	if (!(ps = ps_list(s[1])))
-		return (0);
-	if (c == 1)
-		return (0);
-	while (s[1][i] != '\0' && l <= ps->a_l)
+	tmp = ta;
+	while (s[i] != '\0')
 	{
+		if (!tmp)
+			tmp = ta_list();
 		ft_strclr(num);
 		j = 0;
-		while (s[1][i] != ' ' && s[1][i] != '\0')
-			num[j++] = s[1][i++];
-		while (s[1][i] <= 32 && s[1][i] != '\0')
+		while (s[i] != ' ' && s[i] != '\0')
+			num[j++] = s[i++];
+		while (s[i] <= ' ' && s[i] != '\0')
 			i++;
 		num[j] = '\0';
 		if (not_number(num) == 0)
 			return (0);
-		ps->a[l] = ft_atoi(num);
-		l++;
+		tmp->a = ft_atoi(num);
+		ps->a_l++;
+		tmp->n = ps->a_l;
+		tmp = tmp->next;
 	}
-	ft_beauty(ps);
+	return (ta);
+}
+
+int					main(int c, char **s)
+{
+	t_ps			*ps;
+	t_a				*ta;
+	char			num[99999];
+	char			*line;
+
+	if (!(ps = ps_list(s[1]) || (ta = ta_list())))
+		return (0);
+	if (c < 2)
+		return (0);
+	ta = recorder(s[1], ta, ps);
+	ft_beauty(ps, ta);
 	while (get_next_line(0, &line) > 0)
 	{
-		if (sorting_by_instruction(line, ps) == 0)
+		if (sorting_by_instruction(line, ps, ta) == 0)
 		{
 			ft_putstr("Error");
 			return (0);
 		}
-		ft_beauty(ps);
+		ft_beauty(ps, ta);
 	}
-	if (if_sort(ps->a) == 0)
+	if (if_sort(ta->a) == 0)
 		ft_putstr("KO");
 	else
 		ft_putstr("OK");

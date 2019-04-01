@@ -24,24 +24,14 @@ typedef struct		s_a
 {
 	int				a;
 	int				n;
-	int				len;
+	int				b;
 	struct s_a		*next;
 }					t_a;
-
-typedef struct		s_b
-{
-	int				b;
-	int				n;
-	int				len;
-	struct s_a		*next;
-}					t_b;
 
 typedef struct		s_ps
 {
 	int				a_l;
 	int				b_l;
-	int				*a;
-	int				*b;
 	int				len;
 	int				max_a;
 	int				min_a;
@@ -52,21 +42,22 @@ typedef struct		s_ps
 }					t_ps;
 
 int					if_sort(int *a);
-void				ft_beauty(t_ps *ps);
+void				ft_beauty(t_ps *ps, t_a *ta);
 int					get_next_line(const int fd, char **line);
-void				sa(t_ps *ps, char swap);
-void				sb(t_ps *ps, char swap);
-void				pa(t_ps *ps, char swap);
-void				pb(t_ps *ps, char swap);
-void				ra(t_ps *ps, char swap);
-void				rb(t_ps *ps, char swap);
-void				rra(t_ps *ps, char swap);
-void				rrb(t_ps *ps, char swap);
-void				rrr(t_ps *ps, char swap);
-void				rr(t_ps *ps, char swap);
-void				ss(t_ps *ps, char swap);
+void				sa(t_ps *ps, t_a *ta);
+void				sb(t_ps *ps, t_a *ta);
+void				pa(t_ps *ps, t_a *ta);
+void				pb(t_ps *ps, t_a *ta);
+void				ra(t_ps *ps, t_a *ta);
+void				rb(t_ps *ps, t_a *ta);
+void				rra(t_ps *ps, t_a *ta);
+void				rrb(t_ps *ps, t_a *ta);
+void				rrr(t_ps *ps, t_a *ta);
+void				rr(t_ps *ps, t_a *ta);
+void				ss(t_ps *ps, t_a *ta);
 void				find_mm_a(t_ps *ps);
 void				find_mm_b(t_ps *ps);
 t_ps				*ps_list(char *s);
+t_a					*ta_list();
 
 #endif

@@ -1,24 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_list.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/01 21:29:57 by hstiv             #+#    #+#             */
+/*   Updated: 2019/04/01 21:29:59 by hstiv            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void			ft_malloc_maker(t_ps *ps, char *s)
+t_a			*ta_list()
 {
-	int				i;
+	t_a		*ta;
 
-	i = 0;
-	while (s[i] != '\0')
+	ta = malloc(sizeof(t_a));
+	if (ta)
 	{
-		if (s[i + 1] == ' ' && s[i] != ' ')
-			ps->a_l++;
-		i++;
+		ta->a = 0;
+		ta->b = 0;
+		ta->n = 0;
+		ta->next = 0;
 	}
-	i = ps->a_l;
-	ps->a = (int *)malloc(sizeof(int) * (ps->a_l + 1));
-	ps->b = (int *)malloc(sizeof(int) * (ps->a_l + 1));
-	while (i >= 0)
-	{
-		ps->b[i] = 0;
-		i--;
-	}
+	return (ta);
 }
 
 t_ps        *ps_list(char *s)
@@ -28,7 +34,7 @@ t_ps        *ps_list(char *s)
 	ps = malloc(sizeof(t_ps));
 	if (ps)
 	{
-		ft_malloc_maker(ps, s);
+		ps->a_l = 0;
 		ps->b_l = 0;
 		ps->len = 0;
 		ps->max_a = 0;

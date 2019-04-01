@@ -12,12 +12,11 @@
 
 #include "push_swap.h"
 
-void		sa(t_ps *ps, char swap)
+void		sa(t_ps *ps, t_a *ta)
 {
 	int		temp;
 
-	ps->a_l = ft_stacklen(ps->a);
-	if (ps->a_l> 1)
+	if (ps->a_l > 1)
 	{
 		temp = ps->a[ps->a_l - 1];
 		ps->a[ps->a_l - 1] = ps->a[ps->a_l - 2];
@@ -31,7 +30,7 @@ void		sa(t_ps *ps, char swap)
 	}
 }
 
-void		ss(t_ps *ps, char swap)
+void		ss(t_ps *ps, t_a *ta)
 {
 	sa(ps, swap);
 	sb(ps, swap);
