@@ -15,7 +15,7 @@ HEAD = includes/
 #	@make -C libft re && gcc -o $@ $(WWW) src/push_swap.c $(SRC) -I $(HEAD)
 	
 $(NAME2):
-	@make -C libft re && gcc -o $@ $(WWW) $(SRC) -I $(HEAD)
+	@make -C libft re && gcc -o $@ $(WWW) $(SRC) -I $(HEAD) -g
 
 all: $(NAME2)
 

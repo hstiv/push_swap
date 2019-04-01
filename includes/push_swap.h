@@ -22,10 +22,10 @@
 
 typedef struct		s_ps
 {
-	int				*a;
-	int				*b;
 	int				a_l;
 	int				b_l;
+	int				*a;
+	int				*b;
 	int				len;
 	int				max_a;
 	int				min_a;
@@ -51,6 +51,6 @@ void				rr(t_ps *ps, char swap);
 void				ss(t_ps *ps, char swap);
 void				find_mm_a(t_ps *ps);
 void				find_mm_b(t_ps *ps);
-t_ps				*ps_list(int c);
+t_ps				*ps_list(char *s);
 
 #endif

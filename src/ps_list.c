@@ -1,21 +1,28 @@
 #include "push_swap.h"
 
-t_ps        *ps_list(int c)
+static void			ft_malloc_maker(t_ps *ps, char *s)
+{
+	int				i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i + 1] == ' ' && s[i] != ' ')
+			ps->a_l++;
+		i++;
+	}
+	ps->a = (int *)malloc(sizeof(int) * (ps->a_l + 1));
+	ps->b = (int *)malloc(sizeof(int) * (ps->a_l + 1));
+}
+
+t_ps        *ps_list(char *s)
 {
     t_ps	*ps;
 
 	ps = malloc(sizeof(t_ps));
 	if (ps)
 	{
-    	int		a[c];
-    	int		b[c];
-
-		while (c)
-		{
-			a[c] = 0;
-			b[c] = 0;
-		}
-    	ps->a_l = c;
+		ft_malloc_maker(ps, s);
 		ps->b_l = 0;
 		ps->len = 0;
 		ps->max_a = 0;

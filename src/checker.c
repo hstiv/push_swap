@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 17:15:27 by hstiv             #+#    #+#             */
-/*   Updated: 2019/03/31 18:02:30 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/04/01 14:28:38 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,46 +61,46 @@ static int			not_number(char *s)
 int					main(int c, char **s)
 {
 	t_ps			*ps;
-	int				o;
 	int				l;
 	int				i;
 	int				j;
 	char			num[99999];
 	char			*line;
 
-	i = 1;
+	i = 0;
 	l = 0;
-	o = 0;
 	j = 0;
-	if (!(ps = ps_list(c - 1)))
+	if (!(ps = ps_list(s[1])))
 		return (0);
 	if (c == 1)
 		return (0);
-	if (not_number(s[1]) == 0)
-		return (0);
-	while (s[1][i] != '\0')
+	while (s[1][i] != '\0' && l <= ps->a_l)
 	{
 		ft_strclr(num);
+		j = 0;
 		while (s[1][i] != ' ' && s[1][i] != '\0')
 			num[j++] = s[1][i++];
+		while (s[1][i] <= 32 && s[1][i] != '\0')
+			i++;
 		num[j] = '\0';
-		ps->a[l++] = ft_atoi(num);
-		ft_putchar('6');
+		if (not_number(num) == 0)
+			return (0);
+		ps->a[l] = ft_atoi(num);
+		l++;
 	}
+	ft_beauty(ps);
 	while (get_next_line(0, &line) > 0)
 	{
-		if (o == 0)
-			ft_beauty(ps);
 		if (sorting_by_instruction(line, ps) == 0)
 		{
 			ft_putstr("Error");
 			return (0);
 		}
 		ft_beauty(ps);
-		o++;
 	}
 	if (if_sort(ps->a) == 0)
 		ft_putstr("KO");
 	else
 		ft_putstr("OK");
+	return (0);
 }

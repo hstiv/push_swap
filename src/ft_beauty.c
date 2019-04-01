@@ -19,20 +19,25 @@ void				ft_beauty(t_ps *ps)
 
 	i = ps->a_l;
 	l = ps->b_l;
-	while (ps->a[i] || ps->b[l])
+	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
+	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
+	while (i >= 0 || l >= 0)
 	{
-		if (ps->a[i])
+		if (i >= 0)
 			ft_putnbr(ps->a[i]);
 		else
 			ft_putchar(' ');
-		ft_putchar('\t');
-		if (ps->b[l])
+		ft_putstr("\t\t");
+		if (l >= 0)
 			ft_putnbr(ps->b[l]);
 		else
-			ft_putchar(' ');		
+			ft_putchar(' ');
 		ft_putchar('\n');
 		i--;
 		l--;
 	}
-	ft_putstr("__________________________________________________________________\n");
+	ft_putstr("-\t\t-\n");
+	ft_putstr("a\t\tb\n");
+	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
+	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
 }
