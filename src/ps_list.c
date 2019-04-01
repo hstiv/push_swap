@@ -11,8 +11,14 @@ static void			ft_malloc_maker(t_ps *ps, char *s)
 			ps->a_l++;
 		i++;
 	}
+	i = ps->a_l;
 	ps->a = (int *)malloc(sizeof(int) * (ps->a_l + 1));
 	ps->b = (int *)malloc(sizeof(int) * (ps->a_l + 1));
+	while (i >= 0)
+	{
+		ps->b[i] = 0;
+		i--;
+	}
 }
 
 t_ps        *ps_list(char *s)

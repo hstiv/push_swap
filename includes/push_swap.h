@@ -20,6 +20,22 @@
 
 # define BUFF_SIZE 20
 
+typedef struct		s_a
+{
+	int				a;
+	int				n;
+	int				len;
+	struct s_a		*next;
+}					t_a;
+
+typedef struct		s_b
+{
+	int				b;
+	int				n;
+	int				len;
+	struct s_a		*next;
+}					t_b;
+
 typedef struct		s_ps
 {
 	int				a_l;

@@ -28,7 +28,7 @@ void				ft_beauty(t_ps *ps)
 		else
 			ft_putchar(' ');
 		ft_putstr("\t\t");
-		if (l >= 0)
+		if (l >= 0 )
 			ft_putnbr(ps->b[l]);
 		else
 			ft_putchar(' ');
