@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-int			if_sort(int *a)
+int			if_sort(t_a *ta)
 {
-	int		i;
+	t_a		*temp;
 
-	i = 1;
-	while (a[i])
+	temp = ta;
+	while (temp->next)
 	{
-		if (a[i] < a[i - 1])
+		if (temp->prev && temp->a < temp->prev->a)
 			return (0);
-		i++;
+		temp = temp->next;
 	}
 	return (1);
 }

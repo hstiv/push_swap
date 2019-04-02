@@ -14,33 +14,29 @@
 
 void				ft_beauty(t_ps *ps, t_a *ta)
 {
-	int				i;
-	int				l;
-	t_a				*tmp;
+	t_a				*temp;
 
-	tmp = ta;
-	i = ps->a_l;
-	l = ps->b_l;
+	temp = ta;
 	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
 	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
-	while (i > 0 || l > 0 )
+	while (temp->next && (temp->next->an || temp->next->bn))
 	{
-		if (i > 0)
-			ft_putnbr(tmp->a);
+		if (temp->an)
+			ft_putnbr(temp->a);
 		else
 			ft_putchar(' ');
 		ft_putstr("\t\t");
-		if (l > 0)
-			ft_putnbr(tmp->b);
+		if (temp->bn)
+			ft_putnbr(temp->b);
 		else
 			ft_putchar(' ');
 		ft_putchar('\n');
-		i--;
-		l--;
-		tmp = tmp->next;
+		temp = temp->next;
 	}
 	ft_putstr("-\t\t-\n");
 	ft_putstr("a\t\tb\n");
+	ft_putnbr(ps->a_l);
+	ft_putchar('\n');
 	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
 	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
 }

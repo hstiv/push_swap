@@ -12,45 +12,55 @@
 
 #include "push_swap.h"
 
-void		sa(t_ps *ps, t_a *ta)
+void		sa(t_ps *ps, t_a *ta, int i)
 {
-	int		temp;
+	t_a		*temp;
+	int		n;
 
+	temp = ta;
 	if (ps->a_l > 1)
 	{
-		temp = ps->a[ps->a_l - 1];
-		ps->a[ps->a_l - 1] = ps->a[ps->a_l - 2];
-		ps->a[ps->a_l - 2] = temp;
+		while (temp->next)
+			temp = temp->next;
+		n = temp->prev->a;
+		temp->prev->a = temp->a;
+		temp->a = n;
 	}
-	if (swap)
+	if (i == 1)
 	{
+		ft_putstr("sa\n");
 		ps->len++;
-		if (swap == 1)
-			ft_putstr("sa\n");
 	}
 }
 
-void		ss(t_ps *ps, t_a *ta)
+void		ss(t_ps *ps, t_a *ta, int i)
 {
-	sa(ps, swap);
-	sb(ps, swap);
-}
-
-void		sb(t_ps *ps, char swap)
-{
-	int		temp;
-
-	ps->b_l = ft_stacklen(ps->b);
-	if (ps->b_l> 1)
-	{
-		temp = ps->b[ps->b_l - 1];
-		ps->b[ps->b_l - 1] = ps->b[ps->b_l - 2];
-		ps->b[ps->b_l - 2] = temp;
-	}
-	if (swap)
+	sa(ps, ta, 0);
+	sb(ps, ta, 0);
+	if (i == 0)
 	{
 		ps->len++;
-		if (swap == 1)
-			ft_putstr("sb\n");
+		ft_putstr("ss\n");
+	}
+}
+
+void		sb(t_ps *ps, t_a *ta, int i)
+{
+	t_a		*temp;
+	int		n;
+
+	temp = ta;
+	if (ps->a_l > 1)
+	{
+		while (temp->next)
+			temp = temp->next;
+		n = temp->prev->b;
+		temp->prev->b = temp->b;
+		temp->b = n;
+	}
+	if (i == 1)
+	{
+		ft_putstr("sb\n");
+		ps->len++;
 	}
 }

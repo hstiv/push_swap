@@ -12,56 +12,53 @@
 
 #include "push_swap.h"
 
-void				rra(t_ps *ps, char swap)
+void			rra(t_ps *ps, t_a *ta, int i)
 {
-	int				i;
-	int				temp;
+	t_a			*temp;
+	int			u;
 
-	if (ps->a_l > 1)
+	temp = ta;
+	u = temp->a;
+	while (temp->next && temp->next->an)
 	{
-		i = 0;
-		temp = ps->a[i];
-		while (i < (ps->a_l - 1))
-		{
-			ps->a[i] = ps->a[i + 1];
-			i++;
-		}
-		ps->a[ps->a_l - 1] = temp;
+		temp->a = temp->next->a;
+		temp = temp->next;
 	}
-	if (swap)
+	temp->a = u;
+	if (i == 1)
 	{
 		ps->len++;
-		if (swap == 1)
-			ft_putstr("rra\n");
+		ft_putstr("rra\n");
 	}
 }
 
-void				rrr(t_ps *ps, char swap)
+void			rrr(t_ps *ps, t_a *ta, int i)
 {
-	rra(ps, swap);
-	rra(ps, swap);
+	ra(ps, ta, 0);
+	rb(ps, ta, 0);
+	if (i == 1)
+	{
+		ft_putstr("rrr\n");
+		ps->len++;
+	}
 }
 
-void				rrb(t_ps *ps, char swap)
+void			rrb(t_ps *ps, t_a *ta, int i)
 {
-	int				i;
-	int				temp;
+	t_a			*temp;
+	int			u;
 
-	if (ps->b_l > 1)
+	temp = ta;
+	u = temp->a;
+	while (temp->next && temp->next->an)
 	{
-		i = 0;
-		temp = ps->b[i];
-		while (i < (ps->b_l - 1))
-		{
-			ps->b[i] = ps->b[i + 1];
-			i++;
-		}
-		ps->b[ps->b_l - 1] = temp;
+		temp->b = temp->next->b;
+		temp = temp->next;
 	}
-	if (swap)
+	temp->b = u;
+	if (i == 1)
 	{
 		ps->len++;
-		if (swap == 1)
-			ft_putstr("rrb\n");
+		ft_putstr("rrb\n");
 	}
 }

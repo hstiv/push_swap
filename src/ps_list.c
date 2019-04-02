@@ -19,15 +19,17 @@ t_a			*ta_list()
 	ta = malloc(sizeof(t_a));
 	if (ta)
 	{
+		ta->prev = NULL;
 		ta->a = 0;
 		ta->b = 0;
-		ta->n = 0;
-		ta->next = 0;
+		ta->an = 0;
+		ta->bn = 0;
+		ta->next = NULL;
 	}
 	return (ta);
 }
 
-t_ps        *ps_list(char *s)
+t_ps        *ps_list()
 {
     t_ps	*ps;
 

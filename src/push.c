@@ -12,36 +12,60 @@
 
 #include "push_swap.h"
 
-void			pa(t_ps *ps, char swap)
+void			pa(t_ps *ps, t_a *ta, int i)
 {
+	t_a			*temp;
+	t_a			*temp_b;
+	int			n;
+
 	if (ps->b_l > 0)
 	{
-		ps->a[ps->a_l] = ps->b[ps->b_l - 1];
-		ps->b[ps->b_l - 1] = 0;
+		temp = ta;
+		temp_b = ta;
+		while (temp->next && temp->next->an != 0)
+			temp = temp->next;
+		n = temp->a;
+		temp->a = 0;
+		while (temp_b->next && temp_b->next->bn != 0)
+			temp_b = temp_b->next;
+		temp_b->b = n;
+		temp_b->bn = temp_b->prev->bn + 1;
+		temp_b->an = 0;
 		ps->a_l++;
 		ps->b_l--;
 	}
-	if (swap)
+	if (i == 1)
 	{
+		ft_putstr("pa\n");
 		ps->len++;
-		if (swap == 1)
-			ft_putstr("pa\n");
 	}
 }
 
-void			pb(t_ps *ps, char swap)
+void			pb(t_ps *ps, t_a *ta, int i)
 {
-	if (ps->a_l > 0)
+	t_a			*temp;
+	t_a			*temp_b;
+	int			n;
+
+	if (ps->b_l > 0)
 	{
-		ps->b[ps->b_l] = ps->a[ps->a_l - 1];
-		ps->a[ps->a_l - 1] = 0;
-		ps->b_l++;
-		ps->a_l--;
+		temp = ta;
+		temp_b = ta;
+		while (temp->next && temp->next->bn != 0)
+			temp = temp->next;
+		n = temp->b;
+		temp->b = 0;
+		while (temp_b->next && temp_b->next->an != 0)
+			temp_b = temp_b->next;
+		temp_b->a = n;
+		temp_b->an = temp_b->prev->an + 1;
+		temp_b->bn = 0;
+		ps->a_l++;
+		ps->b_l--;
 	}
-	if (swap)
+	if (i == 1)
 	{
+		ft_putstr("pb\n");
 		ps->len++;
-		if (swap == 1)
-			ft_putstr("pb\n");
 	}
 }

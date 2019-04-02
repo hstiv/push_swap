@@ -4,7 +4,7 @@ NAME2 = checker
 LFT = libft/libft.a
 
 SRC = src/swap.c src/push.c src/rotate.c src/rev_rotate.c src/ft_beauty.c\
-	src/ps_list.c src/tools1.c src/get_next_line.c src/if_sorted.c \
+	src/ps_list.c src/get_next_line.c src/if_sorted.c \
 	src/checker.c $(LFT)
 
 WWW = -Wall -Wextra -Werror
