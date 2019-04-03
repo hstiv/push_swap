@@ -20,7 +20,7 @@ void		sa(t_ps *ps, t_a *ta, int i)
 	temp = ta;
 	if (ps->a_l > 1)
 	{
-		while (temp->next)
+		while (temp->next && temp->next->an)
 			temp = temp->next;
 		n = temp->prev->a;
 		temp->prev->a = temp->a;
@@ -52,7 +52,7 @@ void		sb(t_ps *ps, t_a *ta, int i)
 	temp = ta;
 	if (ps->a_l > 1)
 	{
-		while (temp->next)
+		while (temp->next && temp->next->bn)
 			temp = temp->next;
 		n = temp->prev->b;
 		temp->prev->b = temp->b;
