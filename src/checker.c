@@ -67,12 +67,10 @@ static t_a			*recorder(char *s, t_a *ta, t_ps *ps)
 
 	i = 0;
 	j = 0;
+	ta = ta_list();
 	tmp = ta;
 	while (s[i] != '\0')
 	{
-		if (!tmp)
-			tmp = ta_list();
-		ft_strclr(num);
 		j = 0;
 		while (s[i] != ' ' && s[i] != '\0')
 			num[j++] = s[i++];
@@ -84,7 +82,11 @@ static t_a			*recorder(char *s, t_a *ta, t_ps *ps)
 		tmp->a = ft_atoi(num);
 		ps->a_l++;
 		tmp->an = ps->a_l;
-		tmp->next->prev = tmp;
+		if (tmp->next == NULL && s[i + 1] != '\0' && s[i] != '\0')
+		{
+			tmp->next = ta_list();
+			tmp->next->prev = tmp;
+		}
 		tmp = tmp->next;
 	}
 	return (ta);
