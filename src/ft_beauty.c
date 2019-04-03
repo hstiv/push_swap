@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-void				ft_beauty(t_ps *ps, t_a *ta)
+static void			ft_data(t_a *ta, t_ps *ps)
 {
+
 	t_a				*temp;
 
 	temp = ta;
 	while (temp->next)
 		temp = temp->next;
-	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
-	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
 	while (temp != NULL)
 	{
+		ft_putchar('|');
 		if (temp->an)
 			ft_putnbr(temp->a);
 		else
@@ -32,14 +32,28 @@ void				ft_beauty(t_ps *ps, t_a *ta)
 			ft_putnbr(temp->b);
 		else
 			ft_putchar(' ');
-		ft_putchar('\n');
+		if (temp->prev == NULL)
+		{
+			ft_putstr("\t\t\t       |");
+			ft_putnbr(ps->len);
+		}
+		else
+			ft_putstr("\t\t\t        ");
+		ft_putstr("|\n");
 		temp = temp->prev;
 	}
-	ft_putstr("-\t\t-\na\t\tb\n");
+}
+
+void				ft_beauty(t_ps *ps, t_a *ta)
+{
+	ft_putstr("________________________");
+	ft_putstr("_________________________\n");
+	ft_data(ta, ps);
+	ft_putstr("|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|");
 	ft_putnbr(ps->a_l);
 	ft_putstr("\t\t");
 	ft_putnbr(ps->b_l);
-	ft_putchar('\n');
-	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
-	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
+	ft_putstr("\t\t\t\t|\n|");
+	ft_putstr("________________________");
+	ft_putstr("_______________________|\n");
 }
