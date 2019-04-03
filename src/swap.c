@@ -50,7 +50,7 @@ void		sb(t_ps *ps, t_a *ta, int i)
 	int		n;
 
 	temp = ta;
-	if (ps->a_l > 1)
+	if (ps->b_l > 1)
 	{
 		while (temp->next && temp->next->bn)
 			temp = temp->next;
