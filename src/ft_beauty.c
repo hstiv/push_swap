@@ -21,7 +21,7 @@ void				ft_beauty(t_ps *ps, t_a *ta)
 		temp = temp->next;
 	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ");
 	ft_putstr("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n");
-	while (temp != NULL && (temp->an || temp->bn))
+	while (temp != NULL)
 	{
 		if (temp->an)
 			ft_putnbr(temp->a);
