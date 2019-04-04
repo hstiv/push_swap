@@ -49,7 +49,7 @@ void			rrb(t_ps *ps, t_a *ta, int i)
 	int			u;
 
 	temp = ta;
-	u = temp->a;
+	u = temp->b;
 	while (temp->next && temp->next->an)
 	{
 		temp->b = temp->next->b;
