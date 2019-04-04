@@ -14,7 +14,6 @@
 
 static void			ft_data(t_a *ta, t_ps *ps)
 {
-
 	t_a				*temp;
 
 	temp = ta;
@@ -44,16 +43,19 @@ static void			ft_data(t_a *ta, t_ps *ps)
 	}
 }
 
-void				ft_beauty(t_ps *ps, t_a *ta)
+void				ft_beauty(t_ps *ps, t_a *ta, int i)
 {
-	ft_putstr("________________________");
-	ft_putstr("_________________________\n");
-	ft_data(ta, ps);
-	ft_putstr("|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|");
-	ft_putnbr(ps->a_l);
-	ft_putstr("\t\t");
-	ft_putnbr(ps->b_l);
-	ft_putstr("\t\t\t\t|\n|");
-	ft_putstr("________________________");
-	ft_putstr("_______________________|\n");
+	if (i == 2)
+	{
+		ft_putstr("________________________");
+		ft_putstr("_________________________\n");
+		ft_data(ta, ps);
+		ft_putstr("|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|");
+		ft_putnbr(ps->a_l);
+		ft_putstr("\t\t");
+		ft_putnbr(ps->b_l);
+		ft_putstr("\t\t\t\t|\n|");
+		ft_putstr("________________________");
+		ft_putstr("_______________________|\n");
+	}
 }

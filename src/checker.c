@@ -58,64 +58,73 @@ static int			not_number(char *s)
 	return (1);
 }
 
-static t_a			*recorder(char *s, t_a *ta, t_ps *ps)
+static t_a			*recorder(char **s, t_a *ta, t_ps *ps, int i)
 {
-	char			num[11];
-	int				i;
 	int				j;
 	t_a				*tmp;
 
-	i = 0;
 	j = 0;
-	ta = ta_list();
 	tmp = ta;
-	while (s[i] != '\0')
+	while (s[i] != NULL)
 	{
-		j = 0;
-		while (s[i] != ' ' && s[i] != '\0')
-			num[j++] = s[i++];
-		while (s[i] <= ' ' && s[i] != '\0')
-			i++;
-		num[j] = '\0';
-		if (not_number(num) == 0)
-			return (0);
-		tmp->a = ft_atoi(num);
+		if (not_number(s[i]) == 0)
+		{
+			ft_putstr("Error");
+			lst_free(ps, ta);
+			return (NULL);
+		}
+		tmp->a = ft_atoi(s[i]);
 		ps->a_l++;
 		tmp->an = ps->a_l;
-		if (tmp->next == NULL && s[i + 1] != '\0' && s[i] != '\0')
+		if (tmp->next == NULL && s[i + 1] != NULL && s[i] != NULL)
 		{
 			tmp->next = ta_list();
 			tmp->next->prev = tmp;
 		}
 		tmp = tmp->next;
+		i++;
 	}
 	return (ta);
+}
+
+static int			visual(t_ps *ps, t_a *ta, int i)
+{
+	char			*line;
+
+	ft_beauty(ps, ta, i);
+	while (get_next_line(0, &line) > 0)
+	{
+		if (sort_by_in(line, ps, ta) == 0)
+		{
+			ft_putstr("Error\n");
+			lst_free(ps, ta);
+			return (0);
+		}
+		ft_beauty(ps, ta, i);
+	}
+	free(line);
+	return (1);
 }
 
 int					main(int c, char **s)
 {
 	t_ps			*ps;
 	t_a				*ta;
-	char			*line;
+	int				i;
 
-	if (!(ps = ps_list()) || !(ta = ta_list()))
+	i = 1;
+	if (!(ps = ps_list()) || !(ta = ta_list()) || c < 2)
 		return (0);
-	if (c < 2)
+	if (ft_strcmp(s[i], "-v") == 0)
+		i++;
+	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
-	ta = recorder(s[1], ta, ps);
-	ft_beauty(ps, ta);
-	while (get_next_line(0, &line) > 0)
-	{
-		if (sort_by_in(line, ps, ta) == 0)
-		{
-			ft_putstr("Error\n");
-			return (0);
-		}
-		ft_beauty(ps, ta);
-	}
+	if (!(visual(ps, ta, i)))
+		return (0);
 	if (if_sort(ta) == 0)
 		ft_putstr("KO\n");
 	else
 		ft_putstr("OK\n");
+	lst_free(ps, ta);
 	return (0);
 }

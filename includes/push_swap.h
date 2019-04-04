@@ -44,7 +44,7 @@ typedef struct		s_ps
 }					t_ps;
 
 int					if_sort(t_a *ta);
-void				ft_beauty(t_ps *ps, t_a *ta);
+void				ft_beauty(t_ps *ps, t_a *ta, int i);
 int					get_next_line(const int fd, char **line);
 void				sa(t_ps *ps, t_a *ta, int i);
 void				sb(t_ps *ps, t_a *ta, int i);
@@ -59,6 +59,7 @@ void				rr(t_ps *ps, t_a *ta, int i);
 void				ss(t_ps *ps, t_a *ta, int i);
 void				find_mm_a(t_ps *ps, int i);
 void				find_mm_b(t_ps *ps, int i);
+void				lst_free(t_ps *ps, t_a *ta);
 t_ps				*ps_list();
 t_a					*ta_list();
 
