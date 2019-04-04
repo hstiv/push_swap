@@ -60,10 +60,8 @@ static int			not_number(char *s)
 
 static t_a			*recorder(char **s, t_a *ta, t_ps *ps, int i)
 {
-	int				j;
 	t_a				*tmp;
 
-	j = 0;
 	tmp = ta;
 	while (s[i] != NULL)
 	{
