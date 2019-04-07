@@ -20,7 +20,7 @@ $(NAME1):
 	@make -C libft re && gcc -o $@ $(WWW) $(SRC1) -I $(HEAD)
 	
 $(NAME2):
-	@make -C libft re && gcc -o $@ $(WWW) $(SRC) -I $(HEAD) -g
+	@make -C libft re && gcc -o $@ $(WWW) $(SRC) -I $(HEAD)
 	@echo "(•̀ᴗ•́)و $(NAME2) generated!".
 
 all: $(NAME1) $(NAME2)
