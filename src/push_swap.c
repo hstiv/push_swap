@@ -14,17 +14,13 @@
 
 static void			min_up(t_ps *ps, t_a *ta, t_stack *st)
 {
-	t_a				*tmp;
 	int				mid;
 	int				i;
 
 	mid = ps->a_l / 2;
-	tmp = ta;
 	minmax(ps, ta);
 	i = ps->min_a->a;
-	while (tmp->prev)
-		tmp = tmp->prev;
-	if (ps->min_a->next == NULL)
+	if (ps->min_a->next && ps->min_a->next->next == NULL)
 		sa(ps, ta, 1);
 	else if (mid <= ps->min_a->an)
 		while (st->end->an && st->end->a != i)
@@ -46,13 +42,11 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 {
 	t_stack			*st;
 	t_a				*tmp;
-	int				i;
 
-	i = 0;
  	tmp = ta;
 	st = ft_stack(ta);
 	minmax(ps, tmp);
-	while (!(sort_a(ta)) && i < 5)
+	while (!(sort_a(ta)))
 	{
 		if (ps->min_a->an == st->end->an && !(sort_a(ta)))
 			pb(ps, ta, 1);
@@ -60,7 +54,6 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 			min_up(ps, ta, st);
 		minmax(ps, ta);
 		st_reboot(st);
-		i++;
 	}
 	while (ta->bn != 0)
 		pa(ps, ta, 1);

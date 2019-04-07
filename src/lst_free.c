@@ -17,6 +17,8 @@ int					not_number(char *s)
 	int				n;
 
 	n = 0;
+	if (s[n] == '-')
+		n++;
 	while (s[n] != '\0' && s[n] != '\n')
 	{
 		if (!ft_isdigit(s[n]))
