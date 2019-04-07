@@ -12,33 +12,50 @@
 
 #include "push_swap.h"
 
-static void         ft_sorter(t_ps *ps, t_a *ta)
+static void			min_up(t_ps *ps, t_a *ta)
 {
-    t_stack         *st;
+	t_a				*tmp;
 
-    st = ft_stack(ta);
+	tmp = ta;
+	while (tmp->prev)
+		tmp = tmp->prev;
+	
 }
 
-int                 main(int c, char **s)
+static void			ft_sorter(t_ps *ps, t_a *ta)
 {
-    t_ps            *ps;
-    t_a             *ta;
-    int             i;
+	t_stack			*st;
+	t_a				*tmp;
 
-    i = 1;
-    if (!(ta = ta_list()) || !(ps = ps_list()))
-    {
-        lst_free(ps, ta);
-        ft_putstr("Error\n");
-        return (0);
-    }
-    if (ft_strcmp(s[i] , "-c") == 0)
-        i++;
-    if (!(ta = recorder(s, ta, ps, i)))
+ 	tmp = ta;
+	st = ft_stack(ta);
+	minmax(ps, tmp);
+	while (if_sort(ta) == 0)
+	{
+		if (ps->min_a == st->end)
+			pb(ps, ta, 1);
+		else
+			min_up(ps, ta);
+	}
+	free(st);
+}
+
+int					main(int c, char **s)
+{
+	t_ps			*ps;
+	t_a				*ta;
+	int				i;
+
+	i = 1;
+	if (!(ta = ta_list()) || !(ps = ps_list()))
+	{
+		lst_free(ps, ta);
+		ft_putstr("Error\n");
 		return (0);
-    ft_sorter(pa, ta);
-    lst_free(ps, ta);
-    if (ft_strcmp(s[1], "-c") == 0)
-        ft_putnbr(ps->len);
-    return (0);
+	}
+	if (!(ta = recorder(s, ta, ps, i)))
+		return (0);
+	ft_sorter(pa, ta);
+	lst_free(ps, ta);
+	return (0);
 }

@@ -36,7 +36,6 @@ typedef	struct		s_stack
 	t_a				*end;
 }					t_stack;
 
-
 typedef struct		s_ps
 {
 	int				a_l;
@@ -46,8 +45,6 @@ typedef struct		s_ps
 	t_a				*min_a;
 	t_a				*max_b;
 	t_a				*min_b;
-	float			flotx;
-	float			flotn;
 }					t_ps;
 
 void				minmax(t_ps *ps, t_a *ta);
@@ -65,8 +62,6 @@ void				rrb(t_ps *ps, t_a *ta, int i);
 void				rrr(t_ps *ps, t_a *ta, int i);
 void				rr(t_ps *ps, t_a *ta, int i);
 void				ss(t_ps *ps, t_a *ta, int i);
-void				find_mm_a(t_ps *ps, t_a *ta, int i);
-void				find_mm_b(t_ps *ps, t_a *ta, int i);
 void				lst_free(t_ps *ps, t_a *ta);
 t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i);
 t_ps				*ps_list();

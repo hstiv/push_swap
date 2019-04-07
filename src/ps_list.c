@@ -62,8 +62,6 @@ t_ps        *ps_list()
 		ps->min_a = NULL;
 		ps->max_b = NULL;
 		ps->min_b = NULL;
-		ps->flotx = 0;
-		ps->flotn = 0;
 	}
 	return (ps);
 }
