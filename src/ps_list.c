@@ -29,6 +29,25 @@ t_a			*ta_list()
 	return (ta);
 }
 
+t_stack		*ft_stack(t_a *ta)
+{
+	t_stack *stack;
+	t_a		*temp;
+
+	stack = malloc(sizeof(t_stack));
+	if (stack)
+	{
+		temp = ta;
+		while (temp->prev)
+			temp = temp->prev;
+		stack->begin = temp;
+		while (temp->next)
+			temp = temp->next;
+		stack->end = temp;
+	}
+	return (stack);
+}
+
 t_ps        *ps_list()
 {
     t_ps	*ps;
@@ -39,10 +58,10 @@ t_ps        *ps_list()
 		ps->a_l = 0;
 		ps->b_l = 0;
 		ps->len = 0;
-		ps->max_a = 0;
-		ps->min_a = 0;
-		ps->max_b = 0;
-		ps->min_b = 0;
+		ps->max_a = NULL;
+		ps->min_a = NULL;
+		ps->max_b = NULL;
+		ps->min_b = NULL;
 		ps->flotx = 0;
 		ps->flotn = 0;
 	}

@@ -30,19 +30,27 @@ typedef struct		s_a
 	struct s_a		*prev;
 }					t_a;
 
+typedef	struct		s_stack
+{
+	t_a				*begin;
+	t_a				*end;
+}					t_stack;
+
+
 typedef struct		s_ps
 {
 	int				a_l;
 	int				b_l;
 	int				len;
-	int				max_a;
-	int				min_a;
-	int				max_b;
-	int				min_b;
+	t_a				*max_a;
+	t_a				*min_a;
+	t_a				*max_b;
+	t_a				*min_b;
 	float			flotx;
 	float			flotn;
 }					t_ps;
 
+void				minmax(t_ps *ps, t_a *ta);
 int					if_sort(t_a *ta);
 void				ft_beauty(t_ps *ps, t_a *ta, int i);
 int					get_next_line(const int fd, char **line);
@@ -63,5 +71,6 @@ void				lst_free(t_ps *ps, t_a *ta);
 t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i);
 t_ps				*ps_list();
 t_a					*ta_list();
+t_stack				*ft_stack(t_a *ta);
 
 #endif

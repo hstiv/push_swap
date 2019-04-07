@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void		find_mm_a(t_ps *ps, t_a *ta)
+void		find_mm_a(t_ps *ps, t_a *ta, int i)
 {
 	int		i;
 
@@ -41,7 +41,7 @@ void		find_mm_a(t_ps *ps, t_a *ta)
 	}
 }
 
-void		find_mm_b(t_ps *ps, t_a *ta)
+void		find_mm_b(t_ps *ps, t_a *ta, int i)
 {
 	int		i;
 

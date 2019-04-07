@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+static void         ft_sorter(t_ps *ps, t_a *ta)
+{
+    t_stack         *st;
+
+    st = ft_stack(ta);
+}
+
 int                 main(int c, char **s)
 {
     t_ps            *ps;
@@ -25,8 +32,13 @@ int                 main(int c, char **s)
         ft_putstr("Error\n");
         return (0);
     }
+    if (ft_strcmp(s[i] , "-c") == 0)
+        i++;
     if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
+    ft_sorter(pa, ta);
     lst_free(ps, ta);
+    if (ft_strcmp(s[1], "-c") == 0)
+        ft_putnbr(ps->len);
     return (0);
 }
