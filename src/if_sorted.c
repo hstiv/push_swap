@@ -19,7 +19,7 @@ int			if_sort(t_a *ta)
 	temp = ta;
 	while (temp->next)
 	{
-		if (temp->prev && temp->a < temp->prev->a)
+		if (temp->prev && temp->a > temp->prev->a)
 			return (0);
 		temp = temp->next;
 	}

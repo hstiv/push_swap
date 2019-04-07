@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 17:15:27 by hstiv             #+#    #+#             */
-/*   Updated: 2019/04/01 14:28:38 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/04/07 13:28:21 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,19 @@ static int			sort_by_in(char	*line, t_ps *ps, t_a *ta)
 		pa(ps, ta, 0);
 	else if (ft_strcmp(line, "pb") == 0)
 		pb(ps, ta, 0);
-	else if (ft_strcmp(line, "ra") == 0)
-		ra(ps, ta, 0);
 	else if (ft_strcmp(line, "rb") == 0)
 		rb(ps, ta, 0);
-	else if (ft_strcmp(line, "rra") == 0)
-		rra(ps, ta, 0);
-	else if (ft_strcmp(line, "rrb") == 0)
-		rrb(ps, ta, 0);
-	else if (ft_strcmp(line, "rrr") == 0)
-		rrr(ps, ta, 0);
-	else if (ft_strcmp(line, "rr") == 0)
+	else if (ft_strequ(line, "ra") == 1)
+		ra(ps, ta, 0);
+	else if (ft_strequ(line, "rr") == 1
+				&& (ft_strlen("rr") == ft_strlen(line)))
 		rr(ps, ta, 0);
+	else if (ft_strequ(line, "rra") == 1)
+		rra(ps, ta, 0);
+	else if (ft_strequ(line, "rrb") == 1)
+		rrb(ps, ta, 0);
+	else if (ft_strequ(line, "rrr") == 1)
+		rrr(ps, ta, 0);
 	else if (ft_strcmp(line, "ss") == 0)
 		ss(ps, ta, 0);
 	else
@@ -58,7 +59,7 @@ static int			not_number(char *s)
 	return (1);
 }
 
-static t_a			*recorder(char **s, t_a *ta, t_ps *ps, int i)
+t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 {
 	t_a				*tmp;
 

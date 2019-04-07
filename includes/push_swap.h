@@ -57,9 +57,10 @@ void				rrb(t_ps *ps, t_a *ta, int i);
 void				rrr(t_ps *ps, t_a *ta, int i);
 void				rr(t_ps *ps, t_a *ta, int i);
 void				ss(t_ps *ps, t_a *ta, int i);
-void				find_mm_a(t_ps *ps, int i);
-void				find_mm_b(t_ps *ps, int i);
+void				find_mm_a(t_ps *ps, t_a *ta, int i);
+void				find_mm_b(t_ps *ps, t_a *ta, int i);
 void				lst_free(t_ps *ps, t_a *ta);
+t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i);
 t_ps				*ps_list();
 t_a					*ta_list();
 

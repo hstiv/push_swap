@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 16:48:18 by hstiv             #+#    #+#             */
-/*   Updated: 2019/03/24 17:02:36 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/04/07 13:20:04 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void			rb(t_ps *ps, t_a *ta, int i)
 	t_a			*temp;
 	int			u;
 
-	if (ps->b_l > 1)
+	if (ps->b_l > 0)
 	{
 		temp = ta;
 		while (temp->next && temp->next->bn)

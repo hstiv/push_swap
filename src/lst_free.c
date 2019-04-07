@@ -14,14 +14,16 @@
 
 void				lst_free(t_ps *ps, t_a *ta)
 {
-	while (ta->prev)
+	while (ta && ta->prev)
 		ta = ta->prev;
-	while (ta->next)
+	while (ta && ta->next)
 	{
 		ta = ta->next;
 		if (ta->prev)
 			free(ta->prev);
 	}
-	free(ta);
-	free(ps);
+	if (ta)
+		free(ta);
+	if (ps)
+		free(ps);
 }

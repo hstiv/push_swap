@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 17:02:57 by hstiv             #+#    #+#             */
-/*   Updated: 2019/03/24 17:13:18 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/04/07 13:05:54 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void			rra(t_ps *ps, t_a *ta, int i)
 	int			u;
 
 	temp = ta;
+	while (temp->prev)
+		temp = temp->prev;
 	u = temp->a;
 	while (temp->next && temp->next->an)
 	{
@@ -34,8 +36,8 @@ void			rra(t_ps *ps, t_a *ta, int i)
 
 void			rrr(t_ps *ps, t_a *ta, int i)
 {
-	ra(ps, ta, 0);
-	rb(ps, ta, 0);
+	rra(ps, ta, 0);
+	rrb(ps, ta, 0);
 	if (i == 1)
 	{
 		ft_putstr("rrr\n");
@@ -49,8 +51,10 @@ void			rrb(t_ps *ps, t_a *ta, int i)
 	int			u;
 
 	temp = ta;
+	while (temp->prev)
+		temp = temp->prev;
 	u = temp->b;
-	while (temp->next && temp->next->an)
+	while (temp->next && temp->next->bn)
 	{
 		temp->b = temp->next->b;
 		temp = temp->next;
