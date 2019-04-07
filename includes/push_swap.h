@@ -47,6 +47,8 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+int					not_number(char *s);
+int					sort_a(t_a *ta);
 void				minmax(t_ps *ps, t_a *ta);
 int					if_sort(t_a *ta);
 void				ft_beauty(t_ps *ps, t_a *ta, int i);

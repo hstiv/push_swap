@@ -12,6 +12,50 @@
 
 #include "push_swap.h"
 
+int					not_number(char *s)
+{
+	int				n;
+
+	n = 0;
+	while (s[n] != '\0' && s[n] != '\n')
+	{
+		if (!ft_isdigit(s[n]))
+		{
+			ft_putstr("Error");
+			return (0);
+		}
+		n++;
+	}
+	return (1);
+}
+
+t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
+{
+	t_a				*tmp;
+
+	tmp = ta;
+	while (s[i] != NULL)
+	{
+		if (not_number(s[i]) == 0)
+		{
+			ft_putstr("Error");
+			lst_free(ps, ta);
+			return (NULL);
+		}
+		tmp->a = ft_atoi(s[i]);
+		ps->a_l++;
+		tmp->an = ps->a_l;
+		if (tmp->next == NULL && s[i + 1] != NULL && s[i] != NULL)
+		{
+			tmp->next = ta_list();
+			tmp->next->prev = tmp;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (ta);
+}
+
 void				lst_free(t_ps *ps, t_a *ta)
 {
 	while (ta && ta->prev)

@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+int			sort_a(t_a *ta)
+{
+	t_a		*temp;
+
+	temp = ta;
+	while (temp->prev)
+		temp = temp->prev;
+	while (temp->next)
+	{
+		if (temp->prev && temp->a > temp->prev->a)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
 int			if_sort(t_a *ta)
 {
 	t_a		*temp;
