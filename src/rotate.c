@@ -33,7 +33,7 @@ void			ra(t_ps *ps, t_a *ta, int i)
 	if (i == 1)
 	{
 		ps->len++;
-		ft_putstr("rra\n");
+		ft_putstr("ra\n");
 	}
 }
 
