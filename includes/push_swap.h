@@ -18,7 +18,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# define BUFF_SIZE 20
+# define BUFF_SIZE 3
 
 typedef struct		s_a
 {
@@ -69,5 +69,6 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i);
 t_ps				*ps_list();
 t_a					*ta_list();
 t_stack				*ft_stack(t_a *ta);
+void				st_reboot(t_stack *st);
 
 #endif

@@ -66,7 +66,7 @@ static t_a				*min_a(t_ps *ps, t_a *ta)
 	if (ps->a_l > 0)
 	{
 		min = temp->a;
-		while (temp->next && temp->next->an)
+		while (temp->next && temp->an)
 		{
 			if (min > temp->a)
 				min = temp->a;
