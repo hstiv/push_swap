@@ -12,16 +12,12 @@
 
 #include "push_swap.h"
 
-static void			ft_data(t_a *ta, t_ps *ps)
+static void			ft_data(t_a *temp, t_ps *ps)
 {
-	t_a				*temp;
-
-	temp = ta;
-	while (temp->next)
-		temp = temp->next;
 	while (temp != NULL)
 	{
 		ft_putchar('|');
+		(temp->a >= 0) ? (ft_putchar(' ')) : 0;
 		if (temp->an)
 			ft_putnbr(temp->a);
 		else
@@ -45,11 +41,16 @@ static void			ft_data(t_a *ta, t_ps *ps)
 
 void				ft_beauty(t_ps *ps, t_a *ta, int i)
 {
+	t_a				*temp;
+
+	temp = ta;
+	while (temp->next)
+		temp = temp->next;
 	if (i == 2)
 	{
 		ft_putstr("________________________");
 		ft_putstr("_________________________\n");
-		ft_data(ta, ps);
+		ft_data(temp, ps);
 		ft_putstr("|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|");
 		ft_putnbr(ps->a_l);
 		ft_putstr("\t\t");

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_a			*ta_list()
+t_a			*ta_list(void)
 {
 	t_a		*ta;
 
@@ -59,9 +59,9 @@ t_stack		*ft_stack(t_a *ta)
 	return (stack);
 }
 
-t_ps        *ps_list()
+t_ps		*ps_list(void)
 {
-    t_ps	*ps;
+	t_ps	*ps;
 
 	ps = malloc(sizeof(t_ps));
 	if (ps)

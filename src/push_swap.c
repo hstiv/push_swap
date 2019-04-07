@@ -43,7 +43,7 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 	t_stack			*st;
 	t_a				*tmp;
 
- 	tmp = ta;
+	tmp = ta;
 	st = ft_stack(ta);
 	minmax(ps, tmp);
 	while (!(sort_a(ta)))
@@ -67,7 +67,12 @@ int					main(int c, char **s)
 	int				i;
 
 	i = 1;
-	if (!(ta = ta_list()) || !(ps = ps_list()) || c < 2)
+	if (!(ta = ta_list()))
+	{
+		ft_putstr("Error\n");
+		return (0);
+	}
+	if (!(ps = ps_list()) || c < 2)
 	{
 		ft_putstr("Error\n");
 		return (0);

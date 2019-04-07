@@ -12,7 +12,7 @@
 
 #include <push_swap.h>
 
-static int			sort_by_in(char	*line, t_ps *ps, t_a *ta)
+static int			sort_by_in(char *line, t_ps *ps, t_a *ta)
 {
 	if (ft_strcmp(line, "sa") == 0)
 		sa(ps, ta, 0);
@@ -26,8 +26,7 @@ static int			sort_by_in(char	*line, t_ps *ps, t_a *ta)
 		rb(ps, ta, 0);
 	else if (ft_strequ(line, "ra") == 1)
 		ra(ps, ta, 0);
-	else if (ft_strequ(line, "rr") == 1
-				&& (ft_strlen("rr") == ft_strlen(line)))
+	else if (ft_strequ(line, "rr") == 1 && (ft_strlen("rr") == ft_strlen(line)))
 		rr(ps, ta, 0);
 	else if (ft_strequ(line, "rra") == 1)
 		rra(ps, ta, 0);
@@ -69,7 +68,8 @@ int					main(int c, char **s)
 	int				i;
 
 	i = 1;
-	if (!(ps = ps_list()) || !(ta = ta_list()) || c < 2)
+	ps = ps_list();
+	if (!ps || !(ta = ta_list()) || c < 2)
 		return (0);
 	if (ft_strcmp(s[i], "-v") == 0)
 		i++;
