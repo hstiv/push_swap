@@ -31,9 +31,6 @@ t_a			*ta_list(void)
 
 void		st_reboot(t_stack *st)
 {
-	t_a		*tmp;
-
-	tmp = st->end;
 	while (st->end->an == 0)
 		st->end = st->end->prev;
 	while (st->end->next && st->end->next->an != 0)
