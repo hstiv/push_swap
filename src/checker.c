@@ -55,6 +55,7 @@ static int			visual(t_ps *ps, t_a *ta, int i)
 			lst_free(ps, ta);
 			return (0);
 		}
+		ps->len++;
 		ft_beauty(ps, ta, i);
 	}
 	free(line);
