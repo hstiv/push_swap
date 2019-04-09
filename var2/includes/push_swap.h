@@ -47,7 +47,11 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+void				rev_rotater(t_stack *st, t_ps *ps, t_a *ta);
+void				rotater(t_stack *st, t_ps *ps, t_a *ta);
+void				swapper(t_stack *st, t_ps *ps, t_a *ta);
 int					not_number(char *s);
+int					sort_b(t_a *ta);
 int					sort_a(t_a *ta);
 void				minmax(t_ps *ps, t_a *ta);
 int					if_sort(t_a *ta);

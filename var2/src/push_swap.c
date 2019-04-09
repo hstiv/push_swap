@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 static void			min_up(t_ps *ps, t_a *ta, t_stack *st)
 {
 	int				mid;
@@ -21,7 +21,7 @@ static void			min_up(t_ps *ps, t_a *ta, t_stack *st)
 	minmax(ps, ta);
 	i = ps->min_a->a;
 	if (ps->min_a->next && ps->min_a->next->next == NULL)
-		sa(ps, ta, 1);
+		swapper(st, ps, ta);
 	else if (mid <= ps->min_a->an)
 		while (st->end->an && st->end->a != i)
 		{
@@ -34,24 +34,38 @@ static void			min_up(t_ps *ps, t_a *ta, t_stack *st)
 			rra(ps, ta, 1);
 			st_reboot(st);
 		}
-	if (st->end->a == i && ps->a_l > 1)
-		pb(ps, ta, 1);
+//	if (st->end->a == i && ps->a_l > 1)
+//		pb(ps, ta, 1);
 }
-
+*/
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
 	t_stack			*st;
 	t_a				*tmp;
+	int				i;
 
 	tmp = ta;
 	st = ft_stack(ta);
 	minmax(ps, tmp);
-	while (!(sort_a(ta)))
+	while (!(sort_a(tmp)) || !(sort_b(tmp)))
 	{
-		if (ps->min_a->an == st->end->an && !(sort_a(ta)))
+		i = ps->a_l;
+		while (!sort_a(ta) && i)
+		{
 			pb(ps, ta, 1);
-		else
-			min_up(ps, ta, st);
+			swapper(st, ps, ta);
+			rotater(st, ps, ta);
+			rev_rotater(st, ps, ta);
+			i--;
+		}
+		ft_putnbr(i);
+//		if (ps->min_a->an == st->end->an && !(sort_a(ta)))
+//			pb(ps, ta, 1);
+//		else
+//			min_up(ps, ta, st);
+		swapper(st, ps, ta);
+		rotater(st, ps, ta);
+		rev_rotater(st, ps, ta);
 		minmax(ps, ta);
 		st_reboot(st);
 	}
