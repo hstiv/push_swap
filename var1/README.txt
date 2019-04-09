@@ -1,3 +1,4 @@
+1 option
 this project made by hstiv
 
 to make the checker "make"
