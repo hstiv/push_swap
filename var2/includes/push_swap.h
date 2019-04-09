@@ -33,7 +33,8 @@ typedef struct		s_a
 typedef	struct		s_stack
 {
 	t_a				*begin;
-	t_a				*end;
+	t_a				*end_a;
+	t_a				*end_b;
 }					t_stack;
 
 typedef struct		s_ps
@@ -47,6 +48,7 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+long long int		median(t_a *ta, t_ps *ps);
 void				rev_rotater(t_stack *st, t_ps *ps, t_a *ta);
 void				rotater(t_stack *st, t_ps *ps, t_a *ta);
 void				swapper(t_stack *st, t_ps *ps, t_a *ta);

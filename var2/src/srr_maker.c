@@ -1,49 +1,45 @@
 #include "push_swap.h"
 
-void			swapper(t_stack *st, t_ps *ps, t_a *ta)
+long long int			median(t_a *ta, t_ps *ps)
+{
+	long long int		med;
+
+	med = 0;
+	while (ta->next)
+	{
+		med += ta->a;
+		ta = ta->next;
+	}
+	med = med / ps->a_l;
+	return (med);
+}
+
+void					swapper(t_stack *st, t_ps *ps, t_a *ta)
 {
 	st_reboot(st);
 	minmax(ps, ta);
-	if (ps->min_a->next && ps->min_a->next->next == NULL)
-	{
-		if (ps->max_b->next && ps->max_b->next->next)
-			ss(ps, ta, 1);
-		else
+	if (st->end_a->a > st->end_a->prev->a && st->end_b->prev &&
+		st->end_b->b < st->end_b->prev->a)
+		ss(ps, ta, 1);
+	else if (st->end_a->prev && st->end_a->a > st->end_a->prev->a)
 			sa(ps, ta, 1);
-	}
 }
 
-void			rotater(t_stack *st, t_ps *ps, t_a *ta)
+void					rotater(t_stack *st, t_ps *ps, t_a *ta)
 {
-	int			i;
-
 	st_reboot(st);
 	minmax(ps, ta);
-	i = ps->min_a->a;
-	if (st->end->an && st->end->a != i && ps->max_b && ps->max_b->bn > (ps->b_l / 2))
-		rr(ps, ta, 1);
-	else if (st->end->an && st->end->a != i)
-		ra(ps, ta, 1);
-	else if (ps->max_b && ps->max_b->bn > (ps->b_l / 2))
-		rb(ps, ta, 1);
-}
-
-void			rev_rotater(t_stack *st, t_ps *ps, t_a *ta)
-{
-	int			mid;
-	int			i;
-
-	st_reboot(st);
-	minmax(ps, ta);
-	mid = ps->a_l / 2;
-	i = ps->min_a->a;
-	if (mid > ps->min_a->an)
+	if (st->end_a->a > st->begin->a)
 	{
-		if (st->end->a != i && ps->max_b && ps->max_b->bn <= (ps->b_l / 2))
-			rrr(ps, ta, 1);
-		else if (st->end->a != i)
-			rra(ps, ta, 1);
-		else if (ps->max_b && ps->max_b->bn <= (ps->b_l / 2))
-			rrb(ps, ta, 1);
+		if (st->end_a->prev && st->end_a->a > st->end_a->prev->a)
+			ra(ps, ta, 1);
 	}
+}
+
+void					rev_rotater(t_stack *st, t_ps *ps, t_a *ta)
+{
+	st_reboot(st);
+	minmax(ps, ta);
+	if (st->end_a && st->end_a->a > st->begin->a && st->end_a && st->end_a->a > st->end_a->prev->a)
+		rra(ps, ta, 1);
 }

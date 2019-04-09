@@ -11,66 +11,85 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-static void			min_up(t_ps *ps, t_a *ta, t_stack *st)
-{
-	int				mid;
-	int				i;
 
-	mid = ps->a_l / 2;
-	minmax(ps, ta);
-	i = ps->min_a->a;
-	if (ps->min_a->next && ps->min_a->next->next == NULL)
-		swapper(st, ps, ta);
-	else if (mid <= ps->min_a->an)
-		while (st->end->an && st->end->a != i)
-		{
-			ra(ps, ta, 1);
-			st_reboot(st);
-		}
-	else if (mid > ps->min_a->an)
-		while (st->end->a != i)
-		{
-			rra(ps, ta, 1);
-			st_reboot(st);
-		}
-//	if (st->end->a == i && ps->a_l > 1)
-//		pb(ps, ta, 1);
-}
-*/
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
 	t_stack			*st;
-	t_a				*tmp;
 	int				i;
+	long long int	med;
+	int				a;
 
-	tmp = ta;
+	a = 40;
 	st = ft_stack(ta);
-	minmax(ps, tmp);
-	while (!(sort_a(tmp)) || !(sort_b(tmp)))
+	minmax(ps, ta);
+	med = median(ta, ps);
+	while (!if_sort(ta))
 	{
-		i = ps->a_l;
-		while (!sort_a(ta) && i)
+		i = ps->a_l - 3;
+		while (i && !sort_a(ta))
 		{
+			if (st->end_a->a > med)
+			{
+				ra(ps, ta, 1);
+				st_reboot(st);
+			}
+			if (st->end_a->a > st->end_a->prev->a)
+				sa(ps, ta, 1);
 			pb(ps, ta, 1);
-			swapper(st, ps, ta);
-			rotater(st, ps, ta);
-			rev_rotater(st, ps, ta);
+			minmax(ps, ta);
+			st_reboot(st);
+			if (st->end_b->b > st->begin->b && st->end_b->b > st->end_b->prev->b)
+				ra(ps, ta, 1);
+			else if (st->end_b->b > st->begin->b && st->end_b->b < st->end_b->prev->b)
+				rra(ps, ta, 1);
+			st_reboot(st);
 			i--;
 		}
-		ft_putnbr(i);
-//		if (ps->min_a->an == st->end->an && !(sort_a(ta)))
-//			pb(ps, ta, 1);
-//		else
-//			min_up(ps, ta, st);
-		swapper(st, ps, ta);
-		rotater(st, ps, ta);
-		rev_rotater(st, ps, ta);
-		minmax(ps, ta);
-		st_reboot(st);
+		if (!sort_a(ta))
+		{
+			minmax(ps, ta);
+			while (ps->max_a->a != st->begin->a)
+				ra(ps, ta, 1);
+			st_reboot(st);
+			if (st->end_a->a > st->end_a->prev->a)
+				sa(ps, ta, 1);
+		}
+		while (st->begin->bn > 0)
+		{
+			minmax(ps, ta);
+			if (ps->max_b->bn >= ps->b_l / 2)
+			{
+				while (st->end_b->b != ps->max_b->b)
+				{
+					rb(ps, ta, 1);
+					minmax(ps, ta);
+					st_reboot(st);
+				}
+				pa(ps, ta, 1);
+			}
+			else
+			{
+				while (st->end_b->b != ps->max_b->b)
+				{
+					rrb(ps, ta, 1);
+					minmax(ps, ta);
+					st_reboot(st);
+				}
+				pa(ps, ta, 1);
+			}
+			st_reboot(st);
+			minmax(ps, ta);
+			if (st->end_a->a != ps->min_a->a)
+			{
+				if (st->end_a->a > st->end_a->prev->a)
+					sa(ps, ta, 1);
+				else if (st->end_a->a > st->begin->a)
+					ra(ps, ta, 1);
+				minmax(ps, ta);
+				st_reboot(st);
+			}
+		}
 	}
-	while (ta->bn != 0)
-		pa(ps, ta, 1);
 	free(st);
 }
 

@@ -31,10 +31,10 @@ t_a			*ta_list(void)
 
 void		st_reboot(t_stack *st)
 {
-	while (st->end->an == 0)
-		st->end = st->end->prev;
-	while (st->end->next && st->end->next->an != 0)
-		st->end = st->end->next;
+	while (st->end_a->an == 0)
+		st->end_a = st->end_a->prev;
+	while (st->end_a->next && st->end_a->next->an != 0)
+		st->end_a = st->end_a->next;
 }
 
 t_stack		*ft_stack(t_a *ta)
@@ -51,7 +51,12 @@ t_stack		*ft_stack(t_a *ta)
 		stack->begin = temp;
 		while (temp->next && temp->next->an)
 			temp = temp->next;
-		stack->end = temp;
+		stack->end_a = temp;
+		while (temp->prev)
+			temp = temp->prev;
+		while (temp->next && temp->next->bn)
+			temp = temp->next;
+		stack->end_b = temp;
 	}
 	return (stack);
 }
