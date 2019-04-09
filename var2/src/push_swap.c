@@ -25,70 +25,10 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 	med = median(ta, ps);
 	while (!if_sort(ta))
 	{
-		i = ps->a_l - 3;
-		while (i && !sort_a(ta))
-		{
-			if (st->end_a->a > med)
-			{
-				ra(ps, ta, 1);
-				st_reboot(st);
-			}
-			if (st->end_a->a > st->end_a->prev->a)
-				sa(ps, ta, 1);
+		i = ps->a_l;
+		while (ps->max_a->next->an != 0)
 			pb(ps, ta, 1);
-			minmax(ps, ta);
-			st_reboot(st);
-			if (st->end_b->b > st->begin->b && st->end_b->b > st->end_b->prev->b)
-				ra(ps, ta, 1);
-			else if (st->end_b->b > st->begin->b && st->end_b->b < st->end_b->prev->b)
-				rra(ps, ta, 1);
-			st_reboot(st);
-			i--;
-		}
-		if (!sort_a(ta))
-		{
-			minmax(ps, ta);
-			while (ps->max_a->a != st->begin->a)
-				ra(ps, ta, 1);
-			st_reboot(st);
-			if (st->end_a->a > st->end_a->prev->a)
-				sa(ps, ta, 1);
-		}
-		while (st->begin->bn > 0)
-		{
-			minmax(ps, ta);
-			if (ps->max_b->bn >= ps->b_l / 2)
-			{
-				while (st->end_b->b != ps->max_b->b)
-				{
-					rb(ps, ta, 1);
-					minmax(ps, ta);
-					st_reboot(st);
-				}
-				pa(ps, ta, 1);
-			}
-			else
-			{
-				while (st->end_b->b != ps->max_b->b)
-				{
-					rrb(ps, ta, 1);
-					minmax(ps, ta);
-					st_reboot(st);
-				}
-				pa(ps, ta, 1);
-			}
-			st_reboot(st);
-			minmax(ps, ta);
-			if (st->end_a->a != ps->min_a->a)
-			{
-				if (st->end_a->a > st->end_a->prev->a)
-					sa(ps, ta, 1);
-				else if (st->end_a->a > st->begin->a)
-					ra(ps, ta, 1);
-				minmax(ps, ta);
-				st_reboot(st);
-			}
-		}
+		
 	}
 	free(st);
 }

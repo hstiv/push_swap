@@ -16,6 +16,7 @@ void			ra(t_ps *ps, t_a *ta, int i)
 {
 	t_a			*temp;
 	int			u;
+	int			nb;
 
 	if (ps->a_l > 0)
 	{
@@ -23,12 +24,15 @@ void			ra(t_ps *ps, t_a *ta, int i)
 		while (temp->next && temp->next->an)
 			temp = temp->next;
 		u = temp->a;
+		nb = temp->an;
 		while (temp->prev)
 		{
 			temp->a = temp->prev->a;
+			temp->an = temp->prev->an;
 			temp = temp->prev;
 		}
 		temp->a = u;
+		temp->an = nb;
 	}
 	if (i == 1)
 	{
@@ -52,6 +56,7 @@ void			rb(t_ps *ps, t_a *ta, int i)
 {
 	t_a			*temp;
 	int			u;
+	int			nb;
 
 	if (ps->b_l > 0)
 	{
@@ -59,12 +64,15 @@ void			rb(t_ps *ps, t_a *ta, int i)
 		while (temp->next && temp->next->bn)
 			temp = temp->next;
 		u = temp->b;
+		nb = temp->bn;
 		while (temp->prev)
 		{
 			temp->b = temp->prev->b;
+			temp->bn = temp->prev->bn;
 			temp = temp->prev;
 		}
 		temp->b = u;
+		temp->bn = nb;
 	}
 	if (i == 1)
 	{

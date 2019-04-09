@@ -15,17 +15,18 @@
 static void		pa_maker(t_ps *ps, t_a *temp, t_a *temp_b)
 {
 	int			n;
+	int			nb;
 
 	while (temp->next && temp->next->bn != 0)
 		temp = temp->next;
 	n = temp->b;
+	nb = temp->bn;
 	temp->b = 0;
 	temp->bn = 0;
 	while (temp_b->next && temp_b->an != 0)
 		temp_b = temp_b->next;
 	temp_b->a = n;
-	(temp_b->prev) ? (temp_b->an = temp_b->prev->an + 1) : 0;
-	(!temp_b->prev) ? (temp_b->an = 1) : 0;
+	temp_b->an = nb;
 	ps->a_l++;
 	ps->b_l--;
 }
@@ -49,17 +50,18 @@ void			pa(t_ps *ps, t_a *ta, int i)
 static void		pb_maker(t_ps *ps, t_a *temp, t_a *temp_b)
 {
 	int			n;
+	int			nb;
 
 	while (temp->next && temp->next->an != 0)
 		temp = temp->next;
 	n = temp->a;
+	nb = temp->an;
 	temp->a = 0;
 	temp->an = 0;
 	while (temp_b->next && temp_b->bn != 0)
 		temp_b = temp_b->next;
 	temp_b->b = n;
-	(temp_b->prev) ? (temp_b->bn = temp_b->prev->bn + 1) : 0;
-	(!temp_b->prev) ? (temp_b->bn = 1) : 0;
+	temp_b->bn = nb;
 	ps->a_l--;
 	ps->b_l++;
 }
