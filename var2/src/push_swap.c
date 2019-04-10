@@ -12,66 +12,59 @@
 
 #include "push_swap.h"
 
-static void			sort_four(t_ps *ps, t_a *ta, t_stack *st, int med)
+static void			parser(t_ps *ps, t_a *ta, t_stack *st, int med)
 {
 	t_a				*temp;
 	int				i;
 
+	temp = ta;
 	i = 0;
-	st_reboot(st);
-	while (med > 1 && ps->a_l > med)
+	while (temp->next)
 	{
-		temp = ta;
-		while (temp->next)
+		if (temp->an > med)
+			i++;
+		temp = temp->next;
+	}
+	while (i)
+	{
+		temp = st->end_a;
+		if (temp->an < med)
+			pb(ps, ta, 1);
+		else
 		{
-			if (temp->an > med)
-				i++;
-			temp = temp->next;
+			ra(ps, ta, 1);
+			i--;
 		}
-		while (i)
-		{
-			temp = st->end_a;
-			if (temp->an < med)
-				pb(ps, ta, 1);
-			else
-			{
-				ra(ps, ta, 1);
-				i--;
-			}
-			st_reboot(st);
-		}
-		med /= 2;
-		sort_four(ps, ta, st, med);
 		st_reboot(st);
 	}
 }
 
 //static void			
 
-static void			separater(t_ps *ps, t_a *ta, t_stack *st)
+static void			sort_four(t_ps *ps, t_a *ta, t_stack *st, int med)
 {
-	int				med;
-
-	med = median(ta, ps);
 	st_reboot(st);
-	minmax(ps, ta);
-	if (!sort_a(ta))
+	while (med > 1 && ps->a_l > med)
 	{
+		parser(ps, ta, st, med);
+		med /= 2;
 		sort_four(ps, ta, st, med);
-
+		st_reboot(st);
 	}
-	
-}
+}		
 
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
 	t_stack			*st;
+	int				med;
 
 	st = ft_stack(ta);
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
-		separater(ps, ta, st);
+		med = median(ta, ps);
+		st_reboot(st);
+		sort_four(ps, ta, st, med);
 	}
 	free(st);
 }
