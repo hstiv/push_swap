@@ -14,90 +14,78 @@
 
 static t_a				*max_a(t_ps *ps, t_a *ta)
 {
-	int					max;
 	t_a					*temp;
+	t_a					*max;
 
 	temp = ta;
-	max = 0;
+	max = temp;
 	if (ps->a_l > 0)
 	{
-		max = temp->a;
-		while (temp->next && temp->next->an)
+		while (temp && temp->an)
 		{
-			if (max < temp->a)
-				max = temp->a;
+			if (max->a < temp->a)
+				max = temp;
 			temp = temp->next;
 		}
-		while (temp->prev && temp->b != max)
-			temp = temp->prev;
 	}
-	return (temp);
+	return (max);
 }
 
 static t_a				*max_b(t_ps *ps, t_a *ta)
 {
-	int					max;
+	t_a					*max;
 	t_a					*temp;
 
 	temp = ta;
-	max = 0;
+	max = ta;
 	if (ps->b_l > 0)
 	{
-		max = temp->b;
-		while (temp->next && temp->next->bn)
+		while (temp && temp->bn)
 		{
-			if (max < temp->b)
-				max = temp->b;
+			if (max->b < temp->b)
+				max = temp;
 			temp = temp->next;
 		}
-		while (temp->prev && temp->b != max)
-			temp = temp->prev;
 	}
-	return (temp);
+	return (max);
 }
 
 static t_a				*min_a(t_ps *ps, t_a *ta)
 {
-	int					min;
+	t_a					*min;
 	t_a					*temp;
 
 	temp = ta;
-	min = 0;
+	min = ta;
 	if (ps->a_l > 0)
 	{
-		min = temp->a;
-		while (temp->next && temp->an)
+		while (temp && temp->an)
 		{
-			if (min > temp->a)
-				min = temp->a;
+			if (min->a > temp->a)
+				min = temp;
 			temp = temp->next;
 		}
-		while (temp->prev && temp->a != min)
-			temp = temp->prev;
 	}
-	return (temp);
+	return (min);
 }
 
 static t_a				*min_b(t_ps *ps, t_a *ta)
 {
-	int					min;
+	t_a					*min;
 	t_a					*temp;
 
 	temp = ta;
-	min = 0;
+	min = ta;
 	if (ps->b_l > 0)
 	{
-		min = temp->b;
-		while (temp->next && temp->next->bn)
+		while (temp && temp->next->bn)
 		{
-			if (min > temp->b)
-				min = temp->b;
+			if (min->a > temp->b)
+				min = temp;
 			temp = temp->next;
 		}
-		while (temp->prev && temp->b != min)
-			temp = temp->prev;
 	}
-	return (temp);
+	return (min);
 }
 
 void					minmax(t_ps *ps, t_a *ta)

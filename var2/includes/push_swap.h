@@ -26,6 +26,8 @@ typedef struct		s_a
 	int				an;
 	int				bn;
 	int				b;
+	int				num_a;
+	int				num_b;
 	struct s_a		*next;
 	struct s_a		*prev;
 }					t_a;
@@ -48,7 +50,8 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
-long long int		median(t_a *ta, t_ps *ps);
+void				numgive(t_ps *ps, t_a *ta);
+int					median(t_a *ta, t_ps *ps);
 void				rev_rotater(t_stack *st, t_ps *ps, t_a *ta);
 void				rotater(t_stack *st, t_ps *ps, t_a *ta);
 void				swapper(t_stack *st, t_ps *ps, t_a *ta);

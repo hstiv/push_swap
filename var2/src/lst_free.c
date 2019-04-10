@@ -45,6 +45,10 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 			return (NULL);
 		}
 		tmp->a = ft_atoi(s[i]);
+		if (tmp->prev)
+			tmp->num_a = tmp->prev->num_a + 1;
+		else
+			tmp->num_a = 1;
 		ps->a_l++;
 		tmp->an = ps->a_l;
 		if (tmp->next == NULL && s[i + 1] != NULL && s[i] != NULL)

@@ -24,6 +24,8 @@ t_a			*ta_list(void)
 		ta->b = 0;
 		ta->an = 0;
 		ta->bn = 0;
+		ta->num_a = 0;
+		ta->num_b = 0;
 		ta->next = NULL;
 	}
 	return (ta);
