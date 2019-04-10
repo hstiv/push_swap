@@ -51,13 +51,9 @@ static void			sort_four(t_ps *ps, t_a *ta, t_stack *st, int med)
 static void			separater(t_ps *ps, t_a *ta, t_stack *st)
 {
 	int				med;
-	int				i;
-	int				len;
 
-	len = ps->a_l;
 	med = median(ta, ps);
 	st_reboot(st);
-	i = 1;
 	minmax(ps, ta);
 	if (!sort_a(ta))
 	{
@@ -70,13 +66,11 @@ static void			separater(t_ps *ps, t_a *ta, t_stack *st)
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
 	t_stack			*st;
-	int				i;
 
 	st = ft_stack(ta);
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
-		i = ps->a_l;
 		separater(ps, ta, st);
 	}
 	free(st);

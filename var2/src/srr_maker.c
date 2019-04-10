@@ -17,7 +17,9 @@ int						search_if_mid(int mid, t_a *ta)
 	temp = ta;
 	while (temp->prev)
 		temp = temp->prev;
-	while ()
+	while (temp->an != mid)
+		temp = temp->next;
+	return (temp->a);
 }
 
 void					swapper(t_stack *st, t_ps *ps, t_a *ta)
