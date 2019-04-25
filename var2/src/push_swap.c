@@ -10,18 +10,79 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"		
+#include "push_swap.h"
 
-static void			ft_algo(t_ps *ps, t_a *ta, t_st *st)
+static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 {
-	
+	if (ft_strcmp(line, "sa") == 0)
+		sa(ps, ta, 0);
+	else if (ft_strcmp(line, "sb") == 0)
+		sb(ps, ta, 0);
+	else if (ft_strcmp(line, "pa") == 0)
+		pa(ps, ta, 0);
+	else if (ft_strcmp(line, "pb") == 0)
+		pb(ps, ta, 0);
+	else if (ft_strcmp(line, "rb") == 0)
+		rb(ps, ta, 0);
+	else if (ft_strequ(line, "ra") == 1)
+		ra(ps, ta, 0);
+	else if (ft_strequ(line, "rr") == 1 && (ft_strlen("rr") == ft_strlen(line)))
+		rr(ps, ta, 0);
+	else if (ft_strequ(line, "rra") == 1)
+		rra(ps, ta, 0);
+	else if (ft_strequ(line, "rrb") == 1)
+		rrb(ps, ta, 0);
+	else if (ft_strequ(line, "rrr") == 1)
+		rrr(ps, ta, 0);
+	else if (ft_strcmp(line, "ss") == 0)
+		ss(ps, ta, 0);
+	else
+		return (0);
+	return (1);
+}
+
+static t_a				*min_oper(t_ps *ps, t_a *ta)
+{
+	t_a					*min;
+	t_a					*temp;
+
+	temp = ta;
+	min = ta;
+	if (ps->b_l > 0)
+	{
+		while (temp && temp->next->bn)
+		{
+			if (min->op_b > temp->op_b)
+				min = temp;
+			temp = temp->next;
+		}
+	}
+	return (min);
+}
+
+static void			algo(t_ps *ps, t_a *ta)
+{
+	t_a				*tmp;
+	t_a				*min;
+	char			**s;
+	int				i;
+
+	i = 0;
+	tmp = ta;
+	operations(tmp, ps);
+	min = min_oper(ps, tmp);
+	s = ft_strsplit(min->oper, ' ');
+	while (s[i] != NULL)
+	{
+		sort_by_in(s[i], ps, ta);
+		i++;
+	}
+	ft_arraydel((void **)s);
 }
 
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
-	t_st			*st;
 
-	st = ft_stack(ta);
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
@@ -29,10 +90,14 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 			pb(ps, ta, 1);
 		while (!sort_a(ta))
 			rra(ps, ta, 1);
-		while (!if_sort(ta));
-			algo_p(ps, ta, st);
+		while (ps->b_l > 0)
+			algo(ps, ta);
+		if (!sort_a(ta))
+		{
+			while (!sort_a(ta))
+				ra(ps, ta, 1);
+		}
 	}
-	free(st);
 }
 
 int					main(int c, char **s)

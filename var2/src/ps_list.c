@@ -15,7 +15,9 @@
 t_a			*ta_list(void)
 {
 	t_a		*ta;
+	int		i;
 
+	i = 7000;
 	ta = malloc(sizeof(t_a));
 	if (ta)
 	{
@@ -26,6 +28,8 @@ t_a			*ta_list(void)
 		ta->bn = 0;
 		ta->num_a = 0;
 		ta->num_b = 0;
+		while (i)
+			ta->oper[i--] = 0;
 		ta->op_b = 0;
 		ta->next = NULL;
 	}

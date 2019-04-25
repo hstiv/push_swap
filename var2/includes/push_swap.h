@@ -29,6 +29,7 @@ typedef struct		s_a
 	int				num_a;
 	int				op_b;
 	int				num_b;
+	char			oper[7000];
 	struct s_a		*next;
 	struct s_a		*prev;
 }					t_a;

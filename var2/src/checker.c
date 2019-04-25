@@ -12,7 +12,7 @@
 
 #include <push_swap.h>
 
-static int			sort_by_in(char *line, t_ps *ps, t_a *ta)
+static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 {
 	if (ft_strcmp(line, "sa") == 0)
 		sa(ps, ta, 0);
