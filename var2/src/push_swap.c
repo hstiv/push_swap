@@ -10,61 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.h"		
 
-static void			parser(t_ps *ps, t_a *ta, t_stack *st, int med)
+static void			ft_algo(t_ps *ps, t_a *ta, t_st *st)
 {
-	t_a				*temp;
-	int				i;
-
-	temp = ta;
-	i = 0;
-	while (temp->next)
-	{
-		if (temp->an > med)
-			i++;
-		temp = temp->next;
-	}
-	while (i)
-	{
-		temp = st->end_a;
-		if (temp->an < med)
-			pb(ps, ta, 1);
-		else
-		{
-			ra(ps, ta, 1);
-			i--;
-		}
-		st_reboot(st);
-	}
+	
 }
-
-//static void			
-
-static void			sort_four(t_ps *ps, t_a *ta, t_stack *st, int med)
-{
-	st_reboot(st);
-	while (med > 1 && ps->a_l > med)
-	{
-		parser(ps, ta, st, med);
-		med /= 2;
-		sort_four(ps, ta, st, med);
-		st_reboot(st);
-	}
-}		
 
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
-	t_stack			*st;
-	int				med;
+	t_st			*st;
 
 	st = ft_stack(ta);
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
-		med = median(ta, ps);
-		st_reboot(st);
-		sort_four(ps, ta, st, med);
+		while (ps->a_l > 3)
+			pb(ps, ta, 1);
+		while (!sort_a(ta))
+			rra(ps, ta, 1);
+		while (!if_sort(ta));
+			algo_p(ps, ta, st);
 	}
 	free(st);
 }

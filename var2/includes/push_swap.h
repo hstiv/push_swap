@@ -27,17 +27,18 @@ typedef struct		s_a
 	int				bn;
 	int				b;
 	int				num_a;
+	int				op_b;
 	int				num_b;
 	struct s_a		*next;
 	struct s_a		*prev;
 }					t_a;
 
-typedef	struct		s_stack
+typedef	struct		s_st
 {
 	t_a				*begin;
 	t_a				*end_a;
 	t_a				*end_b;
-}					t_stack;
+}					t_st;
 
 typedef struct		s_ps
 {
@@ -50,11 +51,12 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+void         		operations(t_a *ta, t_ps *ps);
 void				numgive(t_ps *ps, t_a *ta);
 int					median(t_a *ta, t_ps *ps);
-void				rev_rotater(t_stack *st, t_ps *ps, t_a *ta);
-void				rotater(t_stack *st, t_ps *ps, t_a *ta);
-void				swapper(t_stack *st, t_ps *ps, t_a *ta);
+void				rev_rotater(t_st *st, t_ps *ps, t_a *ta);
+void				rotater(t_st *st, t_ps *ps, t_a *ta);
+void				swapper(t_st *st, t_ps *ps, t_a *ta);
 int					not_number(char *s);
 int					sort_b(t_a *ta);
 int					sort_a(t_a *ta);
@@ -77,7 +79,7 @@ void				lst_free(t_ps *ps, t_a *ta);
 t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i);
 t_ps				*ps_list();
 t_a					*ta_list();
-t_stack				*ft_stack(t_a *ta);
-void				st_reboot(t_stack *st);
+t_st				*ft_stack(t_a *ta);
+void				st_reboot(t_st *st);
 
 #endif

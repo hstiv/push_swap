@@ -22,7 +22,7 @@ int						search_if_mid(int mid, t_a *ta)
 	return (temp->a);
 }
 
-void					swapper(t_stack *st, t_ps *ps, t_a *ta)
+void					swapper(t_st *st, t_ps *ps, t_a *ta)
 {
 	st_reboot(st);
 	minmax(ps, ta);
@@ -33,7 +33,7 @@ void					swapper(t_stack *st, t_ps *ps, t_a *ta)
 			sa(ps, ta, 1);
 }
 
-void					rotater(t_stack *st, t_ps *ps, t_a *ta)
+void					rotater(t_st *st, t_ps *ps, t_a *ta)
 {
 	st_reboot(st);
 	minmax(ps, ta);
@@ -43,7 +43,7 @@ void					rotater(t_stack *st, t_ps *ps, t_a *ta)
 	minmax(ps, ta);
 }
 
-void					rev_rotater(t_stack *st, t_ps *ps, t_a *ta)
+void					rev_rotater(t_st *st, t_ps *ps, t_a *ta)
 {
 	st_reboot(st);
 	minmax(ps, ta);

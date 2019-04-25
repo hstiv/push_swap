@@ -26,12 +26,13 @@ t_a			*ta_list(void)
 		ta->bn = 0;
 		ta->num_a = 0;
 		ta->num_b = 0;
+		ta->op_b = 0;
 		ta->next = NULL;
 	}
 	return (ta);
 }
 
-void		st_reboot(t_stack *st)
+void		st_reboot(t_st *st)
 {
 	while (st->end_a->an == 0)
 		st->end_a = st->end_a->prev;
@@ -39,12 +40,12 @@ void		st_reboot(t_stack *st)
 		st->end_a = st->end_a->next;
 }
 
-t_stack		*ft_stack(t_a *ta)
+t_st		*ft_stack(t_a *ta)
 {
-	t_stack *stack;
+	t_st	*stack;
 	t_a		*temp;
 
-	stack = malloc(sizeof(t_stack));
+	stack = malloc(sizeof(t_st));
 	if (stack)
 	{
 		temp = ta;
