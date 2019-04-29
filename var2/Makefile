@@ -18,10 +18,10 @@ HEAD = includes/
 
 $(NAME1):
 	@echo "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Compiling... Wait a sec."
-	@make -C libft re && gcc -o $@ $(WWW) $(SRC1) -I $(HEAD)
+	@make -C libft re && gcc -o $@ $(SRC1) -I $(HEAD)
 	
 $(NAME2):
-	@make -C libft re && gcc -o $@ $(WWW) $(SRC) -I $(HEAD)
+	@make -C libft re && gcc -o $@ $(SRC) -I $(HEAD)
 	@echo "(•̀ᴗ•́)و $(NAME2) generated!".
 
 all: $(NAME1) $(NAME2)

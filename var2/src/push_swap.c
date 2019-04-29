@@ -18,11 +18,11 @@ static void				sort_three(t_a *ta, t_ps *ps)
 
 	st = ft_stack(ta);
 	minmax(ps, ta);
-//	ft_putnbr(ps->max_a->num_a);
-	while (ps->max_a->an != 1)
+	while (ps->max_a->an != 1 && !sort_a(ta))
 	{
 		ra(ps, ta, 1);
 		minmax(ps, ta);
+		st_reboot(st);
 	}
 	if (st->end_a->a > st->end_a->prev->a)
 		sa(ps, ta, 1);
@@ -85,10 +85,11 @@ static void			algo(t_ps *ps, t_a *ta)
 
 	i = 0;
 	tmp = ta;
-	operations(tmp, ps);
+	operations(ta, ps);
+	if (!if_sort(ta))
 	min = min_oper(ps, tmp);
 	s = ft_strsplit(min->oper, ' ');
-	while (s[i] != NULL)
+	while (s[i] != NULL && !if_sort(ta))
 	{
 		sort_by_in(s[i], ps, ta);
 		i++;
@@ -98,22 +99,24 @@ static void			algo(t_ps *ps, t_a *ta)
 
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
-
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
 		while (ps->a_l > 3)
 			pb(ps, ta, 1);
-//		ft_putnbr(ps->a_l);
 		if (!sort_a(ta))
 			sort_three(ta, ps);
 		while (ps->b_l > 0)
 			algo(ps, ta);
-/*		if (!sort_a(ta))
+		if (!sort_a(ta))
 		{
-			while (!sort_a(ta))
+			minmax(ps, ta);
+			while (!sort_a(ta) && ps->max_a->num_a != 1)
+			{
 				ra(ps, ta, 1);
-		}*/
+				minmax(ps, ta);
+			}
+		}
 	}
 }
 

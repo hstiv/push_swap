@@ -12,7 +12,7 @@ void				numgive(t_ps *ps, t_a *ta)
 	a = 2;
 	minmax(ps, ta);
 	i = ps->min_a->a + 1;
-	ps->min_a->an = 1;
+	ps->min_a->num_a = 1;
 	while (i <= ps->max_a->a)
 	{	
 		tmp = ta;
@@ -20,7 +20,7 @@ void				numgive(t_ps *ps, t_a *ta)
 		{
 			if (tmp->a == i)
 			{
-				tmp->an = a;
+				tmp->num_a = a;
 				a++;
 			}
 			tmp = tmp->next;
