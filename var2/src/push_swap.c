@@ -12,30 +12,46 @@
 
 #include "push_swap.h"
 
+static void				sort_three(t_a *ta, t_ps *ps)
+{
+	t_st				*st;
+
+	st = ft_stack(ta);
+	minmax(ps, ta);
+//	ft_putnbr(ps->max_a->num_a);
+	while (ps->max_a->an != 1)
+	{
+		ra(ps, ta, 1);
+		minmax(ps, ta);
+	}
+	if (st->end_a->a > st->end_a->prev->a)
+		sa(ps, ta, 1);
+}
+
 static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 {
 	if (ft_strcmp(line, "sa") == 0)
-		sa(ps, ta, 0);
+		sa(ps, ta, 1);
 	else if (ft_strcmp(line, "sb") == 0)
-		sb(ps, ta, 0);
+		sb(ps, ta, 1);
 	else if (ft_strcmp(line, "pa") == 0)
-		pa(ps, ta, 0);
+		pa(ps, ta, 1);
 	else if (ft_strcmp(line, "pb") == 0)
-		pb(ps, ta, 0);
+		pb(ps, ta, 1);
 	else if (ft_strcmp(line, "rb") == 0)
-		rb(ps, ta, 0);
+		rb(ps, ta, 1);
 	else if (ft_strequ(line, "ra") == 1)
-		ra(ps, ta, 0);
+		ra(ps, ta, 1);
 	else if (ft_strequ(line, "rr") == 1 && (ft_strlen("rr") == ft_strlen(line)))
-		rr(ps, ta, 0);
+		rr(ps, ta, 1);
 	else if (ft_strequ(line, "rra") == 1)
-		rra(ps, ta, 0);
+		rra(ps, ta, 1);
 	else if (ft_strequ(line, "rrb") == 1)
-		rrb(ps, ta, 0);
+		rrb(ps, ta, 1);
 	else if (ft_strequ(line, "rrr") == 1)
-		rrr(ps, ta, 0);
+		rrr(ps, ta, 1);
 	else if (ft_strcmp(line, "ss") == 0)
-		ss(ps, ta, 0);
+		ss(ps, ta, 1);
 	else
 		return (0);
 	return (1);
@@ -88,15 +104,16 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 	{
 		while (ps->a_l > 3)
 			pb(ps, ta, 1);
-		while (!sort_a(ta))
-			rra(ps, ta, 1);
+//		ft_putnbr(ps->a_l);
+		if (!sort_a(ta))
+			sort_three(ta, ps);
 		while (ps->b_l > 0)
 			algo(ps, ta);
-		if (!sort_a(ta))
+/*		if (!sort_a(ta))
 		{
 			while (!sort_a(ta))
 				ra(ps, ta, 1);
-		}
+		}*/
 	}
 }
 
@@ -119,7 +136,7 @@ int					main(int c, char **s)
 	}
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
-	numgive(ps, ta);
+//	numgive(ps, ta);
 	ft_sorter(ps, ta);
 	lst_free(ps, ta);
 	return (0);
