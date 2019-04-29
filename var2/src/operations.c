@@ -71,7 +71,6 @@ static void		oper_give(t_a *tmp, t_ps *ps, t_st *st)
 	}
 	else
 	{
-//		ft_putnbr(tmp->b);
 		tmp->op_b = tmp->bn + 1;
 		op_write(tmp->oper, " rrb", tmp->bn + 1);
 	}
@@ -99,12 +98,7 @@ void			operations(t_a *ta, t_ps *ps)
 		st_reboot(st);
 		op_clr(temp->oper, &(temp->op_b));
 		oper_give(temp, ps, st);
-	//	ft_putchar(' ');
-	//	ft_putnbr(temp->op_b);
-	//	ft_putnbr(temp->bn);
-	//	ft_putchar(' ');
 		temp = temp->prev;
 	}
-//	ft_putchar('\n');
 	free(st);
 }
