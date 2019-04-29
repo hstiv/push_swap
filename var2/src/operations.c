@@ -47,7 +47,7 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 	else
 	{
 		tmp = st->end_a;
-		while (tmp->prev && !(tmp->a < ta->b && ta->b > st->begin->a))
+		while (tmp->prev && !(tmp->a > ta->b && ta->b > tmp->next->a))
 		{
 			ta->op_b++;
 			op_write(ta->oper, " ra", 1);
@@ -55,7 +55,6 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 			st_reboot(st);
 		}
 		op_write(ta->oper, " pa", 1);
-		op_write(ta->oper, " ra", 1);
 	}
 }
 
