@@ -63,10 +63,9 @@ static t_a				*min_oper(t_ps *ps, t_a *ta)
 	t_a					*temp;
 
 	temp = ta;
-	min = ta;
 	if (ps->b_l > 0)
 	{
-		while (temp && temp->next->bn)
+		while (temp->bn)
 		{
 			if (min->op_b > temp->op_b)
 				min = temp;

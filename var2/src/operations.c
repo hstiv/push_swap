@@ -66,7 +66,7 @@ static void		oper_give(t_a *tmp, t_ps *ps, t_st *st)
 	ta = st->begin;
 	if (ps->b_l / 2 <= tmp->bn)
 	{
-		tmp->op_b = ps->b_l - tmp->bn + 1;
+		tmp->op_b = ps->b_l - tmp->bn;
 		op_write(tmp->oper, " rb", ps->b_l - tmp->bn);
 	}
 	else
