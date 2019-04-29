@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+static int				ft_presort(t_ps *ps, t_a *ta)
+{}
+
 static void				sort_three(t_a *ta, t_ps *ps)
 {
 	t_st				*st;
@@ -92,6 +95,13 @@ static void			algo(t_ps *ps, t_a *ta)
 	{
 		sort_by_in(s[i], ps, ta);
 		i++;
+	}
+	if (!ft_presort(ps, ta))
+	{
+		while (ps->a_l > 3)
+			pb(ps, ta, 1);
+		if (!sort_a(ta))
+			sort_three(ta, ps);
 	}
 	ft_arraydel((void **)s);
 }
