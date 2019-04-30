@@ -15,9 +15,7 @@
 t_a			*ta_list(void)
 {
 	t_a		*ta;
-	int		i;
 
-	i = 7000;
 	ta = malloc(sizeof(t_a));
 	if (ta)
 	{
@@ -28,8 +26,7 @@ t_a			*ta_list(void)
 		ta->bn = 0;
 		ta->num_a = 0;
 		ta->num_b = 0;
-		while (i)
-			ta->oper[i--] = 0;
+		ta->oper = ft_strnew(1);
 		ta->op_b = 0;
 		ta->next = NULL;
 	}
@@ -56,12 +53,12 @@ t_st		*ft_stack(t_a *ta)
 		while (temp->prev)
 			temp = temp->prev;
 		stack->begin = temp;
-		while (temp->next && temp->next->an)
+		while (temp->next->an)
 			temp = temp->next;
 		stack->end_a = temp;
 		while (temp->prev)
 			temp = temp->prev;
-		while (temp->next && temp->next->bn)
+		while (temp->next->bn)
 			temp = temp->next;
 		stack->end_b = temp;
 	}

@@ -12,8 +12,25 @@
 
 #include "push_swap.h"
 
-static int				ft_presort(t_ps *ps, t_a *ta)
-{}
+/*static int				ft_presort(t_ps *ps, t_a *ta)
+{
+	int					i;
+	t_a					*tmp;
+
+	i = 0;
+	while (ta->prev)
+		ta = ta->prev;
+	tmp = ta;
+	while (tmp->next)
+	{
+		if (tmp->a < tmp->next->a)
+			i++;
+		tmp = tmp->next;
+	}
+	if (i > 1)
+		return (0);
+	return (1);
+}*/
 
 static void				sort_three(t_a *ta, t_ps *ps)
 {
@@ -68,7 +85,7 @@ static t_a				*min_oper(t_ps *ps, t_a *ta)
 	temp = ta;
 	if (ps->b_l > 0)
 	{
-		while (temp->op_b != 0)
+		while (temp->bn > 0 && temp)
 		{
 			if (min->op_b > temp->op_b)
 				min = temp;
@@ -88,7 +105,6 @@ static void			algo(t_ps *ps, t_a *ta)
 	i = 0;
 	tmp = ta;
 	operations(ta, ps);
-	if (!if_sort(ta))
 	min = min_oper(ps, tmp);
 	s = ft_strsplit(min->oper, ' ');
 	while (s[i] != NULL && !if_sort(ta))
@@ -96,14 +112,14 @@ static void			algo(t_ps *ps, t_a *ta)
 		sort_by_in(s[i], ps, ta);
 		i++;
 	}
-	if (!ft_presort(ps, ta))
+	ft_arraydel((void **)s);
+/*	if (!ft_presort(ps, ta) && ps->b_l == 0)
 	{
 		while (ps->a_l > 3)
 			pb(ps, ta, 1);
 		if (!sort_a(ta))
 			sort_three(ta, ps);
-	}
-	ft_arraydel((void **)s);
+	}*/
 }
 
 static void			ft_sorter(t_ps *ps, t_a *ta)
@@ -120,7 +136,7 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 		if (!sort_a(ta))
 		{
 			minmax(ps, ta);
-			while (!sort_a(ta) && ps->max_a->num_a != 1)
+			while (ps->max_a->num_a != 1)
 			{
 				ra(ps, ta, 1);
 				minmax(ps, ta);

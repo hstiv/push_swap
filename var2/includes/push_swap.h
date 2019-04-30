@@ -12,6 +12,7 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define ABS(x) (x > 0 ? x : -x)
 
 # include "libft.h"
 # include <sys/stat.h>
@@ -29,7 +30,7 @@ typedef struct		s_a
 	int				num_a;
 	int				op_b;
 	int				num_b;
-	char			oper[7000];
+	char			*oper;
 	struct s_a		*next;
 	struct s_a		*prev;
 }					t_a;
