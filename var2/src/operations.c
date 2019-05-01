@@ -31,9 +31,9 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 	st_reboot(st);
 	if (ps->max_a->a <= tmp->b)
 	{
-		if (ps->max_a->an <= ps->a_l / 2)
+		if (ps->max_a->an < ps->a_l / 2)
 		{
-			ta->op_b += ps->max_a->an + 2;
+			ta->op_b += ps->max_a->an + 1;
 			op_write(ta, " rra", ps->max_a->an);
 			op_write(ta, " pa", 1);
 		}
@@ -52,16 +52,16 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 			tmp = tmp->prev;
 		if (ps->a_l / 2 > tmp->an)
 		{
-			op_write(ta, " rra", tmp->an + 1);
+			op_write(ta, " rra", tmp->an - 1);
+			op_write(ta, " pa", 1);
 			ta->op_b += tmp->an + 1;
 		}
 		else 
 		{
 			op_write(ta, " ra", ps->a_l - tmp->an);
-			ta->op_b += ps->a_l - tmp->an;
+			op_write(ta, " pa", 1);
+			ta->op_b += ps->a_l - tmp->an + 1;
 		}
-		ta->op_b++;
-		op_write(ta, " pa", 1);
 	}
 }
 
@@ -97,7 +97,6 @@ void			operations(t_a *ta, t_ps *ps)
 	t_a			*temp;
 
 	st = ft_stack(ta);
-	st_reboot(st);
 	temp = st->end_b;
 	minmax(ps, ta);
 	while (temp != NULL && temp->bn != 0)

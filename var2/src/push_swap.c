@@ -46,6 +46,7 @@ static void				sort_three(t_a *ta, t_ps *ps)
 	}
 	if (st->end_a->a > st->end_a->prev->a)
 		sa(ps, ta, 1);
+	free(st);
 }
 
 static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
@@ -83,6 +84,8 @@ static t_a				*min_oper(t_ps *ps, t_a *ta)
 	t_a					*temp;
 
 	temp = ta;
+	while (temp->prev)
+		temp = temp->prev;
 	if (ps->b_l > 0)
 	{
 		while (temp->bn > 0 && temp)
@@ -113,13 +116,6 @@ static void			algo(t_ps *ps, t_a *ta)
 		i++;
 	}
 	ft_arraydel((void **)s);
-/*	if (!ft_presort(ps, ta) && ps->b_l == 0)
-	{
-		while (ps->a_l > 3)
-			pb(ps, ta, 1);
-		if (!sort_a(ta))
-			sort_three(ta, ps);
-	}*/
 }
 
 static void			ft_sorter(t_ps *ps, t_a *ta)

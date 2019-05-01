@@ -70,10 +70,16 @@ void				lst_free(t_ps *ps, t_a *ta)
 	{
 		ta = ta->next;
 		if (ta->prev)
+		{
+			free(ta->prev->oper);
 			free(ta->prev);
+		}
 	}
 	if (ta)
+	{
+		free(ta->oper);
 		free(ta);
+	}
 	if (ps)
 		free(ps);
 }
