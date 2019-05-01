@@ -29,38 +29,52 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 	tmp = ta;
 	minmax(ps, ta);
 	st_reboot(st);
-	if (ps->max_a->a <= tmp->b)
+	if (ps->max_a->a < ta->b)
 	{
-		if (ps->max_a->an < ps->a_l / 2)
+		if ((ps->max_a->an * 2) <= ps->a_l)
 		{
-			ta->op_b += ps->max_a->an + 2;
-			op_write(ta, " rra", ps->max_a->an + 1);
+			ta->op_b = ta->op_b + ps->max_a->an + 1;
+			op_write(ta, " rra", ps->max_a->an);
 			op_write(ta, " pa", 1);
 		}
 		else
 		{
-			ta->op_b += ps->a_l - ps->max_a->an + 1;
+			ta->op_b = ta->op_b + (ps->a_l - ps->max_a->an) + 1;
 			op_write(ta, " ra", ps->a_l - ps->max_a->an);
+			op_write(ta, " pa", 1);
+		}
+	}
+	else if (ps->min_a->a > ta->b)
+	{
+		if ((ps->min_a->an * 2) <= ps->a_l)
+		{
+			ta->op_b = ta->op_b + ps->min_a->an + 1;
+			op_write(ta, " rra", ps->min_a->an);
+			op_write(ta, " pa", 1);
+		}
+		else
+		{
+			ta->op_b = ta->op_b + (ps->a_l - ps->min_a->an) + 1;
+			op_write(ta, " ra", ps->a_l - ps->min_a->an - 1);
 			op_write(ta, " pa", 1);
 		}
 	}
 	else
 	{
-		st_reboot(st);
 		tmp = st->end_a;
-		while (tmp && !(tmp->a >= ta->b && ta->b >= ((tmp->next != NULL) ? (tmp->next->a) : (st->begin->a))))
+		while (tmp && !(tmp->a > ta->b && ta->b > ((tmp->next != NULL) ? (tmp->next->a) : (st->begin->a))))
 			tmp = tmp->prev;
-		if (ps->a_l / 2 > tmp->an)
+		if (ps->a_l >= tmp->an * 2)
 		{
 			op_write(ta, " rra", tmp->an);
 			op_write(ta, " pa", 1);
-			ta->op_b += tmp->an + 1;
+			ta->op_b = ta->op_b + tmp->an + 1;
 		}
 		else 
 		{
 			op_write(ta, " ra", ps->a_l - tmp->an);
 			op_write(ta, " pa", 1);
-			ta->op_b += ps->a_l - tmp->an + 1;
+			ta->op_b = ta->op_b + (ps->a_l - tmp->an) + 1;
 		}
 	}
 }
@@ -71,10 +85,10 @@ static void		oper_give(t_a *tmp, t_ps *ps, t_st *st)
 
 	ta = st->begin;
 	st_reboot(st);
-	if (ps->b_l / 2 <= tmp->bn)
+	if (ps->b_l < tmp->bn * 2)
 	{
 		tmp->op_b = ps->b_l - tmp->bn;
-		op_write(tmp, " rb", ps->b_l - tmp->bn);
+		op_write(tmp, " rb", (ps->b_l - tmp->bn));
 	}
 	else
 	{

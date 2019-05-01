@@ -80,7 +80,7 @@ static t_a				*min_b(t_ps *ps, t_a *ta)
 	{
 		while (temp && temp->next->bn)
 		{
-			if (min->a > temp->b)
+			if (min->b > temp->b)
 				min = temp;
 			temp = temp->next;
 		}
