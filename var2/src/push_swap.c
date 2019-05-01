@@ -112,12 +112,9 @@ static void			algo(t_ps *ps, t_a *ta)
 	s = ft_strsplit(min->oper, ' ');
 	while (s[i] != NULL && !if_sort(ta))
 	{
-//		ft_putstr(s[i]);
-//		ft_putchar(32);
 		sort_by_in(s[i], ps, ta);
 		i++;
 	}
-//	ft_putchar('\n');
 	ft_arraydel((void **)s);
 }
 

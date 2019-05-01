@@ -21,13 +21,18 @@ static void			ft_data(t_a *temp, t_ps *ps)
 		if (temp->an)
 		{
 			ft_putnbr(temp->a);
-//			ft_putnbr(temp->an);
+			ft_putchar('-');
+			ft_putnbr(temp->an);
 		}
 		else
 			ft_putchar(' ');
 		ft_putstr("\t\t");
 		if (temp->bn)
+		{
 			ft_putnbr(temp->b);
+			ft_putchar('-');
+			ft_putnbr(temp->bn);
+		}
 		else
 			ft_putchar(' ');
 		if (temp->prev == NULL)

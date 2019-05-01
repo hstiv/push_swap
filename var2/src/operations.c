@@ -1,5 +1,33 @@
 #include "push_swap.h"
 
+static int		cond(t_a *ta, t_a *temp, t_st *st)
+{
+	if (temp->next != NULL && temp->next->an)
+	{
+		if (temp->a > ta->b && ta->b > temp->next->a)
+		{
+//			if (ta->b == 9)
+//			{
+//				ft_putchar(71);
+//				ft_putnbr(temp->an);
+//			}
+			return (1);
+		}
+	}
+	st_reboot(st);
+	if (temp->next == NULL)
+	{
+//		if (ta->b == 9)
+//		{
+//			ft_putchar(72);
+//			ft_putnbr(temp->an);
+//		}
+		if (temp->a > ta->b && ta->b > st->begin->a && st->begin->an == 1)
+			return (1);
+	}
+	return (0);
+}
+
 static void		op_clr(t_a *ta)
 {
 	int			i;
@@ -24,22 +52,22 @@ static void		op_write(t_a *ta, char *s, int i)
 
 static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 {
-	t_a			*tmp;
+	t_a			*temp;
 	
-	tmp = ta;
+	temp = ta;
 	minmax(ps, ta);
 	st_reboot(st);
 	if (ps->max_a->a < ta->b)
 	{
 		if ((ps->max_a->an * 2) <= ps->a_l)
 		{
-			ta->op_b = ta->op_b + ps->max_a->an;
+			ta->op_b += ps->max_a->an;
 			op_write(ta, " rra", ps->max_a->an - 1);
 			op_write(ta, " pa", 1);
 		}
 		else
 		{
-			ta->op_b = ta->op_b + (ps->a_l - ps->max_a->an) + 1;
+			ta->op_b += ps->a_l - ps->max_a->an + 1;
 			op_write(ta, " ra", ps->a_l - ps->max_a->an);
 			op_write(ta, " pa", 1);
 		}
@@ -48,33 +76,35 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 	{
 		if ((ps->min_a->an * 2) <= ps->a_l)
 		{
-			ta->op_b = ta->op_b + ps->min_a->an + 1;
+			ta->op_b += ps->min_a->an + 1;
 			op_write(ta, " rra", ps->min_a->an);
 			op_write(ta, " pa", 1);
 		}
 		else
 		{
-			ta->op_b = ta->op_b + (ps->a_l - ps->min_a->an) + 1;
-			op_write(ta, " ra", ps->a_l - ps->min_a->an - 1);
+			ta->op_b += ps->a_l - ps->min_a->an + 1;
+			op_write(ta, " ra", ps->a_l - ps->min_a->an);
 			op_write(ta, " pa", 1);
 		}
 	}
 	else
 	{
-		tmp = st->end_a;
-		while (tmp->prev && !(tmp->a > ta->b && ta->b > ((tmp->next != NULL) ? (tmp->next->a) : (st->begin->a))))
-			tmp = tmp->prev;
-		if (ps->a_l >= tmp->an * 2)
+		temp = st->end_a;
+		while (temp->prev && (cond(ta, temp, st) == 0))
+			temp = temp->prev;
+		if (ps->a_l > temp->an * 2)
 		{
-			op_write(ta, " rra", tmp->an);
+//			if (ta->b == 9)
+//				ft_putchar(66);
+			op_write(ta, " rra", temp->an);
 			op_write(ta, " pa", 1);
-			ta->op_b = ta->op_b + tmp->an + 1;
+			ta->op_b += temp->an + 1;
 		}
 		else 
 		{
-			op_write(ta, " ra", ps->a_l - tmp->an);
+			op_write(ta, " ra", ps->a_l - temp->an);
 			op_write(ta, " pa", 1);
-			ta->op_b = ta->op_b + (ps->a_l - tmp->an + 1);
+			ta->op_b += ps->a_l - temp->an + 1;
 		}
 	}
 }
