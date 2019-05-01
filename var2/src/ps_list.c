@@ -39,6 +39,10 @@ void		st_reboot(t_st *st)
 		st->end_a = st->end_a->prev;
 	while (st->end_a->next && st->end_a->next->an != 0)
 		st->end_a = st->end_a->next;
+	while (st->end_b->bn == 0)
+		st->end_b = st->end_b->prev;
+	while (st->end_b->next && st->end_b->next->bn != 0)
+		st->end_b = st->end_b->next;
 }
 
 t_st		*ft_stack(t_a *ta)
