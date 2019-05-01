@@ -16,7 +16,6 @@ void		sa(t_ps *ps, t_a *ta, int i)
 {
 	t_a		*temp;
 	int		n;
-	int		nb;
 
 	temp = ta;
 	if (ps->a_l > 1)
@@ -24,10 +23,8 @@ void		sa(t_ps *ps, t_a *ta, int i)
 		while (temp->next && temp->next->an)
 			temp = temp->next;
 		n = temp->prev->a;
-		nb = temp->prev->an;
 		temp->prev->a = temp->a;
 		temp->a = n;
-		temp->an = nb;
 	}
 	if (i == 1)
 	{
@@ -51,7 +48,6 @@ void		sb(t_ps *ps, t_a *ta, int i)
 {
 	t_a		*temp;
 	int		n;
-	int		nb;
 
 	temp = ta;
 	if (ps->b_l > 1)
@@ -59,10 +55,8 @@ void		sb(t_ps *ps, t_a *ta, int i)
 		while (temp->next && temp->next->bn)
 			temp = temp->next;
 		n = temp->prev->b;
-		nb = temp->prev->bn;
 		temp->prev->b = temp->b;
 		temp->b = n;
-		temp->bn = nb;
 	}
 	if (i == 1)
 	{

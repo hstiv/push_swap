@@ -24,7 +24,7 @@ static void		pa_maker(t_ps *ps, t_a *temp, t_a *temp_b)
 	while (temp_b->next && temp_b->an != 0)
 		temp_b = temp_b->next;
 	temp_b->a = n;
-	if (temp->prev)
+	if (temp_b->prev)
 		temp_b->an = temp_b->prev->an + 1;
 	else
 		temp_b->an = 1;
