@@ -134,7 +134,7 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 			minmax(ps, ta);
 			while (ps->max_a->an != 1)
 			{
-				ra(ps, ta, 1);
+				(ps->max_a->an * 2 > ps->a_l) ? ra(ps, ta, 1) : rra(ps, ta, 1);
 				minmax(ps, ta);
 			}
 		}

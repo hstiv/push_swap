@@ -10,7 +10,7 @@ static int		cond(t_a *ta, t_a *temp, t_st *st)
 //			{
 //				ft_putchar(71);
 //				ft_putnbr(temp->an);
-//			}
+			// }
 			return (1);
 		}
 	}

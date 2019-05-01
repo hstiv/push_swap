@@ -10,11 +10,11 @@ ARG6="2 1 3 6 5 8"
 
 #RETURNS COUNT OF OPERATIONS IT TOOK TO SORT DEPENDING ON THE ARG.
 
-#./push_swap $ARG100 | wc -l
+./push_swap $ARG10 | wc -l
 
 #TAKES OPERATIONS PRODUCED BY PUSH_SWAP TO CHECKER AND DISPLAYS OK IF SORTED & KO IF NOT.
 
-time ./push_swap $ARG100 | ./checker -v $ARG100
+time ./push_swap $ARG10 | ./checker -v $ARG10
 
 #"I WROTE A STUPID ALGO IT WORKS BUT NOT EFFICIENT" - Tshilidzi Tshivhula
 
