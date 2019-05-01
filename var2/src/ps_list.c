@@ -26,7 +26,7 @@ t_a			*ta_list(void)
 		ta->bn = 0;
 		ta->num_a = 0;
 		ta->num_b = 0;
-		ta->oper = ft_strnew(1);
+		ta->oper = ft_memalloc(7000);
 		ta->op_b = 0;
 		ta->next = NULL;
 	}
