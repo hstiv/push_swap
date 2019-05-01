@@ -72,9 +72,9 @@ static void		hard_oper(t_a *ta, t_ps *ps, t_st *st)
 		}
 		else 
 		{
-			op_write(ta, " ra", ps->a_l - tmp->an - 1);
+			op_write(ta, " ra", ps->a_l - tmp->an);
 			op_write(ta, " pa", 1);
-			ta->op_b = ta->op_b + (ps->a_l - tmp->an);
+			ta->op_b = ta->op_b + (ps->a_l - tmp->an + 1);
 		}
 	}
 }

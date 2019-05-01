@@ -163,7 +163,6 @@ int					main(int c, char **s)
 	}
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
-//	numgive(ps, ta);
 	ft_sorter(ps, ta);
 	lst_free(ps, ta);
 	return (0);
