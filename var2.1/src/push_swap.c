@@ -162,7 +162,7 @@ int					main(int c, char **s)
 		ft_putstr("Error\n");
 		return (0);
 	}
-	if (!(ta = recorder(s, ta, ps, i)))
+	if (!(ta = recorder(s, ta, ps, i)) || !check_all(ta))
 		return (0);
 	numgive(ps, ta);
 	ft_sorter(ps, ta);
