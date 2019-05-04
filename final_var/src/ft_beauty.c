@@ -58,7 +58,7 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 		write(1, "\t\t\t\t|\n|", 7);
 		write(1, "________________________", 24);
 		write(1, "_______________________|\n", 25);
-		if (i == 2)
-			system("clear");
+//		if (i == 2)
+//			system("clear");
 	}
 }

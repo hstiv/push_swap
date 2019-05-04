@@ -59,6 +59,8 @@ static int				visual(t_ps *ps, t_a *ta, int i)
 		ps->len++;
 		ft_beauty(ps, ta, i);
 	}
+	if (ps->len == 0)
+		return (0);
 	ft_beauty(ps, ta, 3);
 	return (1);
 }
@@ -78,7 +80,7 @@ int						main(int c, char **s)
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
 	numgive(ps, ta);
-	if (!(visual(ps, ta, i)) || !check_all(ta))
+	if (!check_all(ta) || !(visual(ps, ta, i)))
 		return (0);
 	if (if_sort(ta) == 0)
 		ft_putstr("KO\n");
