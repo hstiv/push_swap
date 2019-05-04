@@ -57,12 +57,12 @@ t_st		*ft_stack(t_a *ta)
 		while (temp->prev)
 			temp = temp->prev;
 		stack->begin = temp;
-		while (temp->next->an)
+		while (temp->next && temp->next->an)
 			temp = temp->next;
 		stack->end_a = temp;
 		while (temp->prev)
 			temp = temp->prev;
-		while (temp->next->bn)
+		while (temp->next && temp->next->bn)
 			temp = temp->next;
 		stack->end_b = temp;
 	}

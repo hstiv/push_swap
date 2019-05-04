@@ -77,13 +77,13 @@ echo "✅  - ./checker MAX_INT+1(2147483648) (instr: none)"
 else
 echo "❌  - ./checker MAX_INT+1(2147483648) (instr: none)"
 fi
-printf "test 4: "
-#if [ "$(printf '' | ./checker -2147483649 2>&1 | grep "Error" | wc -l)" -eq 1 ]
-#then
-#echo "✅  - ./checker MIN_INT-1(2147483649) (instr: none)"
-#else
-#echo "❌  - ./checker MIN_INT-1(2147483649) (instr: none)"
-#fi
+# printf "test 4: "
+# if [ "$(printf '' | ./checker -2147483649 2>&1 | grep "Error" | wc -l)" -eq 1 ]
+# then
+# echo "✅  - ./checker MIN_INT-1(2147483649) (instr: none)"
+# else
+# echo "❌  - ./checker MIN_INT-1(2147483649) (instr: none)"
+# fi
 printf "test 5: "
 if [ "$(printf '' | ./checker | wc -l)" -eq 0 ]
 then
