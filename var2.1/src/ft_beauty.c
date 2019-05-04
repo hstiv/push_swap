@@ -19,19 +19,13 @@ static void			ft_data(t_a *temp, t_ps *ps)
 		ft_putchar('|');
 		(temp->a >= 0) ? (ft_putchar(' ')) : 0;
 		if (temp->an)
-		{
 			ft_putnbr(temp->a);
-//			ft_putchar('-');
-//			ft_putnbr(temp->num_a);
-		}
 		else
 			ft_putchar(' ');
 		ft_putstr("\t\t");
 		if (temp->bn)
 		{
 			ft_putnbr(temp->b);
-//			ft_putchar('-');
-//			ft_putnbr(temp->num_b);
 		}
 		else
 			ft_putchar(' ');
