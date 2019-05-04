@@ -90,7 +90,7 @@ static t_a				*min_oper(t_ps *ps, t_a *ta)
 	{
 		while (temp->bn > 0 && temp)
 		{
-			if (min->op_b > temp->op_b)
+			if (min->op_b > temp->op_b && temp->op_b > 0)
 				min = temp;
 			temp = temp->next;
 		}
@@ -110,7 +110,7 @@ static void			algo(t_ps *ps, t_a *ta)
 	operations(ta, ps);
 	min = min_oper(ps, tmp);
 	s = ft_strsplit(min->oper, ' ');
-	while (s[i] != NULL && !if_sort(ta))
+	while (s[i] != NULL)
 	{
 		sort_by_in(s[i], ps, ta);
 		i++;
@@ -120,6 +120,7 @@ static void			algo(t_ps *ps, t_a *ta)
 
 static void			ft_sorter(t_ps *ps, t_a *ta)
 {
+	int				i = 0;
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
@@ -128,7 +129,10 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 		if (!sort_a(ta))
 			sort_three(ta, ps);
 		while (ps->b_l > 0)
+		{
 			algo(ps, ta);
+			i++;
+		}
 		if (!sort_a(ta))
 		{
 			minmax(ps, ta);
