@@ -22,10 +22,7 @@ int					not_number(char *s)
 	while (s[n] != '\0' && s[n] != '\n')
 	{
 		if (!ft_isdigit(s[n]))
-		{
-			ft_putstr("Error");
 			return (0);
-		}
 		n++;
 	}
 	return (1);
@@ -38,7 +35,7 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 	tmp = ta;
 	while (s[i] != NULL)
 	{
-		if (not_number(s[i]) == 0 || s[i] )
+		if (not_number(s[i]) == 0)
 		{
 			ft_putstr("Error");
 			lst_free(ps, ta);

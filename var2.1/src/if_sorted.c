@@ -23,7 +23,7 @@ int			check_all(t_a *ta)
 		tmp2 = ta;
 		while (tmp2)
 		{
-			if (tmp2->a == tmp1->a || (long)tmp2->a >= 2147483648)
+			if ((tmp2->a == tmp1->a && tmp1->an != tmp2->an) || (long)tmp2->a >= 2147483649)
 			{
 				ft_putstr("Error\n");
 				return (0);
