@@ -53,21 +53,15 @@ static t_a		*magic_raw(t_a *raw, t_a *tmp, t_st *st, t_ps *ps)
 	i = tmp->num_b + 1;
 	while (i <= ps->b_l + ps->a_l)
 	{
-		/*if (temp->next && (cond(tmp, temp, st) == 1) && i == 0)
-		{
-			raw = temp;
-			i++;
-		}
-		if	(temp->next && (cond(tmp, temp, st) == 1) && i > 0)
-			if (temp->num_a - tmp->num_a < raw->b - tmp->num_a)
-				raw = temp;*/
 		while (temp)
 		{
 			if (temp->num_a == i)
+			{
 				raw = temp;
+				return (raw);
+			}
 			temp = temp->prev;
 		}
-//		temp = temp->prev;
 		temp = raw;
 		i++;
 	}
