@@ -63,6 +63,7 @@ t_a						*min_oper(t_ps *ps, t_a *ta)
 	t_a					*temp;
 
 	temp = ta;
+	min = ta;
 	while (temp->prev)
 		temp = temp->prev;
 	if (ps->b_l > 0)
