@@ -133,7 +133,7 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 			algo(ps, ta);
 			i++;
 		}
-		if (!sort_a(ta))
+		if (!if_sort(ta))
 		{
 			minmax(ps, ta);
 			while (ps->max_a->an != 1)
@@ -164,6 +164,7 @@ int					main(int c, char **s)
 	}
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
+	numgive(ps, ta);
 	ft_sorter(ps, ta);
 	lst_free(ps, ta);
 	return (0);

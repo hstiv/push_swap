@@ -16,17 +16,21 @@ void			rra(t_ps *ps, t_a *ta, int i)
 {
 	t_a			*temp;
 	int			u;
+	int			num;
 
 	temp = ta;
 	while (temp->prev)
 		temp = temp->prev;
 	u = temp->a;
+	num = temp->num_a;
 	while (temp->next && temp->next->an)
 	{
 		temp->a = temp->next->a;
+		temp->num_a = temp->next->num_a;
 		temp = temp->next;
 	}
 	temp->a = u;
+	temp->num_a = num;
 	if (i == 1)
 	{
 		ps->len++;
@@ -49,17 +53,21 @@ void			rrb(t_ps *ps, t_a *ta, int i)
 {
 	t_a			*temp;
 	int			u;
+	int			num;
 
 	temp = ta;
 	while (temp->prev)
 		temp = temp->prev;
 	u = temp->b;
+	num = temp->num_b;
 	while (temp->next && temp->next->bn)
 	{
 		temp->b = temp->next->b;
+		temp->num_b = temp->next->num_b;
 		temp = temp->next;
 	}
 	temp->b = u;
+	temp->num_b = num;
 	if (i == 1)
 	{
 		ps->len++;

@@ -75,6 +75,7 @@ int					main(int c, char **s)
 		i++;
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
+	numgive(ps, ta);
 	if (!(visual(ps, ta, i)))
 		return (0);
 	if (if_sort(ta) == 0)

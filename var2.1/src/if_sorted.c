@@ -19,7 +19,7 @@ int			sort_b(t_a *ta)
 	temp = ta;
 	while (temp->prev)
 		temp = temp->prev;
-	while (temp->next && temp->bn)
+	while (temp && temp->bn)
 	{
 		if (temp->prev && temp->bn && temp->b < temp->prev->b)
 			return (0);
@@ -35,7 +35,7 @@ int			sort_a(t_a *ta)
 	temp = ta;
 	while (temp->prev)
 		temp = temp->prev;
-	while (temp->next)
+	while (temp)
 	{
 		if (temp->prev && temp->a > temp->prev->a)
 			return (0);
@@ -53,7 +53,7 @@ int			if_sort(t_a *ta)
 		temp = temp->prev;
 	if (temp->bn != 0)
 		return (0);
-	while (temp->next)
+	while (temp)
 	{
 		if (temp->prev && temp->a > temp->prev->a)
 			return (0);
