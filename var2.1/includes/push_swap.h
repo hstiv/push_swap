@@ -55,10 +55,10 @@ typedef struct		s_ps
 
 void				sort_three(t_a *ta, t_ps *ps);
 t_a					*min_oper(t_ps *ps, t_a *ta);
-void	    		op_clr(t_a *ta);
-void	    		op_write(t_a *ta, char *s, int i);
+void				op_clr(t_a *ta);
+void				op_write(t_a *ta, char *s, int i);
 int					check_all(t_a *ta);
-void         		operations(t_a *ta, t_ps *ps);
+void				operations(t_a *ta, t_ps *ps);
 void				numgive(t_ps *ps, t_a *ta);
 int					median(t_a *ta, t_ps *ps);
 void				rev_rotater(t_st *st, t_ps *ps, t_a *ta);
