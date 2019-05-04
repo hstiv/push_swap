@@ -27,7 +27,8 @@ void				lst_free(t_ps *ps, t_a *ta)
 	}
 	if (ta)
 	{
-		free(ta->oper);
+	    if (ta->oper)
+		    free(ta->oper);
 		free(ta);
 	}
 	if (ps)

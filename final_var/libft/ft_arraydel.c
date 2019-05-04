@@ -14,9 +14,10 @@
 
 void	ft_arraydel(void **array)
 {
-	if (array && *array)
-		if (*(array + 1))
-			ft_arraydel(array + 1);
-	if (array)
-		ft_memdel(&*array);
+	void **tmp;
+
+	tmp = array;
+	while (*array)
+		free(*array++);
+	free(tmp);
 }

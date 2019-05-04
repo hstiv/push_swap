@@ -57,6 +57,7 @@ t_a					*sub_rec(char **s, t_a *ta, t_ps *ps)
 	return (ta);
 }
 
+
 t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 {
 	t_a				*tmp;
@@ -68,7 +69,7 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 		str = ft_strsplit(s[i], 32);
 		if (!(tmp = sub_rec(str, tmp, ps)))
 		{
-			lst_free(ps, ta);
+			ft_arraydel((void **) str);
 			return (NULL);
 		}
 		ft_arraydel((void **)str);
@@ -82,3 +83,4 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 	}
 	return (ta);
 }
+

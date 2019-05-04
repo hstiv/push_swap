@@ -20,7 +20,6 @@ void				numgive(t_ps *ps, t_a *ta)
 
 	while (ta->prev)
 		ta = ta->prev;
-	tmp = ta;
 	a = 2;
 	minmax(ps, ta);
 	i = ps->min_a->a + 1;
