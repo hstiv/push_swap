@@ -16,27 +16,25 @@ static void			ft_data(t_a *temp, t_ps *ps)
 {
 	while (temp != NULL)
 	{
-		ft_putchar('|');
-		(temp->a >= 0) ? (ft_putchar(' ')) : 0;
+		write(1, "|", 1);
+		(temp->a >= 0) ? (write(1, " ", 1)) : 0;
 		if (temp->an)
 			ft_putnbr(temp->a);
 		else
-			ft_putchar(' ');
-		ft_putstr("\t\t");
+			write(1, " ", 1);
+		write(1, "\t\t", 2);
 		if (temp->bn)
-		{
 			ft_putnbr(temp->b);
-		}
 		else
-			ft_putchar(' ');
+			write(1, " ", 1);
 		if (temp->prev == NULL)
 		{
-			ft_putstr("\t\t\t       |");
+			write(1, "\t\t\t       |", 11);
 			ft_putnbr(ps->len);
 		}
 		else
-			ft_putstr("\t\t\t        ");
-		ft_putstr("|\n");
+			write(1, "\t\t\t        ", 11);
+		write(1, "|\n", 2);
 		temp = temp->prev;
 	}
 }
@@ -48,17 +46,19 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 	temp = ta;
 	while (temp->next)
 		temp = temp->next;
-	if (i == 2)
+	if (i == 2 || i == 3)
 	{
-		ft_putstr("________________________");
-		ft_putstr("_________________________\n");
+		write(1, "________________________", 24);
+		write(1, "_________________________\n", 26);
 		ft_data(temp, ps);
-		ft_putstr("|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|");
+		write(1, "|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|", 23);
 		ft_putnbr(ps->a_l);
-		ft_putstr("\t\t");
+		write(1, "\t\t", 2);
 		ft_putnbr(ps->b_l);
-		ft_putstr("\t\t\t\t|\n|");
-		ft_putstr("________________________");
-		ft_putstr("_______________________|\n");
+		write(1, "\t\t\t\t|\n|", 7);
+		write(1, "________________________", 24);
+		write(1, "_______________________|\n", 25);
+		if (i == 2)
+			system("clear");
 	}
 }

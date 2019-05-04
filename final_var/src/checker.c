@@ -54,10 +54,12 @@ static int				visual(t_ps *ps, t_a *ta, int i)
 			lst_free(ps, ta);
 			return (0);
 		}
+		if (line && *line)
+			free(line);
 		ps->len++;
 		ft_beauty(ps, ta, i);
 	}
-	free(line);
+	ft_beauty(ps, ta, 3);
 	return (1);
 }
 
