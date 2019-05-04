@@ -12,6 +12,29 @@
 
 #include "push_swap.h"
 
+int			check_all(t_a *ta)
+{
+	t_a		*tmp1;
+	t_a		*tmp2;
+
+	tmp1 = ta;
+	while (tmp1)
+	{
+		tmp2 = ta;
+		while (tmp2)
+		{
+			if (tmp2->a == tmp1->a || (long)tmp2->a >= 2147483648)
+			{
+				ft_putstr("Error\n");
+				return (0);
+			}
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (1);
+}
+
 int			sort_b(t_a *ta)
 {
 	t_a		*temp;

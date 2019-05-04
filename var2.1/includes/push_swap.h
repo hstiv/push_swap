@@ -53,6 +53,7 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+int					check_all(t_a *ta);
 void         		operations(t_a *ta, t_ps *ps);
 void				numgive(t_ps *ps, t_a *ta);
 int					median(t_a *ta, t_ps *ps);

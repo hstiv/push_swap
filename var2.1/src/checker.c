@@ -76,7 +76,7 @@ int					main(int c, char **s)
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
 	numgive(ps, ta);
-	if (!(visual(ps, ta, i)))
+	if (!(visual(ps, ta, i)) || !check_all(ta))
 		return (0);
 	if (if_sort(ta) == 0)
 		ft_putstr("KO\n");

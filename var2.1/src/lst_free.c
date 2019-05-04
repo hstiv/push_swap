@@ -38,7 +38,7 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 	tmp = ta;
 	while (s[i] != NULL)
 	{
-		if (not_number(s[i]) == 0)
+		if (not_number(s[i]) == 0 || s[i] )
 		{
 			ft_putstr("Error");
 			lst_free(ps, ta);

@@ -16,9 +16,9 @@ ARG11="1 2 3 4 5 6 7 8 9 10"
 
 #TAKES OPERATIONS PRODUCED BY PUSH_SWAP TO CHECKER AND DISPLAYS OK IF SORTED & KO IF NOT.
 
-#time ./push_swap $ARG100 | ./checker $ARG100
+time ./push_swap $ARG100 | ./checker $ARG100
 
-valgrind ./push_swap $ARG6
+#valgrind ./push_swap $ARG6
 
 #"I WROTE A STUPID ALGO IT WORKS BUT NOT EFFICIENT" - Tshilidzi Tshivhula
 
