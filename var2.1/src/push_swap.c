@@ -12,43 +12,6 @@
 
 #include "push_swap.h"
 
-/*static int				ft_presort(t_ps *ps, t_a *ta)
-{
-	int					i;
-	t_a					*tmp;
-
-	i = 0;
-	while (ta->prev)
-		ta = ta->prev;
-	tmp = ta;
-	while (tmp->next)
-	{
-		if (tmp->a < tmp->next->a)
-			i++;
-		tmp = tmp->next;
-	}
-	if (i > 1)
-		return (0);
-	return (1);
-}*/
-
-static void				sort_three(t_a *ta, t_ps *ps)
-{
-	t_st				*st;
-
-	st = ft_stack(ta);
-	minmax(ps, ta);
-	while (ps->max_a->an != 1 && !sort_a(ta))
-	{
-		ra(ps, ta, 1);
-		minmax(ps, ta);
-		st_reboot(st);
-	}
-	if (st->end_a->a > st->end_a->prev->a)
-		sa(ps, ta, 1);
-	free(st);
-}
-
 static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 {
 	if (ft_strcmp(line, "sa") == 0)
@@ -78,32 +41,12 @@ static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 	return (1);
 }
 
-static t_a				*min_oper(t_ps *ps, t_a *ta)
+static void				algo(t_ps *ps, t_a *ta)
 {
+	t_a					*tmp;
 	t_a					*min;
-	t_a					*temp;
-
-	temp = ta;
-	while (temp->prev)
-		temp = temp->prev;
-	if (ps->b_l > 0)
-	{
-		while (temp->bn > 0 && temp)
-		{
-			if (min->op_b > temp->op_b && temp->op_b > 0)
-				min = temp;
-			temp = temp->next;
-		}
-	}
-	return (min);
-}
-
-static void			algo(t_ps *ps, t_a *ta)
-{
-	t_a				*tmp;
-	t_a				*min;
-	char			**s;
-	int				i;
+	char				**s;
+	int					i;
 
 	i = 0;
 	tmp = ta;
@@ -118,9 +61,8 @@ static void			algo(t_ps *ps, t_a *ta)
 	ft_arraydel((void **)s);
 }
 
-static void			ft_sorter(t_ps *ps, t_a *ta)
+static void				ft_sorter(t_ps *ps, t_a *ta)
 {
-	int				i = 0;
 	minmax(ps, ta);
 	if (!if_sort(ta))
 	{
@@ -129,10 +71,7 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 		if (!sort_a(ta))
 			sort_three(ta, ps);
 		while (ps->b_l > 0)
-		{
 			algo(ps, ta);
-			i++;
-		}
 		if (!if_sort(ta))
 		{
 			minmax(ps, ta);
@@ -145,11 +84,11 @@ static void			ft_sorter(t_ps *ps, t_a *ta)
 	}
 }
 
-int					main(int c, char **s)
+int						main(int c, char **s)
 {
-	t_ps			*ps;
-	t_a				*ta;
-	int				i;
+	t_ps				*ps;
+	t_a					*ta;
+	int					i;
 
 	i = 1;
 	if (!(ta = ta_list()))

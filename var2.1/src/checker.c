@@ -41,9 +41,9 @@ static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 	return (1);
 }
 
-static int			visual(t_ps *ps, t_a *ta, int i)
+static int				visual(t_ps *ps, t_a *ta, int i)
 {
-	char			*line;
+	char				*line;
 
 	ft_beauty(ps, ta, i);
 	while (get_next_line(0, &line) > 0)
@@ -61,11 +61,11 @@ static int			visual(t_ps *ps, t_a *ta, int i)
 	return (1);
 }
 
-int					main(int c, char **s)
+int						main(int c, char **s)
 {
-	t_ps			*ps;
-	t_a				*ta;
-	int				i;
+	t_ps				*ps;
+	t_a					*ta;
+	int					i;
 
 	i = 1;
 	ps = ps_list();

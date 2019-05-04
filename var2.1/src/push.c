@@ -53,7 +53,7 @@ void			pa(t_ps *ps, t_a *ta, int i)
 static void		pb_maker(t_ps *ps, t_a *temp, t_a *temp_b)
 {
 	int			n;
-	
+
 	while (temp->next && temp->next->an != 0)
 		temp = temp->next;
 	n = temp->a;
@@ -67,7 +67,7 @@ static void		pb_maker(t_ps *ps, t_a *temp, t_a *temp_b)
 	if (temp_b->prev)
 		temp_b->bn = temp_b->prev->bn + 1;
 	else
-		temp_b->bn = 1;	
+		temp_b->bn = 1;
 	ps->a_l--;
 	ps->b_l++;
 }

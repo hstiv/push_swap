@@ -9,8 +9,8 @@ SRC = src/swap.c src/push.c src/rotate.c src/rev_rotate.c src/ft_beauty.c \
 
 SRC1 = src/swap.c src/push.c src/rotate.c src/rev_rotate.c src/ft_beauty.c \
 	src/ps_list.c src/get_next_line.c src/if_sorted.c src/lst_free.c \
-	src/push_swap.c src/minmax.c src/srr_maker.c src/numgive.c src/operations.c \
-	$(LFT)
+	src/push_swap.c src/minmax.c src/numgive.c src/operations.c $(LFT) \
+	src/tools.c
 
 WWW = -Wall -Wextra -Werror
 
