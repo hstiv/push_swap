@@ -16,9 +16,9 @@ static void		condition(t_ps *ps, int i)
 {
 	ps->len++;
 	if (i == 1)
-		ft_putstr("ra\n");
+		write(1, "ra\n", 3);
 	if (i == 2)
-		ft_putstr("rb\n");
+		write(1, "rb\n", 3);
 }
 
 void			ra(t_ps *ps, t_a *ta, int i)
@@ -53,7 +53,7 @@ void			rr(t_ps *ps, t_a *ta, int i)
 	rb(ps, ta, 0);
 	if (i == 1)
 	{
-		ft_putstr("rr\n");
+		write(1, "rr\n", 3);
 		ps->len++;
 	}
 }

@@ -46,7 +46,7 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 	temp = ta;
 	while (temp->next)
 		temp = temp->next;
-	if (i == 2 || i == 3)
+	if (i == 2 || ps->i >= 1)
 	{
 		write(1, "________________________", 24);
 		write(1, "_________________________\n", 26);
@@ -58,7 +58,7 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 		write(1, "\t\t\t\t|\n|", 7);
 		write(1, "________________________", 24);
 		write(1, "_______________________|\n", 25);
-//		if (i == 2)
-//			system("clear");
+		if (ps->i == 2 && i == 3)
+			system("clear");
 	}
 }

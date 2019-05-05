@@ -12,19 +12,33 @@
 
 #include "push_swap.h"
 
-int			check_all(t_a *ta)
+static int			chmax(t_a *ta)
 {
-	t_a		*tmp1;
-	t_a		*tmp2;
+	long long int	check;
+
+	check = ta->a * 10;
+	if (check / 10 != ta->a)
+		return (0);
+	return (1);
+}
+
+int					check_all(t_a *ta)
+{
+	t_a				*tmp1;
+	t_a				*tmp2;
 
 	tmp1 = ta;
 	while (tmp1)
 	{
 		tmp2 = ta;
+		if (chmax(tmp1) == 0)
+		{
+			ft_putstr("Error\n");
+			return (0);
+		}
 		while (tmp2)
 		{
-			if ((tmp2->a == tmp1->a && tmp1->an != tmp2->an)
-						|| (long)tmp2->a >= 2147483649)
+			if (tmp2->a == tmp1->a && tmp1->an != tmp2->an)
 			{
 				ft_putstr("Error\n");
 				return (0);
@@ -36,9 +50,9 @@ int			check_all(t_a *ta)
 	return (1);
 }
 
-int			sort_b(t_a *ta)
+int					sort_b(t_a *ta)
 {
-	t_a		*temp;
+	t_a				*temp;
 
 	temp = ta;
 	while (temp->prev)
@@ -52,9 +66,9 @@ int			sort_b(t_a *ta)
 	return (1);
 }
 
-int			sort_a(t_a *ta)
+int					sort_a(t_a *ta)
 {
-	t_a		*temp;
+	t_a				*temp;
 
 	temp = ta;
 	while (temp->prev)
@@ -68,9 +82,9 @@ int			sort_a(t_a *ta)
 	return (1);
 }
 
-int			if_sort(t_a *ta)
+int					if_sort(t_a *ta)
 {
-	t_a		*temp;
+	t_a				*temp;
 
 	temp = ta;
 	while (temp->prev)

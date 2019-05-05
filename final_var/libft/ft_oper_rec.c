@@ -1,45 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_free.c                                         :+:      :+:    :+:   */
+/*   ft_oper_rec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 14:59:12 by hstiv             #+#    #+#             */
-/*   Updated: 2019/04/04 14:59:14 by hstiv            ###   ########.fr       */
+/*   Created: 2019/05/04 16:33:30 by hstiv             #+#    #+#             */
+/*   Updated: 2019/05/04 16:33:32 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static void			oper_freeder(t_a *ta)
+void		del_oper(char *s)
 {
-	free(ta->oper);
-	free(ta->ra_oper);
-	free(ta->rb_oper);
-	free(ta->rra_oper);
-	free(ta->rrb_oper);
+	int		i;
+
+	i = 0;
+	while (s[i + 1] != '\0')
+		i++;
+	while (s[i] != 32)
+	{
+		s[i] = '\0';
+		i--;
+	}
+	s[i] = '\0';
 }
 
-void				lst_free(t_ps *ps, t_a *ta)
+void		ft_operclr(char *s)
 {
-	while (ta && ta->prev)
-		ta = ta->prev;
-	while (ta && ta->next)
+	int		i;
+
+	i = 0;
+	while (i < 7000)
 	{
-		ta = ta->next;
-		if (ta->prev)
-		{
-			oper_freeder(ta->prev);
-			free(ta->prev);
-		}
+		s[i] = 0;
+		i++;
 	}
-	if (ta)
+}
+
+void		ft_oper_rec(char *s1, char *s2, int l)
+{
+	while (l > 0)
 	{
-		if (ta->oper)
-			oper_freeder(ta);
-		free(ta);
+		if (s1[0] != '\0')
+			ft_strcat(s1, " ");
+		ft_strcat(s1, s2);
+		l--;
 	}
-	if (ps)
-		free(ps);
+	if (ft_count_char(s2, 32) > 1)
+		ft_operclr(s2);
 }

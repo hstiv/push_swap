@@ -34,7 +34,7 @@ void			rra(t_ps *ps, t_a *ta, int i)
 	if (i == 1)
 	{
 		ps->len++;
-		ft_putstr("rra\n");
+		write(1, "rra\n", 4);
 	}
 }
 
@@ -44,7 +44,7 @@ void			rrr(t_ps *ps, t_a *ta, int i)
 	rrb(ps, ta, 0);
 	if (i == 1)
 	{
-		ft_putstr("rrr\n");
+		write(1, "rrr\n", 4);
 		ps->len++;
 	}
 }
@@ -71,6 +71,6 @@ void			rrb(t_ps *ps, t_a *ta, int i)
 	if (i == 1)
 	{
 		ps->len++;
-		ft_putstr("rrb\n");
+		write(1, "rrb\n", 4);
 	}
 }

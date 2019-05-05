@@ -57,11 +57,11 @@ static int				visual(t_ps *ps, t_a *ta, int i)
 		if (line && *line)
 			free(line);
 		ps->len++;
-		ft_beauty(ps, ta, i);
+		ft_beauty(ps, ta, 3);
 	}
 	if (ps->len == 0)
 		return (0);
-	ft_beauty(ps, ta, 3);
+	ft_beauty(ps, ta, i);
 	return (1);
 }
 
@@ -75,8 +75,12 @@ int						main(int c, char **s)
 	ps = ps_list();
 	if (!ps || !(ta = ta_list()) || c < 2)
 		return (0);
-	if (ft_strcmp(s[i], "-v") == 0)
-		i++;
+	if (s[i][0] == '-' && s[i][1] == 'v')
+	{
+		if (s[i][2] != '\0' && s[i][2] == 'c')
+			ps->i = 1;
+		ps->i += i++;
+	}
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
 	numgive(ps, ta);

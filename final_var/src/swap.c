@@ -32,7 +32,7 @@ void		sa(t_ps *ps, t_a *ta, int i)
 	}
 	if (i == 1)
 	{
-		ft_putstr("sa\n");
+		write(1, "sa\n", 3);
 		ps->len++;
 	}
 }
@@ -44,7 +44,7 @@ void		ss(t_ps *ps, t_a *ta, int i)
 	if (i == 0)
 	{
 		ps->len++;
-		ft_putstr("ss\n");
+		write(1, "ss\n", 3);
 	}
 }
 
@@ -68,7 +68,7 @@ void		sb(t_ps *ps, t_a *ta, int i)
 	}
 	if (i == 1)
 	{
-		ft_putstr("sb\n");
+		write(1, "sb\n", 3);
 		ps->len++;
 	}
 }

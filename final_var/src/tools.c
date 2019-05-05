@@ -21,23 +21,56 @@ void					op_clr(t_a *ta)
 	while (i < 7000)
 	{
 		ta->oper[i] = 0;
+		ta->ra_oper[i] = 0;
+		ta->rb_oper[i] = 0;
+		ta->rra_oper[i] = 0;
+		ta->rrb_oper[i] = 0;
 		i++;
+	}
+}
+
+static void				optim_oper(t_a *ta)
+{
+	while (ft_count_char(ta->ra_oper, 32) / 2 > 1
+			&& ft_count_char(ta->rb_oper, 32) / 2 > 1)
+	{
+		ft_oper_rec(ta->oper, "rr", 1);
+		del_oper(ta->ra_oper);
+		del_oper(ta->rb_oper);
+	}
+	while (ft_count_char(ta->rra_oper, 32) / 2 > 1
+			&& ft_count_char(ta->rrb_oper, 32) / 2 > 1)
+	{
+		ft_oper_rec(ta->oper, "rrr", 1);
+		del_oper(ta->rra_oper);
+		del_oper(ta->rrb_oper);
 	}
 }
 
 void					op_write(t_a *ta, char *s, int i)
 {
-	int					l;
-
-	l = i;
 	ta->op_b += i;
-	while (l > 0)
+	if (ft_strequ(s, "ra") == 1)
+		ft_oper_rec(ta->ra_oper, "ra", i);
+	else if (ft_strequ(s, "rb") == 1)
+		ft_oper_rec(ta->ra_oper, "rb", i);
+	else if (ft_strequ(s, "rra") == 1)
+		ft_oper_rec(ta->ra_oper, "rra", i);
+	else if (ft_strequ(s, "rrb") == 1)
+		ft_oper_rec(ta->ra_oper, "rrb", i);
+	else if (ft_strequ(s, "pa") == 1)
 	{
-		if (ta->oper[0] != '\0')
-			ft_strcat(ta->oper, " ");
-		ft_strcat(ta->oper, s);
-		l--;
+		if (ta->rb_oper[0] != '\0')
+			ft_oper_rec(ta->oper, ta->rb_oper, 1);
+		else if (ta->rrb_oper[0] != '\0')
+			ft_oper_rec(ta->oper, ta->rrb_oper, 1);
+		if (ta->ra_oper[0] != '\0')
+			ft_oper_rec(ta->oper, ta->ra_oper, 1);
+		else if (ta->rra_oper[0] != '\0')
+			ft_oper_rec(ta->oper, ta->rra_oper, 1);
+		ft_oper_rec(ta->oper, "pa", i);
 	}
+	optim_oper(ta);
 }
 
 void					sort_three(t_a *ta, t_ps *ps)

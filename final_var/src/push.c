@@ -45,7 +45,7 @@ void			pa(t_ps *ps, t_a *ta, int i)
 		pa_maker(ps, temp, temp_b);
 	if (i == 1)
 	{
-		ft_putstr("pa\n");
+		write(1, "pa\n", 3);
 		ps->len++;
 	}
 }
@@ -83,7 +83,7 @@ void			pb(t_ps *ps, t_a *ta, int i)
 		pb_maker(ps, temp, temp_b);
 	if (i == 1)
 	{
-		ft_putstr("pb\n");
+		write(1, "pb\n", 3);
 		ps->len++;
 	}
 }

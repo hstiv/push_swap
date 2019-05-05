@@ -27,6 +27,10 @@ t_a			*ta_list(void)
 		ta->num_a = 0;
 		ta->num_b = 0;
 		ta->oper = ft_memalloc(7000);
+		ta->ra_oper = ft_memalloc(7000);
+		ta->rra_oper = ft_memalloc(7000);
+		ta->rb_oper = ft_memalloc(7000);
+		ta->rrb_oper = ft_memalloc(7000);
 		ta->op_b = 0;
 		ta->next = NULL;
 	}
@@ -77,6 +81,7 @@ t_ps		*ps_list(void)
 	if (ps)
 	{
 		ps->a_l = 0;
+		ps->i = 0;
 		ps->b_l = 0;
 		ps->len = 0;
 		ps->max_a = NULL;

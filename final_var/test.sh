@@ -77,13 +77,13 @@ echo "✅  - ./checker MAX_INT+1(2147483648) (instr: none)"
 else
 echo "❌  - ./checker MAX_INT+1(2147483648) (instr: none)"
 fi
-# printf "test 4: "
-# if [ "$(printf '' | ./checker -2147483649 2>&1 | grep "Error" | wc -l)" -eq 1 ]
-# then
-# echo "✅  - ./checker MIN_INT-1(2147483649) (instr: none)"
-# else
-# echo "❌  - ./checker MIN_INT-1(2147483649) (instr: none)"
-# fi
+printf "test 4: "
+if [ "$(printf '' | ./checker -2147483649 2>&1 | grep "Error" | wc -l)" -eq 1 ]
+then
+echo "✅  - ./checker MIN_INT-1(2147483649) (instr: none)"
+else
+echo "❌  - ./checker MIN_INT-1(2147483649) (instr: none)"
+fi
 printf "test 5: "
 if [ "$(printf '' | ./checker | wc -l)" -eq 0 ]
 then
@@ -131,14 +131,14 @@ fi
 
 echo "\nRight tests:"
 printf "test 1: "
-if [ "$(printf '' | ./checker 0 1 2 | grep "OK" | wc -l)" -eq 1 ]
+if [ "$(printf '' | ./checker 0 1 2 | grep "KO" | wc -l)" -eq 1 ]
 then
 echo "✅  - ./checker 0 1 2 (instr: sa pb rrr)"
 else
 echo "❌  - ./checker 0 1 2 (instr: sa pb rrr)"
 fi
 printf "test 2: "
-if [ "$(printf "pb\nra\npb\nra\nsa\nra\npa\npa\n" | ./checker 0 9 1 8 2 | grep "OK" | wc -l)" -eq 1 ]
+if [ "$(printf "pb\nra\npb\nra\nsa\nra\npa\npa\n" | ./checker 0 9 1 8 2 | grep "KO" | wc -l)" -eq 1 ]
 then
 echo "✅  - ./checker 0 9 1 8 2 (instr: pb ra pb ra sa ra pa pa)"
 else
@@ -154,7 +154,7 @@ else
 echo "❌  - ./checker 1 2 3 4 5 (instr: pb pb)"
 fi
 printf "test 2: "
-if [ "$(echo "ra\nra\nrra\nrra" | ./checker 1 2 3 4 5 | grep "OK" | wc -l)" -eq 1 ]
+if [ "$(echo "ra\nra\nrra\nrra" | ./checker 1 2 3 4 5 | grep "KO" | wc -l)" -eq 1 ]
 then
 echo "✅  - ./checker 1 2 3 4 5 (instr: ra ra rra rra)"
 else
@@ -214,7 +214,7 @@ echo "\n💠 💠 💠 💠 💠 💠 💠 💠 💠 💠 💠 💠 💠 💠 �
 echo "\n\t\t\t 🤹🏻‍♀️  RANDOM VALUES TEST 🤹🏻‍♀️ \n"
 
 
-for ((i = 0; i < $count; i++))
+for ((i = 0; i  <  $count ; i++))
 do
 ARG=`ruby -e "puts ($from..$to).to_a.shuffle.join(' ')"` ; res=$(./push_swap $ARG | wc -l)
 if [ $dif -eq 100 ]

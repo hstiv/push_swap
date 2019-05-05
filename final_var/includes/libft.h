@@ -24,6 +24,9 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				del_oper(char *s);
+void				ft_operclr(char *s);
+void				ft_oper_rec(char *s1, char *s2, int l);
 int					ft_strisdig(char *s);
 size_t				ft_stacklen(int *a);
 void				ft_arraydel(void **array);

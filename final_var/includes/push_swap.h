@@ -31,6 +31,10 @@ typedef struct		s_a
 	int				op_b;
 	int				num_b;
 	char			*oper;
+	char			*ra_oper;
+	char			*rra_oper;
+	char			*rb_oper;
+	char			*rrb_oper;
 	struct s_a		*next;
 	struct s_a		*prev;
 }					t_a;
@@ -47,6 +51,7 @@ typedef struct		s_ps
 	int				a_l;
 	int				b_l;
 	int				len;
+	int				i;
 	t_a				*max_a;
 	t_a				*min_a;
 	t_a				*max_b;
