@@ -22,18 +22,18 @@ static void			ft_data(t_a *temp, t_ps *ps)
 			ft_putnbr(temp->a);
 		else
 			write(1, " ", 1);
-		write(1, "\t\t", 2);
+		write(1, "\t\t\t", 2);
 		if (temp->bn)
 			ft_putnbr(temp->b);
 		else
 			write(1, " ", 1);
 		if (temp->prev == NULL)
 		{
-			write(1, "\t\t\t       |", 11);
+			write(1, "\t\t       |", 11);
 			ft_putnbr(ps->len);
 		}
 		else
-			write(1, "\t\t\t        ", 11);
+			write(1, "\t\t        ", 11);
 		write(1, "|\n", 2);
 		temp = temp->prev;
 	}
@@ -51,11 +51,11 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 		write(1, "________________________", 24);
 		write(1, "_________________________\n", 26);
 		ft_data(temp, ps);
-		write(1, "|_\t\t_\t\t\t\t|\n|a\t\tb\t\t\t\t|\n|", 23);
+		write(1, "|_\t\t_\t\t\t\t|\n|a\t\t\tb\t\t\t|\n|", 23);
 		ft_putnbr(ps->a_l);
-		write(1, "\t\t", 2);
+		write(1, "\t\t\t", 2);
 		ft_putnbr(ps->b_l);
-		write(1, "\t\t\t\t|\n|", 7);
+		write(1, "\t\t\t|\n|", 7);
 		write(1, "________________________", 24);
 		write(1, "_______________________|\n", 25);
 		if (ps->i == 2 && i == 3)

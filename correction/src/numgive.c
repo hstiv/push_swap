@@ -12,18 +12,21 @@
 
 #include "push_swap.h"
 
+static void			nummer(t_ps *ps, int *i, t_a *ta)
+{
+	minmax(ps, ta);
+	*i = ps->min_a->a + 1;
+	ps->min_a->num_a = 1;
+}
+
 void				numgive(t_ps *ps, t_a *ta)
 {
 	int				i;
 	int				a;
 	t_a				*tmp;
 
-	while (ta->prev)
-		ta = ta->prev;
 	a = 2;
-	minmax(ps, ta);
-	i = ps->min_a->a + 1;
-	ps->min_a->num_a = 1;
+	nummer(ps, &i, ta);
 	while (i <= ps->max_a->a)
 	{
 		tmp = ta;

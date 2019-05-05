@@ -19,7 +19,7 @@ int					not_number(char *s)
 	n = 0;
 	if (s[n] == '-')
 		n++;
-	while (s[n] != '\0' && s[n] != '\n')
+	while (s[n] != '\0' && s[n] != ' ')
 	{
 		if (!ft_isdigit(s[n]))
 			return (0);
@@ -36,31 +36,40 @@ static int			smax(char *s)
 	return (1);
 }
 
+static int			mass_len(char **s)
+{
+	int				i;
+
+	i = 0;
+	while (s[i] != NULL)
+		i++;
+	return (i);
+}
+
 t_a					*sub_rec(char **s, t_a *ta, t_ps *ps)
 {
 	t_a				*tmp;
 	int				i;
 
 	tmp = ta;
-	i = 0;
-	while (s[i] != NULL)
+	i = mass_len(s);
+	while (i--)
 	{
 		if (not_number(s[i]) == 0 || !smax(s[i]))
 		{
-			ft_putstr("Error: bad argument\n");
+			ft_putstr("Error\n");
 			lst_free(ps, ta);
 			return (NULL);
 		}
 		tmp->a = ft_atoi(s[i]);
 		tmp->an = (tmp->prev) ? (tmp->prev->an + 1) : (1);
 		ps->a_l++;
-		if (tmp->next == NULL && s[i + 1] != NULL && s[i] != NULL)
+		if (tmp->next == NULL && i > 0)
 		{
 			tmp->next = ta_list();
 			tmp->next->prev = tmp;
 		}
 		tmp = tmp->next;
-		i++;
 	}
 	return (ta);
 }
@@ -69,9 +78,12 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 {
 	t_a				*tmp;
 	char			**str;
+	int				a;
 
 	tmp = ta;
-	while (s[i] != NULL)
+	a = i;
+	i = mass_len(s);
+	while (i-- > a)
 	{
 		str = ft_strsplit(s[i], 32);
 		if (!(tmp = sub_rec(str, tmp, ps)))
@@ -80,13 +92,13 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 			return (NULL);
 		}
 		ft_arraydel((void **)str);
-		if (tmp->next == NULL && s[i + 1] != NULL && s[i] != NULL)
+		if (tmp->next == NULL && i >= a)
 		{
 			tmp->next = ta_list();
 			tmp->next->prev = tmp;
 		}
 		tmp = tmp->next;
-		i++;
 	}
+	ft_dellast(ta);
 	return (ta);
 }

@@ -39,11 +39,11 @@ t_a			*ta_list(void)
 
 void		st_reboot(t_st *st)
 {
-	while (st->end_a->an == 0)
+	while (st->end_a->prev && st->end_a->an == 0)
 		st->end_a = st->end_a->prev;
 	while (st->end_a->next && st->end_a->next->an != 0)
 		st->end_a = st->end_a->next;
-	while (st->end_b->bn == 0)
+	while (st->end_b->prev && st->end_b->bn == 0)
 		st->end_b = st->end_b->prev;
 	while (st->end_b->next && st->end_b->next->bn != 0)
 		st->end_b = st->end_b->next;

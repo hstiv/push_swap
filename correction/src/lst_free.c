@@ -12,6 +12,25 @@
 
 #include "push_swap.h"
 
+void				ft_dellast(t_a *ta)
+{
+	t_a				*tmp;
+
+	tmp = ta;
+	while (tmp && tmp->an != 0)
+		tmp = tmp->next;
+	if (tmp)
+	{
+		tmp->prev->next = NULL;
+		free(tmp->oper);
+		free(tmp->ra_oper);
+		free(tmp->rb_oper);
+		free(tmp->rra_oper);
+		free(tmp->rrb_oper);
+		free(tmp);
+	}
+}
+
 static void			oper_freeder(t_a *ta)
 {
 	free(ta->oper);

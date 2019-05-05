@@ -58,6 +58,7 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+void				ft_dellast(t_a *ta);
 void				sort_three(t_a *ta, t_ps *ps);
 t_a					*min_oper(t_ps *ps, t_a *ta);
 void				op_clr(t_a *ta);

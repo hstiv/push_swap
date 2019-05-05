@@ -31,9 +31,9 @@ int					check_all(t_a *ta)
 	t_a				*tmp2;
 
 	tmp1 = ta;
-	while (tmp1)
+	while (tmp1->next)
 	{
-		tmp2 = ta;
+		tmp2 = tmp1->next;
 		if (chmax(tmp1) == 0)
 		{
 			ft_putstr("Error\n");
@@ -41,9 +41,9 @@ int					check_all(t_a *ta)
 		}
 		while (tmp2)
 		{
-			if (tmp2->a == tmp1->a && tmp1->an != tmp2->an)
+			if (tmp2->a == tmp1->a)
 			{
-				ft_putstr("Error: dublication\n");
+				ft_putstr("Error\n");
 				return (0);
 			}
 			tmp2 = tmp2->next;

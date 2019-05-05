@@ -16,16 +16,19 @@ WWW = -Wall -Wextra -Werror
 
 HEAD = includes/
 
+all: $(NAME1) $(NAME2)
+
 $(NAME1):
-	@echo "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Compiling... Wait a sec."
-	@make -C libft re && gcc -g -o $@ $(SRC1) -I $(HEAD)
+	@echo "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Push_swap is compiling... Wait a sec."
+	@make -C libft re && gcc $(WWW) -g -o $@ $(SRC1) -I $(HEAD)
+	@rm -rf *.dSYM
+	@echo "(•̀ᴗ•́)و $@ generated!".
 	
 $(NAME2):
-	@make -C libft re && gcc -g -o $@ $(SRC) -I $(HEAD)
+	@echo "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Checker is compiling... Wait a sec."
+	@make -C libft re && gcc $(WWW) -g -o $@ $(SRC) -I $(HEAD)
 	@rm -rf *.dSYM
 	@echo "(•̀ᴗ•́)و $(NAME2) generated!".
-
-all: $(NAME1) $(NAME2)
 
 clean:
 	@rm -f src/*.o

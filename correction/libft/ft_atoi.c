@@ -26,7 +26,7 @@ static int			ft_atoi_maker(long long int sign, const char *n)
 
 	res = 0;
 	check = 0;
-	while (48 <= *n && *n <= 57)
+	while (*n && 48 <= *n && *n <= 57)
 	{
 		check = res;
 		res *= 10;
