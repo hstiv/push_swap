@@ -31,15 +31,15 @@ void					op_clr(t_a *ta)
 
 static void				optim_oper(t_a *ta)
 {
-	while (ft_count_char(ta->ra_oper, 32) / 2 > 1
-			&& ft_count_char(ta->rb_oper, 32) / 2 > 1)
+	while (ft_count_char(ta->ra_oper, 32) > 1
+			&& ft_count_char(ta->rb_oper, 32) > 1)
 	{
 		ft_oper_rec(ta->oper, "rr", 1);
 		del_oper(ta->ra_oper);
 		del_oper(ta->rb_oper);
 	}
-	while (ft_count_char(ta->rra_oper, 32) / 2 > 1
-			&& ft_count_char(ta->rrb_oper, 32) / 2 > 1)
+	while (ft_count_char(ta->rra_oper, 32) > 1
+			&& ft_count_char(ta->rrb_oper, 32)  > 1)
 	{
 		ft_oper_rec(ta->oper, "rrr", 1);
 		del_oper(ta->rra_oper);
@@ -53,13 +53,14 @@ void					op_write(t_a *ta, char *s, int i)
 	if (ft_strequ(s, "ra") == 1)
 		ft_oper_rec(ta->ra_oper, "ra", i);
 	else if (ft_strequ(s, "rb") == 1)
-		ft_oper_rec(ta->ra_oper, "rb", i);
+		ft_oper_rec(ta->rb_oper, "rb", i);
 	else if (ft_strequ(s, "rra") == 1)
-		ft_oper_rec(ta->ra_oper, "rra", i);
+		ft_oper_rec(ta->rra_oper, "rra", i);
 	else if (ft_strequ(s, "rrb") == 1)
-		ft_oper_rec(ta->ra_oper, "rrb", i);
+		ft_oper_rec(ta->rrb_oper, "rrb", i);
 	else if (ft_strequ(s, "pa") == 1)
 	{
+		optim_oper(ta);
 		if (ta->rb_oper[0] != '\0')
 			ft_oper_rec(ta->oper, ta->rb_oper, 1);
 		else if (ta->rrb_oper[0] != '\0')
