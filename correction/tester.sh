@@ -5,7 +5,7 @@ ARG100="17 9 93 80 99 2 5 51 84 4 57 48 14 29 55 35 74 21 94 60 68 63 1 92 23 82
 
 #A STACK WITH  10 RANDOM NUMBERS.
 
-ARG001=`ruby -e "puts (1 .. 500).to_a.shuffle.join(' ')"`
+ARG001=`ruby -e "puts (1 .. 100).to_a.shuffle.join(' ')"`
 
 ARG10="33 4 5 9 65 2 1 99 40 92 24 55 64 88 76 56 45 4555"
 
@@ -24,7 +24,7 @@ ARG11="1 2 3 4 5 6 7 8 9 10"
 #do
     #time
  #   ARG001=`ruby -e "puts (-249 .. 250).to_a.shuffle.join(' ')"`
-    ./push_swap $ARG100 | ./checker -vc $ARG100
+    ./push_swap $ARG001 | ./checker -vc $ARG001
 #done
 #valgrind ./push_swap --leak-check=full $ARG001
 
