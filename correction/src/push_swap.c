@@ -77,7 +77,7 @@ static void				ft_sorter(t_ps *ps, t_a *ta)
 			minmax(ps, ta);
 			while (ps->max_a->an != 1)
 			{
-				(ps->max_a->an * 2 > ps->a_l) ? ra(ps, ta, 1) : rra(ps, ta, 1);
+				(ps->max_a->an * 2 >= ps->a_l) ? ra(ps, ta, 1) : rra(ps, ta, 1);
 				minmax(ps, ta);
 			}
 		}
@@ -91,7 +91,7 @@ int						main(int c, char **s)
 	int					i;
 
 	i = 1;
-	if (c < 2 || !(ta = ta_list()))
+	if (!(ta = ta_list()))
 	{
 		ft_putstr("Error\n");
 		return (0);
@@ -102,7 +102,7 @@ int						main(int c, char **s)
 		ft_putstr("Error\n");
 		return (0);
 	}
-	if (!(ta = recorder(s, ta, ps, i)) || !check_all(ta))
+	if (c < 2 || !(ta = recorder(s, ta, ps, i)) || !check_all(ta))
 	{
 		lst_free(ps, ta);
 		return (0);

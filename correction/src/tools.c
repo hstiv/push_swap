@@ -31,15 +31,15 @@ void					op_clr(t_a *ta)
 
 static void				optim_oper(t_a *ta)
 {
-	while (ft_count_char(ta->ra_oper, 32) > 1
-			&& ft_count_char(ta->rb_oper, 32) > 1)
+	while (ft_count_char(ta->ra_oper, 32) > 0
+			&& ft_count_char(ta->rb_oper, 32) > 0)
 	{
 		ft_oper_rec(ta->oper, "rr", 1);
 		del_oper(ta->ra_oper);
 		del_oper(ta->rb_oper);
 	}
-	while (ft_count_char(ta->rra_oper, 32) > 1
-			&& ft_count_char(ta->rrb_oper, 32)  > 1)
+	while (ft_count_char(ta->rra_oper, 32) > 0
+			&& ft_count_char(ta->rrb_oper, 32) > 0)
 	{
 		ft_oper_rec(ta->oper, "rrr", 1);
 		del_oper(ta->rra_oper);

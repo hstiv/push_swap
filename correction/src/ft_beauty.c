@@ -22,18 +22,18 @@ static void			ft_data(t_a *temp, t_ps *ps)
 			ft_putnbr(temp->a);
 		else
 			write(1, " ", 1);
-		write(1, "\t\t\t", 2);
+		write(1, "\t\t\t", 3);
 		if (temp->bn)
 			ft_putnbr(temp->b);
 		else
 			write(1, " ", 1);
 		if (temp->prev == NULL)
 		{
-			write(1, "\t\t       |", 11);
+			write(1, "\t       |", 9);
 			ft_putnbr(ps->len);
 		}
 		else
-			write(1, "\t\t        ", 11);
+			write(1, "\t        ", 9);
 		write(1, "|\n", 2);
 		temp = temp->prev;
 	}
@@ -48,17 +48,20 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 		temp = temp->next;
 	if (i == 2 || ps->i >= 1)
 	{
-		write(1, "________________________", 24);
-		write(1, "_________________________\n", 26);
+		write(1, "____________________", 20);
+		write(1, "_____________________\n", 22);
 		ft_data(temp, ps);
-		write(1, "|_\t\t_\t\t\t\t|\n|a\t\t\tb\t\t\t|\n|", 23);
+		write(1, "|_\t\t\t_\t\t|\n|a\t\t\tb\t\t|\n|", 21);
 		ft_putnbr(ps->a_l);
-		write(1, "\t\t\t", 2);
+		write(1, "\t\t\t", 3);
 		ft_putnbr(ps->b_l);
-		write(1, "\t\t\t|\n|", 7);
-		write(1, "________________________", 24);
-		write(1, "_______________________|\n", 25);
+		write(1, "\t\t|\n|", 5);
+		write(1, "____________________", 20);
+		write(1, "___________________|\n", 21);
 		if (ps->i == 2 && i == 3)
+		{
+			usleep((ps->a_l + ps->b_l <= 100) ? 99991 : 991);
 			system("clear");
+		}
 	}
 }

@@ -17,14 +17,15 @@ void		del_oper(char *s)
 	int		i;
 
 	i = 0;
-	while (s[i + 1] != '\0')
+	while (s[i] != '\0' && s[i + 1] != '\0')
 		i++;
-	while (s[i] != 32)
+	while (s[i] != '\0' && s[i] != 32)
 	{
 		s[i] = '\0';
 		i--;
 	}
-	s[i] = '\0';
+	if (s[i] != '\0')
+		s[i] = '\0';
 }
 
 void		ft_operclr(char *s)
