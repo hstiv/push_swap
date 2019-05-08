@@ -45,6 +45,8 @@ static int				visual(t_ps *ps, t_a *ta)
 {
 	char				*line;
 
+	if (!ps->a_l)
+		return (0);
 	ft_beauty(ps, ta);
 	while (get_next_line(0, &line) > 0)
 	{
@@ -52,7 +54,7 @@ static int				visual(t_ps *ps, t_a *ta)
 		{
 			(ps->c == 1) ? red() : 0;
 			ft_putstr("Error\n");
-			free(line);
+			(line) ? free(line) : 0;
 			return (0);
 		}
 		if (line && *line)
@@ -116,7 +118,8 @@ int						main(int c, char **s)
 	int					i;
 
 	i = 1;
-	if(!(ps = ps_list()) || c < 2)
+	if (c < 2 || (c == 2 && s[1][0] == '-' &&
+		!ft_isdigit(s[1][1])) || !(ps = ps_list()))
 		return (0);
 	if (!(ta = ta_list()) || !flags(ps, s, &i))
 	{

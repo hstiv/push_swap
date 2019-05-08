@@ -91,7 +91,7 @@ int						main(int c, char **s)
 	int					i;
 
 	i = 1;
-	if (!(ta = ta_list()) || c < 2)
+	if (c < 2 || !(ta = ta_list()))
 		return (0);
 	if (!(ps = ps_list()))
 	{

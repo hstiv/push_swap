@@ -55,7 +55,7 @@ t_a					*sub_rec(char **s, t_a *ta, t_ps *ps)
 	i = mass_len(s);
 	while (i--)
 	{
-		if (not_number(s[i]) == 0 || !smax(s[i]))
+		if (!not_number(s[i]) || !smax(s[i]))
 		{
 			ft_putstr("Error\n");
 			return (NULL);
@@ -87,17 +87,16 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 		str = ft_strsplit(s[i], 32);
 		if (!(tmp = sub_rec(str, tmp, ps)))
 		{
+			ft_dellast(ta);
 			ft_arraydel((void **)str);
 			return (NULL);
 		}
 		ft_arraydel((void **)str);
 		if (tmp->next == NULL && i >= a)
-		{
-			tmp->next = ta_list();
-			tmp->next->prev = tmp;
-		}
+			next_lst(tmp);
 		tmp = tmp->next;
 	}
 	ft_dellast(ta);
+	ft_putchar(66);
 	return (ta);
 }

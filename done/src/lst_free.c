@@ -15,13 +15,14 @@
 void				ft_dellast(t_a *ta)
 {
 	t_a				*tmp;
+	t_a				*la;
 
 	tmp = ta;
 	while (tmp && tmp->an != 0)
 		tmp = tmp->next;
+	la = (tmp && tmp->prev) ? tmp->prev : NULL;
 	if (tmp)
 	{
-		tmp->prev->next = NULL;
 		free(tmp->oper);
 		free(tmp->ra_oper);
 		free(tmp->rb_oper);
@@ -29,15 +30,22 @@ void				ft_dellast(t_a *ta)
 		free(tmp->rrb_oper);
 		free(tmp);
 	}
+	if (la)
+		la->next = NULL;
 }
 
 static void			oper_freeder(t_a *ta)
 {
-	free(ta->oper);
-	free(ta->ra_oper);
-	free(ta->rb_oper);
-	free(ta->rra_oper);
-	free(ta->rrb_oper);
+	if (ta->oper)
+		free(ta->oper);
+	if (ta->ra_oper)
+		free(ta->ra_oper);
+	if (ta->rb_oper)
+		free(ta->rb_oper);
+	if (ta->rb_oper)
+		free(ta->rra_oper);
+	if (ta->rrb_oper)
+		free(ta->rrb_oper);
 }
 
 void				lst_free(t_ps *ps, t_a *ta)

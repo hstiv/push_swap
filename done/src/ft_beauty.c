@@ -66,3 +66,9 @@ void				ft_beauty(t_ps *ps, t_a *ta)
 		}
 	}
 }
+
+void				next_lst(t_a *tmp)
+{
+	tmp->next = ta_list();
+	tmp->next->prev = tmp;
+}
