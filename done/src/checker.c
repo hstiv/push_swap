@@ -41,15 +41,16 @@ static int				sort_by_in(char *line, t_ps *ps, t_a *ta)
 	return (1);
 }
 
-static int				visual(t_ps *ps, t_a *ta, int i)
+static int				visual(t_ps *ps, t_a *ta)
 {
 	char				*line;
 
-	ft_beauty(ps, ta, i);
+	ft_beauty(ps, ta);
 	while (get_next_line(0, &line) > 0)
 	{
 		if (sort_by_in(line, ps, ta) == 0)
 		{
+			(ps->c == 1) ? red() : 0;
 			ft_putstr("Error\n");
 			lst_free(ps, ta);
 			return (0);
@@ -57,20 +58,54 @@ static int				visual(t_ps *ps, t_a *ta, int i)
 		if (line && *line)
 			free(line);
 		ps->len++;
-		ft_beauty(ps, ta, 3);
+		ft_beauty(ps, ta);
 	}
-	(ps->i == 2) ? ft_beauty(ps, ta, i) : 0;
+	(ps->i == 2) ? ft_beauty(ps, ta) : 0;
 	return (1);
 }
 
-static void				flags(t_ps *ps, char **s, int *i)
+static int				flags(t_ps *ps, char **s, int *i)
 {
-	if (s[1] != NULL && s[1][0] == '-' && s[1][1] == 'v')
+	int					l;
+
+	l = 0;
+	if (s[1] != NULL && s[1][l] == '-')
+		while (s[1][++l] != '\0')
+		{
+			if (s[1][l] == 'v')
+			{
+				ps->v++;
+				ps->i++;
+			}
+			else if (s[1][l] == 's')
+			{
+				ps->s++;
+				ps->i++;
+			}
+			else if (s[1][l] == 'c')
+			{
+				ps->i++;
+				ps->c++;
+			}
+		}
+	if (s[1][0] == '-' && !flag_check(i, ps, l))
+		return (0);
+	return (1);
+}
+
+static void				p_ko(t_ps *ps, t_a *ta)
+{
+	if (if_sort(ta) == 0)
 	{
-		if (s[*i][2] != '\0' && s[*i][2] == 'c')
-			ps->i = 1;
-		ps->i += 1;
-		(*i)++;
+		reset();
+		(ps->c == 1) ? red() : 0;
+		ft_putstr("KO\n");
+	}
+	else
+	{
+		reset();
+		(ps->c == 1) ? green() : 0;
+		ft_putstr("OK\n");
 	}
 }
 
@@ -82,18 +117,14 @@ int						main(int c, char **s)
 
 	i = 1;
 	ps = ps_list();
-	if (!ps || !(ta = ta_list()) || c < 2)
+	if (!ps || !(ta = ta_list()) || c < 2 || !flags(ps, s, &i))
 		return (0);
-	flags(ps, s, &i);
 	if (!(ta = recorder(s, ta, ps, i)))
 		return (0);
 	numgive(ps, ta);
-	if (!check_all(ta) || !(visual(ps, ta, i)))
+	if (!check_all(ta) || !(visual(ps, ta)))
 		return (0);
-	if (if_sort(ta) == 0)
-		ft_putstr("KO\n");
-	else
-		ft_putstr("OK\n");
+	p_ko(ps, ta);
 	lst_free(ps, ta);
 	return (0);
 }

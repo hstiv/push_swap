@@ -39,15 +39,16 @@ static void			ft_data(t_a *temp, t_ps *ps)
 	}
 }
 
-void				ft_beauty(t_ps *ps, t_a *ta, int i)
+void				ft_beauty(t_ps *ps, t_a *ta)
 {
 	t_a				*temp;
 
 	temp = ta;
 	while (temp->next)
 		temp = temp->next;
-	if (i == 2 || ps->i >= 1)
+	if (ps->v != 0)
 	{
+		(ps->c == 1) ? blue() : 0;
 		write(1, "____________________", 20);
 		write(1, "_____________________\n", 22);
 		ft_data(temp, ps);
@@ -58,9 +59,9 @@ void				ft_beauty(t_ps *ps, t_a *ta, int i)
 		write(1, "\t\t|\n|", 5);
 		write(1, "____________________", 20);
 		write(1, "___________________|\n", 21);
-		if (ps->i == 2 && i == 3)
+		if (ps->s != 0 && !if_sort(ta))
 		{
-			usleep((ps->a_l + ps->b_l <= 100) ? 99991 : 991);
+			usleep((ps->a_l + ps->b_l <= 100) ? 99999 : 99999);
 			system("clear");
 		}
 	}

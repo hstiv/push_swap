@@ -84,6 +84,9 @@ t_ps		*ps_list(void)
 		ps->i = 0;
 		ps->b_l = 0;
 		ps->len = 0;
+		ps->v = 0;
+		ps->c = 0;
+		ps->s = 0;
 		ps->max_a = NULL;
 		ps->min_a = NULL;
 		ps->max_b = NULL;
