@@ -53,7 +53,6 @@ static int				visual(t_ps *ps, t_a *ta)
 			(ps->c == 1) ? red() : 0;
 			ft_putstr("Error\n");
 			free(line);
-			lst_free(ps, ta);
 			return (0);
 		}
 		if (line && *line)
