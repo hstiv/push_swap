@@ -34,6 +34,8 @@ t_a			*ta_list(void)
 		ta->op_b = 0;
 		ta->next = NULL;
 	}
+	else
+		ft_putstr("Error\n");
 	return (ta);
 }
 
@@ -92,5 +94,7 @@ t_ps		*ps_list(void)
 		ps->max_b = NULL;
 		ps->min_b = NULL;
 	}
+	else
+		ft_putstr("Error\n");
 	return (ps);
 }

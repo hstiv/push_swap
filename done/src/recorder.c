@@ -58,7 +58,6 @@ t_a					*sub_rec(char **s, t_a *ta, t_ps *ps)
 		if (not_number(s[i]) == 0 || !smax(s[i]))
 		{
 			ft_putstr("Error\n");
-			lst_free(ps, ta);
 			return (NULL);
 		}
 		tmp->a = ft_atoi(s[i]);

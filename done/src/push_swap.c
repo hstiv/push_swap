@@ -91,18 +91,14 @@ int						main(int c, char **s)
 	int					i;
 
 	i = 1;
-	if (!(ta = ta_list()))
-	{
-		ft_putstr("Error\n");
+	if (!(ta = ta_list()) || c < 2)
 		return (0);
-	}
 	if (!(ps = ps_list()))
 	{
 		lst_free(ps, ta);
-		ft_putstr("Error\n");
 		return (0);
 	}
-	if (c < 2 || !(ta = recorder(s, ta, ps, i)) || !check_all(ta))
+	if (!(ta = recorder(s, ta, ps, i)) || !check_all(ta))
 	{
 		lst_free(ps, ta);
 		return (0);

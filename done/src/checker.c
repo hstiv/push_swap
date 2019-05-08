@@ -52,6 +52,7 @@ static int				visual(t_ps *ps, t_a *ta)
 		{
 			(ps->c == 1) ? red() : 0;
 			ft_putstr("Error\n");
+			free(line);
 			lst_free(ps, ta);
 			return (0);
 		}
@@ -116,14 +117,20 @@ int						main(int c, char **s)
 	int					i;
 
 	i = 1;
-	ps = ps_list();
-	if (!ps || !(ta = ta_list()) || c < 2 || !flags(ps, s, &i))
+	if(!(ps = ps_list()) || c < 2)
 		return (0);
-	if (!(ta = recorder(s, ta, ps, i)))
+	if (!(ta = ta_list()) || !flags(ps, s, &i))
+	{
+		lst_free(ps, ta);
 		return (0);
+	}
+	if (!(ta = recorder(s, ta, ps, i)) || !check_all(ta)
+					|| !(visual(ps, ta)))
+	{
+		lst_free(ps, ta);
+		return (0);
+	}
 	numgive(ps, ta);
-	if (!check_all(ta) || !(visual(ps, ta)))
-		return (0);
 	p_ko(ps, ta);
 	lst_free(ps, ta);
 	return (0);
