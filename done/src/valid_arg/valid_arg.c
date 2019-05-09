@@ -58,7 +58,7 @@ static int			check_str(char **str, t_ps *ps)
 	while (str[i] != NULL)
 	{
 		if (!not_number(str[i]) || !smax(str[i]) ||
-						!after(atoi(str[i]), str[i]))
+						!after(ft_atoi(str[i]), str[i]))
 			return (werror(ps));
 		if (ft_strcmp(str[i], "0") && ft_atoi(str[i]) == 0)
 			return (werror(ps));

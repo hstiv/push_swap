@@ -31,6 +31,7 @@ char				*ft_itoa(int n)
 	i = 0;
 	l = -1;
 	sign = ft_itoa_sign(n);
+	ft_bzero(res, 11);
 	while (sign * n > 9 || sign * n < 0)
 	{
 		res[i++] = '0' + sign * (n % 10);
