@@ -36,6 +36,21 @@ static int			smax(char *s)
 	return (1);
 }
 
+static int			after(int nb, char *s)
+{
+	char			*str;
+
+	str = ft_itoa(nb);
+	if (ft_strcmp(str, s))
+	{
+		free(str);
+		return (0);
+	}
+	free(str);
+	return (1);
+	
+}
+
 static int			check_str(char **str)
 {
 	int				i;
@@ -43,7 +58,7 @@ static int			check_str(char **str)
 	i = 0;
 	while (str[i] != NULL)
 	{
-		if (!not_number(str[i]) || !smax(str[i]))
+		if (!not_number(str[i]) || !smax(str[i]) || !after(atoi(str[i]), str[i]))
 		{
 			write(1, "Error\n", 6);
 			return (0);
