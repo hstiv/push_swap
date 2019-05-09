@@ -12,30 +12,6 @@
 
 #include "push_swap.h"
 
-int					not_number(char *s)
-{
-	int				n;
-
-	n = 0;
-	if (s[n] == '-')
-		n++;
-	while (s[n] != '\0' && s[n] != ' ')
-	{
-		if (!ft_isdigit(s[n]))
-			return (0);
-		n++;
-	}
-	return (1);
-}
-
-static int			smax(char *s)
-{
-	if (!ft_strcmp(s, "2147483648") || !ft_strcmp(s, "-2147483649") ||
-			ft_strchr(s, ',') || ft_strchr(s, '.'))
-		return (0);
-	return (1);
-}
-
 static int			mass_len(char **s)
 {
 	int				i;
@@ -55,11 +31,6 @@ t_a					*sub_rec(char **s, t_a *ta, t_ps *ps)
 	i = mass_len(s);
 	while (i--)
 	{
-		if (!not_number(s[i]) || !smax(s[i]))
-		{
-			ft_putstr("Error\n");
-			return (NULL);
-		}
 		tmp->a = ft_atoi(s[i]);
 		tmp->an = (tmp->prev) ? (tmp->prev->an + 1) : (1);
 		ps->a_l++;
@@ -97,6 +68,5 @@ t_a					*recorder(char **s, t_a *ta, t_ps *ps, int i)
 		tmp = tmp->next;
 	}
 	ft_dellast(ta);
-	ft_putchar(66);
 	return (ta);
 }

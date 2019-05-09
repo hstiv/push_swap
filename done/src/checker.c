@@ -126,8 +126,8 @@ int						main(int c, char **s)
 		lst_free(ps, ta);
 		return (0);
 	}
-	if (!(ta = recorder(s, ta, ps, i)) || !check_all(ta)
-					|| !(visual(ps, ta)))
+	if (!val_arg(s, i) || !(ta = recorder(s, ta, ps, i))
+			|| !check_all(ta) || !(visual(ps, ta)))
 	{
 		lst_free(ps, ta);
 		return (0);

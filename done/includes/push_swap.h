@@ -61,6 +61,7 @@ typedef struct		s_ps
 	t_a				*min_b;
 }					t_ps;
 
+int					val_arg(char  **s, int i);
 void				next_lst(t_a *tmp);
 void				red();
 void				blue();

@@ -5,12 +5,13 @@ LFT = libft/libft.a
 
 SRC = src/swap.c src/push.c src/rotate.c src/rev_rotate.c src/ft_beauty.c \
 	src/ps_list.c src/get_next_line.c src/if_sorted.c src/lst_free.c \
-	src/checker.c src/numgive.c src/minmax.c src/recorder.c src/colors.c $(LFT)
+	src/checker.c src/numgive.c src/minmax.c src/recorder.c src/colors.c $(LFT) \
+	src/valid_arg/valid_arg.c
 
 SRC1 = src/swap.c src/push.c src/rotate.c src/rev_rotate.c src/ft_beauty.c \
 	src/ps_list.c src/get_next_line.c src/if_sorted.c src/lst_free.c \
 	src/push_swap.c src/minmax.c src/numgive.c src/operations.c $(LFT) \
-	src/tools.c src/recorder.c src/colors.c
+	src/tools.c src/recorder.c src/colors.c src/valid_arg/valid_arg.c
 
 WWW = -Wall -Wextra -Werror
 
