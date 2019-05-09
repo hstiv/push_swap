@@ -25,7 +25,7 @@ static int			chmax(t_a *ta)
 	return (1);
 }
 
-int					check_all(t_a *ta)
+int					check_all(t_a *ta, t_ps *ps)
 {
 	t_a				*tmp1;
 	t_a				*tmp2;
@@ -35,17 +35,11 @@ int					check_all(t_a *ta)
 	{
 		tmp2 = tmp1->next;
 		if (chmax(tmp1) == 0)
-		{
-			ft_putstr("Error\n");
-			return (0);
-		}
+			return (werror(ps));
 		while (tmp2)
 		{
 			if (tmp2->a == tmp1->a)
-			{
-				ft_putstr("Error\n");
-				return (0);
-			}
+				return (werror(ps));
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;

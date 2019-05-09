@@ -52,10 +52,8 @@ static int				visual(t_ps *ps, t_a *ta)
 	{
 		if (sort_by_in(line, ps, ta) == 0)
 		{
-			(ps->c == 1) ? red() : 0;
-			ft_putstr("Error\n");
 			(line) ? free(line) : 0;
-			return (0);
+			return (werror(ps));
 		}
 		if (line && *line)
 			free(line);
@@ -102,12 +100,14 @@ static void				p_ko(t_ps *ps, t_a *ta)
 		reset();
 		(ps->c == 1) ? red() : 0;
 		ft_putstr("KO\n");
+		reset();
 	}
 	else
 	{
 		reset();
 		(ps->c == 1) ? green() : 0;
 		ft_putstr("OK\n");
+		reset();
 	}
 }
 
@@ -126,8 +126,8 @@ int						main(int c, char **s)
 		lst_free(ps, ta);
 		return (0);
 	}
-	if (!val_arg(s, i) || !(ta = recorder(s, ta, ps, i))
-			|| !check_all(ta) || !(visual(ps, ta)))
+	if (!val_arg(s, i, ps) || !(ta = recorder(s, ta, ps, i))
+			|| !check_all(ta, ps) || !(visual(ps, ta)))
 	{
 		lst_free(ps, ta);
 		return (0);
