@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_arg.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/09 13:48:02 by hstiv             #+#    #+#             */
+/*   Updated: 2019/05/09 13:48:04 by hstiv            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int					not_number(char *s)
@@ -24,9 +36,9 @@ static int			smax(char *s)
 	return (1);
 }
 
-static int		check_str(char	**str)
+static int			check_str(char **str)
 {
-	int			i;
+	int				i;
 
 	i = 0;
 	while (str[i] != NULL)
@@ -51,9 +63,9 @@ static int		check_str(char	**str)
 	return (1);
 }
 
-int				val_arg(char  **s, int i)
+int					val_arg(char **s, int i)
 {
-	char		**str;
+	char			**str;
 
 	while (s[i] != NULL)
 	{
